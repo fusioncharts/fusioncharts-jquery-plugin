@@ -1,0 +1,88 @@
+{
+    "name": "xt-edge",
+    "description": "FusionCharts jQuery Plugin",
+    "homepage": "http://www.fusioncharts.com/",
+    "version": "1.0.2",
+    "license": "MIT",
+    "author": "FusionCharts Technologies  <support@fusioncharts.com>",
+
+    "keywords": [
+        "fusioncharts",
+        "jquery",
+        "plugin"
+    ],
+
+    "preferGlobal": false,
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/fusioncharts/fusioncharts-jquery-plugin.git"
+    },
+
+    "dependencies": {},
+    "devDependencies": {
+        "grunt": "^0.4.2",
+        "grunt-contrib-uglify": "^0.2.7",
+        "grunt-contrib-jshint": "^0.11.2",
+        "jshint": "2.4.2"
+    },
+
+    "scripts": {
+        "test": "develop/ci/test/test",
+        "lint": "develop/ci/lint/lint",
+        "build": "develop/ci/build/build"
+    },
+
+    "jshintConfig": {
+        "bitwise": false,
+        "camelcase": true,
+        "curly": true,
+        "eqeqeq": false,
+        "es3": false,
+        "forin": false,
+        "freeze": true,
+        "immed": true,
+        "indent": 4,
+        "latedef": true,
+        "newcap": true,
+        "noarg": true,
+        "noempty": true,
+        "nonew": false,
+        "plusplus": false,
+        "quotmark": "single",
+        "undef": true,
+        "unused": true,
+        "trailing": true,
+        "asi": false,
+        "boss": true,
+        "debug": false,
+        "eqnull": true,
+        "evil": false,
+        "expr": true,
+        "funcscope": false,
+        "globalstrict": false,
+        "iterator": false,
+        "lastsemic": false,
+        "laxbreak": false,
+        "laxcomma": false,
+        "loopfunc": false,
+        "maxlen": 120,
+        "multistr": false,
+        "notypeof": false,
+        "proto": false,
+        "scripturl": false,
+        "smarttabs": false,
+        "shadow": false,
+        "sub": false,
+        "supernew": false,
+
+        "browser": false,
+        "devel": false,
+        "node": true,
+
+        "onevar": true,
+
+        "globals": {
+            "FusionCharts": true
+        }
+    }
+}
