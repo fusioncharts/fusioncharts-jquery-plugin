@@ -1,5 +1,5 @@
 /**!
- * @license FusionCharts JavaScript Library jQuery Plugin v1.0.2
+ * @license FusionCharts JavaScript Library jQuery Plugin v1.0.3
  * Copyright FusionCharts Technologies LLP
  * License Information at <http://www.fusioncharts.com/license>
  *
@@ -676,7 +676,7 @@ FusionCharts.register('module', ['private', 'HTMLTableDataHandler', function () 
                         // If the user has provided custom labels then those should be
                         // shown instead of the extracted labels.
                         categoryArr.push(global.extend({
-                            label: (labelMap.labelObj[item1].indexOf(_blankString) != '-1') ?
+                            label: (labelMap.labelObj[item1].indexOf(_blankString) != -1) ?
                                 '' : labelMap.labelObj[item1]
                         },
                         opts.labels[i]));
@@ -698,7 +698,7 @@ FusionCharts.register('module', ['private', 'HTMLTableDataHandler', function () 
                         // If the user has provided custom labels then those should be
                         // shown instead of the extracted labels.
                         datasetArr.push(global.extend({
-                            'seriesname': ((legendMap.labelObj[item1].indexOf(_blankString) !== '-1') ?
+                            'seriesname': ((legendMap.labelObj[item1].indexOf(_blankString) !== -1) ?
                                 '' : legendMap.labelObj[item1]),
                             'data': datasets[item1]
                         }, opts.legend[i]));
@@ -719,7 +719,7 @@ FusionCharts.register('module', ['private', 'HTMLTableDataHandler', function () 
                     for (item1 in dataMap) {
                         for (item2 in dataMap[item1]) {
                             datasetArr.push(global.extend({
-                                    label: ((labelMap.labelObj[item1].indexOf(_blankString) !== '-1') ?
+                                    label: ((labelMap.labelObj[item1].indexOf(_blankString) !== -1) ?
                                         '' : labelMap.labelObj[item1]),
                                     value: dataMap[item1][item2]
                                 },
