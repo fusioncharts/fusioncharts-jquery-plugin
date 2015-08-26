@@ -1,10 +1,3 @@
-/**!
- * @license FusionCharts JavaScript Library jQuery Plugin
- * Copyright FusionCharts Technologies LLP
- * License Information at <http://www.fusioncharts.com/license>
- *
- * @author FusionCharts Technologies LLP
- */
 /**
  * @module fusioncharts.jqueryplugin
  * @private
