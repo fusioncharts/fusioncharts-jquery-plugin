@@ -515,7 +515,6 @@ FusionCharts.register('module', ['private', 'HTMLTableDataHandler', function () 
                 // map.
                 columnSpanObj[i] = 0;
                 rowSpanObj[i] = {};
-                tempColumn = 0;
 
                 for (j = 0, len = rowCells.length; j < len; j += 1) {
 
