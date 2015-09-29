@@ -290,8 +290,8 @@ FusionCharts.register('module', ['private', 'HTMLTableDataHandler', function () 
                     spanLen = j + spanTotal;
                     internalLabel[spanLen] = _blankString + (spanLen + 1);
 
-                    temp = parseInt(childArr[j].getAttribute('colspan'), 10);
-                    temp = (temp > 1) ? temp : parseInt(childArr[j].getAttribute('rowspan'), 10);
+                    temp = parseInt(childArr[j].colSpan, 10);
+                    temp = (temp > 1) ? temp : parseInt(childArr[j].rowSpan, 10);
                     if (temp > 1) {
                         for (l = 1; l < temp; l += 1) {
                             internalLabel[spanLen + l] = _blankString + (spanLen + l + 1);
@@ -457,17 +457,22 @@ FusionCharts.register('module', ['private', 'HTMLTableDataHandler', function () 
                 rowSpanObj = {},
                 tableRows = sanitizeNodesArray(getThead(tbl)).concat(sanitizeNodesArray(getTbody(tbl).childNodes)),
                 l = tableRows.length,
+                dataRows = 0,
+                dataColumns = 0,
+                tempColumn = 0,
                 rowLabelMap,
                 m,
                 k = 0,
                 columnLabelMap,
                 isSingleSeries = false,
+                chartType = opts.chartType,
+                tempMap,
                 singleSeriesCharts = ['column2d', 'column3d', 'pie3d', 'pie2d',
                                         'line', 'bar2d', 'area2d', 'doughnut2d',
                                         'doughnut3d', 'pareto2d', 'pareto3d'];
 
 
-            if(singleSeriesCharts.indexOf(opts.chartType) !== -1){
+            if(singleSeriesCharts.indexOf(chartType) !== -1){
                 isSingleSeries = true;
             }
 
@@ -477,13 +482,28 @@ FusionCharts.register('module', ['private', 'HTMLTableDataHandler', function () 
             opts.rowLabelSource = parseInt(opts.labelSource, 10);
             opts.colLabelSource = parseInt(opts.legendSource, 10);
             // Create the labels objects for the chart.
-            rowLabelMap = opts.useLabels ?
-                getLabels(tableRows, opts.ignoreCols, opts.rowLabelSource) :
-                getLabels(tableRows, opts.ignoreCols);
 
-            columnLabelMap = opts.useLegend ?
-                getLabels(getColumnArr(tableRows), opts.ignoreRows, opts.colLabelSource) :
-                getLabels(getColumnArr(tableRows), opts.ignoreRows);
+            if (opts.major === 'column') {
+                rowLabelMap = opts.useLabels ?
+                    getLabels(tableRows, opts.ignoreCols, opts.rowLabelSource) :
+                    getLabels(tableRows, opts.ignoreCols);
+
+                columnLabelMap = opts.useLegend ?
+                    getLabels(getColumnArr(tableRows), opts.ignoreRows, opts.colLabelSource) :
+                    getLabels(getColumnArr(tableRows), opts.ignoreRows);
+            }else{
+                rowLabelMap = opts.useLabels ?
+                    getLabels(getColumnArr(tableRows), opts.ignoreRows, opts.colLabelSource) :
+                    getLabels(getColumnArr(tableRows), opts.ignoreRows);
+
+                columnLabelMap = opts.useLegend ?
+                    getLabels(tableRows, opts.ignoreCols, opts.rowLabelSource) :
+                    getLabels(tableRows, opts.ignoreCols);
+
+                tempMap = rowLabelMap;
+                rowLabelMap = columnLabelMap;
+                columnLabelMap = tempMap;
+            }
 
             delete rowLabelMap.labelObj[columnLabelMap.index];
             delete columnLabelMap.labelObj[rowLabelMap.index];
@@ -507,6 +527,7 @@ FusionCharts.register('module', ['private', 'HTMLTableDataHandler', function () 
                     continue;
                 }
 
+                dataRows += 1;
                 rowCells = sanitizeNodesArray(tableRows[i].childNodes);
 
                 // columnSpanObj maintains the number of colspans in the current
@@ -564,6 +585,7 @@ FusionCharts.register('module', ['private', 'HTMLTableDataHandler', function () 
                         continue;
                     }
 
+                    tempColumn += 1;
                     cellText = getTextFromNode(cellEle);
                     // If the cell does not have any text then we covert it by
                     // default to 0 or to an parameterized option set by user.
@@ -604,11 +626,14 @@ FusionCharts.register('module', ['private', 'HTMLTableDataHandler', function () 
                         }
                     }
                 }
+                if (tempColumn > dataColumns) {
+                    dataColumns = tempColumn;
+                }
             }
 
             return {
                 data: dataMap,
-                chartType: (!isSingleSeries ? 'multi' : 'single'),
+                chartType: chartType ? (!isSingleSeries ? 'multi' : 'single') : ((dataRows > 1 && dataColumns > 1) ? 'multi' : 'single'),
                 labelMap: columnLabelMap,
                 legendMap: rowLabelMap
             };
@@ -632,7 +657,7 @@ FusionCharts.register('module', ['private', 'HTMLTableDataHandler', function () 
                 seriesColors: [],
                 convertBlankTo: '0',
                 hideTable: false,
-                chartType: obj.chartType(),
+                chartType: obj.chartType && obj.chartType(),
 
                 // Private Variables
                 labels: [],
