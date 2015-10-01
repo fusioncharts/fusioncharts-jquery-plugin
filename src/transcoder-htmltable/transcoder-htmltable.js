@@ -493,11 +493,11 @@ FusionCharts.register('module', ['private', 'HTMLTableDataHandler', function () 
                     getLabels(getColumnArr(tableRows), opts.ignoreRows);
             }else{
                 rowLabelMap = opts.useLabels ?
-                    getLabels(getColumnArr(tableRows), opts.ignoreRows, opts.colLabelSource) :
+                    getLabels(getColumnArr(tableRows), opts.ignoreRows, opts.rowLabelSource) :
                     getLabels(getColumnArr(tableRows), opts.ignoreRows);
 
                 columnLabelMap = opts.useLegend ?
-                    getLabels(tableRows, opts.ignoreCols, opts.rowLabelSource) :
+                    getLabels(tableRows, opts.ignoreCols, opts.colLabelSource) :
                     getLabels(tableRows, opts.ignoreCols);
 
                 tempMap = rowLabelMap;
