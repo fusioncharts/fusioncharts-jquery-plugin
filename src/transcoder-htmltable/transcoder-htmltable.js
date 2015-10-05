@@ -272,11 +272,11 @@ FusionCharts.register('module', ['private', 'HTMLTableDataHandler', function () 
          * the user then this will contain the index which has the labels.
          *
          */
-        getLabels = function (nodeArr, ignoreArr, index) {
+        getLabels = function (nodeArr, ignoreArr, index, opts) {
 
             var len, l, i, j, childArr, mostEmptyCellRow = null, internalLabel = [],
                 emptyCellCount = [], textCellCount = 0, temp, returnObj = {},
-                spanTotal = 0, spanLen, isRowLabel, maxIdx, spanLength, totalSpanLength = 0;
+                spanTotal = 0, spanLen, isRowLabel, maxIdx, spanLength, totalSpanLength = 0, tLabels;
 
 
             if (typeof index === 'undefined') {
@@ -320,25 +320,37 @@ FusionCharts.register('module', ['private', 'HTMLTableDataHandler', function () 
                     childArr = sanitizeNodesArray(nodeArr[i].childNodes);
                     emptyCellCount[i] = 0;
                     textCellCount = 0;
-                    for (j = 0, len = childArr.length; j < len; j += 1) {
-                        if (arrayContains(ignoreArr, (j + 1)) ||
-                                arrayContains(ignoreArr, (j - len))) {
-                            continue;
+
+                    if(opts && opts._extractByHeaderTag){
+                        for (j = 0, len = childArr.length; j < len; j += 1) {
+                            if(childArr[j].nodeName.toLowerCase() != 'th'){
+                                continue;
+                            }
+                            tLabels = getLabels(nodeArr, ignoreArr, i + 1);
+                            delete tLabels.labelObj[opts._rowLabelIndex];
+                            return tLabels;
                         }
-                        temp = getTextFromNode(childArr[j]);
-                        // Checking if the cell is emtpy.
-                        if (temp.replace(/^\s*/, '').replace(/\s*$/, '') === '') {
-                            emptyCellCount[i] += 1;
-                            continue;
-                        }
-                        // Checking if the cell has a non-number content
-                        if (parseFloat(temp) != temp) {
-                            textCellCount += 1;
-                            // If there are at least 2 cells that have non-number
-                            // content then we assume that they contain labels and
-                            // fetch the labels from this array of nodes.
-                            if (textCellCount > 1) {
-                                return getLabels(nodeArr, ignoreArr, i + 1);
+                    }else{
+                        for (j = 0, len = childArr.length; j < len; j += 1) {
+                            if (arrayContains(ignoreArr, (j + 1)) ||
+                                    arrayContains(ignoreArr, (j - len))) {
+                                continue;
+                            }
+                            temp = getTextFromNode(childArr[j]);
+                            // Checking if the cell is emtpy.
+                            if (temp.replace(/^\s*/, '').replace(/\s*$/, '') === '') {
+                                emptyCellCount[i] += 1;
+                                continue;
+                            }
+                            // Checking if the cell has a non-number content
+                            if (parseFloat(temp) != temp) {
+                                textCellCount += 1;
+                                // If there are at least 2 cells that have non-number
+                                // content then we assume that they contain labels and
+                                // fetch the labels from this array of nodes.
+                                if (textCellCount > 1) {
+                                    return getLabels(nodeArr, ignoreArr, i + 1);
+                                }
                             }
                         }
                     }
@@ -377,11 +389,11 @@ FusionCharts.register('module', ['private', 'HTMLTableDataHandler', function () 
             for (j = 0, len = childArr.length; j < len; j += 1) {
                 spanLength = 0;
                 if (isRowLabel) {
-                    if (childArr[j].getAttribute('colspan') !== '1') {
-                        spanLength = parseInt(childArr[j].getAttribute('colspan'), 10);
+                    if (childArr[j].colSpan !== '1') {
+                        spanLength = parseInt(childArr[j].colSpan, 10);
                     }
-                } else if (childArr[j].getAttribute('rowspan') !== '1') {
-                    spanLength = parseInt(childArr[j].getAttribute('rowspan'), 10);
+                } else if (childArr[j].rowSpan !== '1') {
+                    spanLength = parseInt(childArr[j].rowSpan, 10);
                 }
                 spanLength = (spanLength > 1) ? spanLength : 0;
                 temp = getTextFromNode(childArr[j]);
@@ -467,6 +479,7 @@ FusionCharts.register('module', ['private', 'HTMLTableDataHandler', function () 
                 isSingleSeries = false,
                 chartType = opts.chartType,
                 tempMap,
+
                 singleSeriesCharts = ['column2d', 'column3d', 'pie3d', 'pie2d',
                                         'line', 'bar2d', 'area2d', 'doughnut2d',
                                         'doughnut3d', 'pareto2d', 'pareto3d'];
@@ -492,13 +505,21 @@ FusionCharts.register('module', ['private', 'HTMLTableDataHandler', function () 
                     getLabels(getColumnArr(tableRows), opts.ignoreRows, opts.colLabelSource) :
                     getLabels(getColumnArr(tableRows), opts.ignoreRows);
             }else{
-                rowLabelMap = opts.useLabels ?
-                    getLabels(getColumnArr(tableRows), opts.ignoreRows, opts.rowLabelSource) :
-                    getLabels(getColumnArr(tableRows), opts.ignoreRows);
-
+                tempMap = getLabels(getColumnArr(tableRows), opts.ignoreRows, opts.rowLabelSource)
+                if(!opts.useLabels){
+                    rowLabelMap = getLabels(getColumnArr(tableRows), opts.ignoreRows);
+                }else{
+                    rowLabelMap = tempMap;
+                }
+                
+                opts._rowLabelIndex = tempMap.index;
+                opts._extractByHeaderTag = true;
+                
                 columnLabelMap = opts.useLegend ?
-                    getLabels(tableRows, opts.ignoreCols, opts.colLabelSource) :
+                    getLabels(tableRows, opts.ignoreCols, opts.colLabelSource, opts) :
                     getLabels(tableRows, opts.ignoreCols);
+
+                delete opts._extractByHeaderTag;
 
                 tempMap = rowLabelMap;
                 rowLabelMap = columnLabelMap;
