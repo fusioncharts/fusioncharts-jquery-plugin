@@ -512,7 +512,7 @@ FusionCharts.register('module', ['private', 'HTMLTableDataHandler', function () 
                     getLabels(getColumnArr(tableRows), opts.ignoreRows, opts.colLabelSource) :
                     getLabels(getColumnArr(tableRows), opts.ignoreRows);
             }else{
-                tempMap = getLabels(getColumnArr(tableRows), opts.ignoreRows, opts.rowLabelSource)
+                tempMap = getLabels(getColumnArr(tableRows), opts.ignoreRows, opts.rowLabelSource);
                 if(!opts.useLabels){
                     rowLabelMap = getLabels(getColumnArr(tableRows), opts.ignoreRows);
                 }else{
@@ -661,7 +661,8 @@ FusionCharts.register('module', ['private', 'HTMLTableDataHandler', function () 
 
             return {
                 data: dataMap,
-                chartType: chartType ? (!isSingleSeries ? 'multi' : 'single') : ((dataRows > 1 && dataColumns > 1) ? 'multi' : 'single'),
+                chartType: chartType ? (!isSingleSeries ? 'multi' : 'single') : 
+                    ((dataRows > 1 && dataColumns > 1) ? 'multi' : 'single'),
                 labelMap: columnLabelMap,
                 legendMap: rowLabelMap
             };
