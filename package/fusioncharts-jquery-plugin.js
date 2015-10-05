@@ -1,5 +1,5 @@
 /**!
- * @license FusionCharts JavaScript Library jQuery Plugin v1.0.3
+ * @license FusionCharts JavaScript Library jQuery Plugin v1.0.4
  * Copyright FusionCharts Technologies LLP
  * License Information at <http://www.fusioncharts.com/license>
  *
