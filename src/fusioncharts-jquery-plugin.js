@@ -368,6 +368,7 @@ FusionCharts.register('module', ['private', 'extensions.jQueryPlugin', function 
                 ['width', false],
                 ['containerBackgroundColor', true],
                 ['containerBackgroundAlpha', true],
+                ['containerBackgroundOpacity', true],
                 ['dataFormat', false],
                 ['dataSource', false]
             ],
