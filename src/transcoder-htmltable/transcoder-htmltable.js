@@ -5,6 +5,8 @@
  *
  * @module fusioncharts.transcoder.htmltable
  */
+var FusionCharts = require('fusioncharts');
+
 FusionCharts.register('module', ['private', 'HTMLTableDataHandler', function () {
 
     var global = this,
@@ -481,8 +483,8 @@ FusionCharts.register('module', ['private', 'HTMLTableDataHandler', function () 
                 tempMap,
 
                 singleSeriesCharts = ['column2d', 'column3d', 'pie3d', 'pie2d',
-                                        'line', 'bar2d', 'area2d', 'doughnut2d',
-                                        'doughnut3d', 'pareto2d', 'pareto3d'];
+                    'line', 'bar2d', 'area2d', 'doughnut2d',
+                    'doughnut3d', 'pareto2d', 'pareto3d'];
 
 
             if(singleSeriesCharts.indexOf(chartType) !== -1){
@@ -665,28 +667,27 @@ FusionCharts.register('module', ['private', 'HTMLTableDataHandler', function () 
 
             // Default configuration for HTMLTable data-handler
             var opts = {
-                chartAttributes: { },
+                    chartAttributes: { },
+                    major: 'row',
+                    useLabels: true,
+                    useLegend: true,
+                    labelSource: 0,
+                    legendSource: 0,
+                    ignoreCols: [],
+                    ignoreRows: [],
+                    showLabels: true,
+                    showLegend: true,
+                    seriesColors: [],
+                    convertBlankTo: '0',
+                    hideTable: false,
+                    chartType: obj.chartType && obj.chartType(),
 
-                major: 'row',
-                useLabels: true,
-                useLegend: true,
-                labelSource: 0,
-                legendSource: 0,
-                ignoreCols: [],
-                ignoreRows: [],
-                showLabels: true,
-                showLegend: true,
-                seriesColors: [],
-                convertBlankTo: '0',
-                hideTable: false,
-                chartType: obj.chartType && obj.chartType(),
-
-                // Private Variables
-                labels: [],
-                legend: [],
-                data: []
-            }, i, item1, item2, categoryArr, datasetArr, chartJSON = {},
-            datasets = {}, dataObj, dataMap, labelMap, legendMap;
+                    // Private Variables
+                    labels: [],
+                    legend: [],
+                    data: []
+                }, i, item1, item2, categoryArr, datasetArr, chartJSON = {},
+                datasets = {}, dataObj, dataMap, labelMap, legendMap;
 
             global.extend(opts, config);
 
@@ -762,12 +763,10 @@ FusionCharts.register('module', ['private', 'HTMLTableDataHandler', function () 
                     for (item1 in dataMap) {
                         for (item2 in dataMap[item1]) {
                             datasetArr.push(global.extend({
-                                    label: ((labelMap.labelObj[item1].indexOf(_blankString) !== -1) ?
-                                        '' : labelMap.labelObj[item1]),
-                                    value: dataMap[item1][item2]
-                                },
-                                opts.labels[i])
-                            );
+                                label: ((labelMap.labelObj[item1].indexOf(_blankString) !== -1) ?
+                                '' : labelMap.labelObj[item1]),
+                                value: dataMap[item1][item2]
+                            }, opts.labels[i]));
 
                             i += 1;
                         }
