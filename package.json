@@ -27,8 +27,9 @@
   "scripts": {
     "test": "npm run lint && gulp build && karma start karma.conf.js --single-run=true",
     "watch": "gulp watch",
-    "start": "gulp start:server",
+    "start": "gulp start",
     "lint": "eslint ./src/ gulpfile.js",
+    "build:sample": "gulp build:sample",
     "build": "gulp build"
   },
   "dependencies": {

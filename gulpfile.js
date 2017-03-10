@@ -23,7 +23,7 @@ gulp.task('clean:dist', function () {
     return del([pkgJSON.build]);
 });
 
-gulp.task('dist', ['clean:dist'], function () {
+gulp.task('create:dist', ['clean:dist'], function () {
 
     var standalone = browserify(pkgJSON.src + '/' + pkgJSON.name, {
         standalone: pkgJSON.name
@@ -56,7 +56,8 @@ gulp.task('clean:lib', function () {
     return del([pkgJSON.lib]);
 });
 
-gulp.task('lib', ['clean:lib'], function () {
+
+gulp.task('create:lib', ['clean:lib'], function () {
     return gulp.src([ pkgJSON.src  + '/**/*.js' ])
         .pipe(babel({
         }))
@@ -64,12 +65,9 @@ gulp.task('lib', ['clean:lib'], function () {
 });
 
 
-gulp.task('watch', ['lib'], function () {
-    return gulp.watch([pkgJSON.src + '/**/*.js'], ['lib']);
+gulp.task('watch', ['create:lib'], function () {
+    return gulp.watch([pkgJSON.src + '/**/*.js'], ['create:lib']);
 });
-
-gulp.task('build', [ 'dist', 'lib' ]);
-
 
 
 // Web server task
@@ -80,6 +78,9 @@ gulp.task('start:server', function () {
         port: pkgJSON.samples.port || process.env.PORT || 8000,
         livereload: true
     });
+    // Reload the browser
+    return connect.reload();
+
 });
 
 gulp.task('copy:html', function () {
@@ -87,39 +88,26 @@ gulp.task('copy:html', function () {
         .pipe(gulp.dest(pkgJSON.samples.root + '/' + pkgJSON.samples.dist));    
 });
 
-gulp.task('build:sample', ['lib'], function () {
+
+gulp.task('build:sample', ['create:lib'], function () {
     var standalone = browserify(pkgJSON.samples.root + '/' + pkgJSON.samples.src + '/index.js')
-    .transform(babelify.configure());
+			.transform(babelify.configure());
 
     return standalone.bundle()
         .on('error', function (e) {
             gutil.log('Browserify Error', e);
         })
-
         .pipe(source('bundle.js'))
         .pipe(gulp.dest(pkgJSON.samples.root + '/' + pkgJSON.samples.dist))
-
-        // .pipe(rename('bundle.min.js'))
-        // .pipe(streamify(uglify()))
-        // .pipe(gulp.dest(pkgJSON.samples.root + '/' + pkgJSON.samples.dist))
-
         .pipe(connect.reload());
 });
 
-
-gulp.task('watch:samples', ['build:sample'], function () {
-    return gulp.watch([pkgJSON.samples.root + '/' + pkgJSON.samples.src + '/index.js'], ['build:sample']);
+gulp.task('watch', ['create:dist', 'create:lib', 'build:sample'], function () {
+    // Watch source file to create build and lib
+    return gulp.watch([pkgJSON.src + '/**/*.js'], ['create:dist', 'create:lib', 'build:sample']);
 });
 
-gulp.task('watch:lib', ['lib'], function () {
-    return gulp.watch([pkgJSON.src + '/**/*.js'], ['lib', 'build:sample']);
-});
+gulp.task('build', [ 'create:dist', 'create:lib' ]);
 
-gulp.task('watch:build', ['dist'], function () {
-    return gulp.watch([pkgJSON.src + '/**/*.js'], ['dist']);
-});
-
-
-gulp.task('start', ['start:server', 'watch:samples', 'watch:lib']);
-
+gulp.task('start', ['start:server', 'watch']);
 
