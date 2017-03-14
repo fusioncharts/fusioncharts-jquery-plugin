@@ -1,6 +1,88 @@
-The FusionCharts Suite XT jQuery plugin allows you to use jQuery syntax to render and manipulate your charts and graphs seamlessly across all browsers and devices.
+# jquery-fusioncharts
+The FusionCharts Suite XT `jquery-fusioncharts` allows you to use jQuery syntax to render and manipulate your charts and graphs seamlessly across all browsers and devices.
 
 It helps you add interactive JavaScript charts to your web and mobile applications, combining the delight and comprehensiveness of the FusionCharts Suite XT with the easy-to-use jQuery syntax.
+
+## Installation
+
+The easiest way to use `jquery-fusioncharts` plugin is to install it from `npm` and include it in your own build process (using [Browserify](http://browserify.org), [Webpack](http://webpack.github.io/) etc).
+
+```
+npm install jquery-fusioncharts --save
+```
+## Usage
+jQuery needs to be imported before the `jquery-fusioncharts` plugin is included in the project. Note that in order to support IE 6/7/8, jQuery 1.x versions need to be used.
+
+### Render the charts using jquery-fusioncharts plugin
+```
+var jQuery = require('jquery');
+var FusionCharts = require('jquery-fusioncharts');
+// Load charts module to render Column2D chart
+var Charts = require('fusioncharts/fusioncharts.charts');
+
+jQuery('document').ready(function () {
+    // Once the window with a document is ready, execute the Chart module
+    // and pass FusionCharts as a dependency
+    Charts(FusionCharts);
+
+    // Render the chart using `insertFusionCharts` method
+    $("#chart-container").insertFusionCharts({
+        type: "column2d",
+        width: "500",
+        height: "300",
+        dataFormat: "json",
+        dataSource: {
+            "chart": {
+                "caption": "Monthly revenue",
+                "subCaption": "Last Year",
+                "xAxisName": "Month",
+                "yAxisName": "Revenues",
+                "numberPrefix": "$",
+                "theme": "fint"
+            },
+            "data": [{
+                "label": "Jan",
+                "value": "420000"
+            }, {
+                "label": "Feb",
+                "value": "810000"
+            }, {
+                "label": "Mar",
+                "value": "720000"
+            }, {
+                "label": "Apr",
+                "value": "550000"
+            }, {
+                "label": "May",
+                "value": "910000"
+            }, {
+                "label": "Jun",
+                "value": "510000"
+            }, {
+                "label": "Jul",
+                "value": "680000"
+            }, {
+                "label": "Aug",
+                "value": "620000"
+            }, {
+                "label": "Sep",
+                "value": "610000"
+            }, {
+                "label": "Oct",
+                "value": "490000"
+            }, {
+                "label": "Nov",
+                "value": "900000"
+            }, {
+                "label": "Dec",
+                "value": "730000"
+            }]
+        }
+    });
+});
+```
+
+You can also use the standalone build by including `package/jquery-fusioncharts.js` in your page. If you use this, make sure you have included jQuery, FusionCharts and FusionCharts charts module.
 
 ## Setting up the FusionCharts jQuery Plugin
 
@@ -22,6 +104,54 @@ jQuery needs to be imported before the FusionCharts jQuery plugin is included in
 
 This completes the setup and you are now ready to begin using the FusionCharts jQuery plugin.
 
+
+```
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery FusionCharts Plugin Sample</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/fusioncharts@3.12.0/fusioncharts.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/fusioncharts@3.12.0/fusioncharts.charts.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/fusioncharts@3.12.0/themes/fusioncharts.theme.fint.js"></script>
+    <script type="text/javascript" src="https://rawgit.com/fusioncharts/fusioncharts-jquery-plugin/feature/node-commonjs-support/package/fusioncharts-jquery-plugin.js"></script>
+</head>
+<body>
+
+    <div id="chart-container">FusionCharts will render here...</div>
+    
+    <script type="text/javascript">
+        jQuery('document').ready(function () {
+            $("#chart-container").insertFusionCharts({
+                type: "column2d",
+                width: "500",
+                height: "300",
+                dataFormat: "json",
+                dataSource: {
+                    "chart": {
+                        "caption": "Yearly revenue",
+                        "xAxisName": "Year",
+                        "yAxisName": "Revenues",
+                        "numberPrefix": "$",
+                        "theme": "fint"
+                    },
+                    "data": [{
+                        "label": "2015",
+                        "value": "5548900"
+                    }, {
+                        "label": "2016",
+                        "value": "8100000"
+                    }, {
+                        "label": "2017",
+                        "value": "7200000"
+                    }]
+                }
+            });
+        });     
+    </script>
+</body>
+</html>
+```
 
 
 In addition to using all the existing features, the jQuery plugin lets you do the following:
@@ -96,9 +226,9 @@ $('#chart-container').insertFusionCharts({
 
 $('#btnClone').click(function() {
     // Clone the chart to create a column chart representation of the same data
-    $(â€˜#chart-containerâ€™).cloneFusionCharts(function() {
+    $('#chart-container').cloneFusionCharts(function() {
         // Append the cloned chart to the same chart container
-        $(â€˜#chart-containerâ€™).appendFusionCharts(this[0]);
+        $('#chart-container').appendFusionCharts(this[0]);
     }, {
         'id': 'chart-clone',
         'type': 'column2d'
@@ -140,9 +270,9 @@ $('#chart-container').insertFusionCharts({
 
 $('#btnClone').click(function() {
     // Clone the chart to create a column chart representation of the same data
-    $(â€˜#chart-containerâ€™).cloneFusionCharts(function() {
+    $('#chart-container').cloneFusionCharts(function() {
         // Prepend the cloned chart to the same chart container
-        $(â€˜#chart-containerâ€™).prependFusionCharts(this[0]);
+        $('#chart-container').prependFusionCharts(this[0]);
     }, {
         'id': 'chart-clone',
         'type': 'column2d'
@@ -155,3 +285,17 @@ Similar to the appendFusionCharts method example, the cloneFusionCharts method i
 There! You have now seen the various methods you can use to render charts using the jQuery plugin.
 
 More detailed information and documentation can be found [here](http://docs.fusioncharts.com/tutorial-using-with-javascript-libraries-jquery-introduction.html).
+
+## Demo & Examples
+
+Live demo: [fusioncharts.github.io/fusioncharts-jquery-plugin](http://fusioncharts.github.io/fusioncharts-jquery-plugin/)
+
+Run the examples locally:
+
+```
+npm install
+npm start
+```
+
+And then open [`localhost:8080`](http://localhost:8080) in the browser.
+
