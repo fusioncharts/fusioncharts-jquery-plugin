@@ -2,7 +2,10 @@
   "name": "jquery-fusioncharts",
   "description": "FusionCharts jQuery Plugin",
   "src": "./src",
-  "build": "./dist",
+  "build": {
+    "dist": "./package",
+    "name": "fusioncharts-jquery-plugin"
+  },
   "lib": "./lib",
   "samples": {
     "root": "samples",
@@ -13,7 +16,7 @@
   "homepage": "http://www.fusioncharts.com/",
   "version": "1.0.4",
   "license": "MIT",
-  "author": "FusionCharts Technologies  <support@fusioncharts.com>",
+  "author": "FusionCharts Technologies <support@fusioncharts.com>",
   "keywords": [
     "fusioncharts",
     "jquery",
@@ -45,6 +48,7 @@
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-connect": "^5.0.0",
+    "gulp-header": "^1.8.8",
     "gulp-less": "^3.3.0",
     "gulp-minify-css": "^1.2.4",
     "gulp-rename": "^1.2.2",

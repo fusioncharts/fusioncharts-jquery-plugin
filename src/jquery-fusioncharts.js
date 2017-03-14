@@ -666,4 +666,4 @@ FusionCharts.register('module', ['private', 'extensions.jQueryPlugin', function 
 
 }]);
 
-module.export = FusionCharts;
+module.exports = FusionCharts;

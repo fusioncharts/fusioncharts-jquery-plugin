@@ -13,14 +13,27 @@ var streamify = require('gulp-streamify');
 var uglify = require('gulp-uglify');
 
 var connect = require('gulp-connect');
+var header = require('gulp-header');
 var path = require('path');
 // var minifyCSS = require('gulp-minify-css');
 
 var pkgJSON = JSON.parse(require('fs').readFileSync('./package.json'));
 
+var BANNER = `
+/**!
+ * @license FusionCharts JavaScript Library jQuery Plugin v<%= version %>
+ * Copyright FusionCharts Technologies LLP
+ * License Information at <http://www.fusioncharts.com/license>
+ *
+ * @author FusionCharts Technologies LLP
+ */
+
+`;
+
+
 // Build task
 gulp.task('clean:dist', function () {
-    return del([pkgJSON.build]);
+    return del([pkgJSON.build.dist]);
 });
 
 gulp.task('create:dist', ['clean:dist'], function () {
@@ -29,7 +42,6 @@ gulp.task('create:dist', ['clean:dist'], function () {
         standalone: pkgJSON.name
     })
     .transform(babelify.configure({
-        // plugins: [require('babel-plugin-object-assign')]
     }))
     .transform(shim);
 
@@ -37,19 +49,16 @@ gulp.task('create:dist', ['clean:dist'], function () {
         standalone.exclude(pkg);
     }
 
-    // pkgJSON.dependencies.forEach(function (pkg) {
-    //     standalone.exclude(pkg);
-    // });
-
     return standalone.bundle()
         .on('error', function (e) {
             gutil.log('Browserify Error', e);
         })
-        .pipe(source(pkgJSON.name + '.js'))
-        .pipe(gulp.dest(pkgJSON.build))
-        .pipe(rename(pkgJSON.name + '.min.js'))
+        .pipe(source(pkgJSON.build.name + '.js'))
+        .pipe(header(BANNER, pkgJSON ))
+        .pipe(gulp.dest(pkgJSON.build.dist))
+        .pipe(rename(pkgJSON.build.name + '.min.js'))
         .pipe(streamify(uglify()))
-        .pipe(gulp.dest(pkgJSON.build));
+        .pipe(gulp.dest(pkgJSON.build.dist));
 });
 
 gulp.task('clean:lib', function () {
@@ -85,11 +94,11 @@ gulp.task('start:server', function () {
 
 gulp.task('copy:html', function () {
     return gulp.src([ pkgJSON.samples.root + '/' + pkgJSON.samples.src + '/index.html' ])
-        .pipe(gulp.dest(pkgJSON.samples.root + '/' + pkgJSON.samples.dist));    
+        .pipe(gulp.dest(pkgJSON.samples.root + '/' + pkgJSON.samples.dist));
 });
 
 
-gulp.task('build:sample', ['create:lib'], function () {
+gulp.task('build:sample', ['create:lib', 'copy:html'], function () {
     var standalone = browserify(pkgJSON.samples.root + '/' + pkgJSON.samples.src + '/index.js')
 			.transform(babelify.configure());
 
@@ -104,7 +113,12 @@ gulp.task('build:sample', ['create:lib'], function () {
 
 gulp.task('watch', ['create:dist', 'create:lib', 'build:sample'], function () {
     // Watch source file to create build and lib
-    return gulp.watch([pkgJSON.src + '/**/*.js'], ['create:dist', 'create:lib', 'build:sample']);
+    gulp.watch(['./samples/src/*.js'], ['build:sample']);
+
+    gulp.watch(['./samples/src/*.html'], ['build:sample']);
+
+    gulp.watch([pkgJSON.src + '/**/*.js'], ['create:dist', 'create:lib', 'build:sample']);
+
 });
 
 gulp.task('build', [ 'create:dist', 'create:lib' ]);

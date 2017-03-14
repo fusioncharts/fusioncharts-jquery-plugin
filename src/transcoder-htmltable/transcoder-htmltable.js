@@ -805,3 +805,5 @@ FusionCharts.register('module', ['private', 'HTMLTableDataHandler', function () 
         transportable: false
     });
 }]);
+
+module.exports = FusionCharts;
