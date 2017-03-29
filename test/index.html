@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>FusionCharts jQuery plugin</title>
+	<script type="text/javascript" src="../node_modules/fusioncharts/fusioncharts.js"></script>
+	<script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="../package/fusioncharts-jquery-plugin.js"></script>
+</head>
+<body>
+    <div id="container"></div>
+    <script type="text/javascript">
+    	$('document').ready(function () {
+    		$('#container').insertFusionCharts({
+    			type: 'Column2D'
+    		});
+    	});
+    </script>
+</body>
+</html>
