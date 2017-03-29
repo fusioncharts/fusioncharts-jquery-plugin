@@ -42,6 +42,7 @@ gulp.task('create:dist', ['clean:dist'], function () {
         standalone: pkgJSON.name
     })
     .transform(babelify.configure({
+        // presets: ["es2015"]
     }))
     .transform(shim);
 

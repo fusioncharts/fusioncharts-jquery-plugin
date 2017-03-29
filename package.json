@@ -2,6 +2,7 @@
   "name": "jquery-fusioncharts",
   "description": "FusionCharts jQuery Plugin",
   "src": "./src",
+  "main": "./lib/jquery-fusioncharts.js",
   "build": {
     "dist": "./package",
     "name": "fusioncharts-jquery-plugin"
