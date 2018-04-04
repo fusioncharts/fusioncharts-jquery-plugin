@@ -37,7 +37,7 @@ describe("jQuery FusionCharts", function() {
             }),
             chartObj = FusionCharts.items['myChart'];
 
-      setTimeout(function() {
+      FusionCharts.addEventListener('rendered', function() {
         expect(chartObj.hasRendered()).toBe(true);
         done();
       }, 1000);
@@ -49,7 +49,7 @@ describe("jQuery FusionCharts", function() {
         jQuery('#chart-container').updateFusionCharts({
             dataSource: dataSource
         });
-      setTimeout(function() {
+      FusionCharts.addEventListener('rendered', function() {
         dataFromChart = FusionCharts.items['myChart'].getJSONData();
         expect(dataFromChart.data[0].value).toBe(5781127);
         done();
@@ -60,7 +60,7 @@ describe("jQuery FusionCharts", function() {
         jQuery('#chart-container').updateFusionCharts({
             type: 'Pie3D'
         });
-      setTimeout(function() {
+      FusionCharts.addEventListener('rendered', function() {
         expect(FusionCharts.items['myChart'].chartType()).toBe('pie3d');
         done();
       }, 1000);
@@ -70,7 +70,7 @@ describe("jQuery FusionCharts", function() {
         jQuery('#chart-container').attrFusionCharts({
             caption: "Modified caption using attrFusionCharts method"
         });
-      setTimeout(function() {
+      FusionCharts.addEventListener('rendered', function() {
         expect(FusionCharts.items['myChart'].getChartAttribute('caption')).toBe('Modified caption using attrFusionCharts method');
         done();
       }, 1000);
