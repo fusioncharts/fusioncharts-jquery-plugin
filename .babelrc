@@ -1,0 +1,20 @@
+{
+  "plugins": [
+    ["transform-es3-member-expression-literals"],
+    ["transform-es3-property-literals"],
+    ["transform-proto-to-assign"],
+    ["transform-runtime", {
+      "helpers": false,
+      "polyfill": true,
+      "regenerator": false
+    }]
+  ],
+  "presets": [
+    ["env", {
+      "targets": {
+        "browsers": ["> 0.2%"]
+      },
+      "loose": true
+    }]
+  ]
+}
