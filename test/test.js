@@ -1,8 +1,6 @@
 global.jQuery = require('jquery');
 global.FusionCharts = require('fusioncharts/fusioncharts');
-require('fusioncharts/fusioncharts.common');
-require('fusioncharts/fusioncharts.vml');
-require('fusioncharts/fusioncharts.charts');
+global.Charts = require('fusioncharts/fusioncharts.charts')(global.FusionCharts);
 require('../dist/fusioncharts.jqueryplugin.js');
 
 var FusionCharts = global.FusionCharts;
@@ -37,7 +35,7 @@ describe("jQuery FusionCharts", function() {
             }),
             chartObj = FusionCharts.items['myChart'];
 
-      FusionCharts.addEventListener('rendered', function() {
+      FusionCharts.addEventListener('rendercomplete', function() {
         expect(chartObj.hasRendered()).toBe(true);
         done();
       }, 1000);
@@ -49,7 +47,7 @@ describe("jQuery FusionCharts", function() {
         jQuery('#chart-container').updateFusionCharts({
             dataSource: dataSource
         });
-      FusionCharts.addEventListener('rendered', function() {
+      FusionCharts.addEventListener('rendercomplete', function() {
         dataFromChart = FusionCharts.items['myChart'].getJSONData();
         expect(dataFromChart.data[0].value).toBe(5781127);
         done();
@@ -60,7 +58,7 @@ describe("jQuery FusionCharts", function() {
         jQuery('#chart-container').updateFusionCharts({
             type: 'Pie3D'
         });
-      FusionCharts.addEventListener('rendered', function() {
+      FusionCharts.addEventListener('rendercomplete', function() {
         expect(FusionCharts.items['myChart'].chartType()).toBe('pie3d');
         done();
       }, 1000);
@@ -70,7 +68,7 @@ describe("jQuery FusionCharts", function() {
         jQuery('#chart-container').attrFusionCharts({
             caption: "Modified caption using attrFusionCharts method"
         });
-      FusionCharts.addEventListener('rendered', function() {
+      FusionCharts.addEventListener('rendercomplete', function() {
         expect(FusionCharts.items['myChart'].getChartAttribute('caption')).toBe('Modified caption using attrFusionCharts method');
         done();
       }, 1000);

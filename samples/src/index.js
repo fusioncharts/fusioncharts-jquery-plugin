@@ -1,8 +1,6 @@
 global.jQuery = require('jquery');
 global.FusionCharts = require('fusioncharts/fusioncharts');
-require('fusioncharts/fusioncharts.common');
-require('fusioncharts/fusioncharts.vml');
-require('fusioncharts/fusioncharts.charts');
+global.Charts = require('fusioncharts/fusioncharts.charts')(global.FusionCharts);
 require('../../dist/fusioncharts.jqueryplugin.js');
 var $ = require('jquery');
 
