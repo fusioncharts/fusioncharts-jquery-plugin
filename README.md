@@ -14,6 +14,9 @@ npm install jquery-fusioncharts --save
 jQuery needs to be imported before the `jquery-fusioncharts` plugin is included in the project. Note that in order to support IE 6/7/8, jQuery 1.x versions need to be used.
 
 ### Render the charts using jquery-fusioncharts plugin
+
+#### Using require syntax:
+
 ```
 var jQuery = require('jquery');
 var FusionCharts = require('jquery-fusioncharts');
@@ -26,7 +29,7 @@ jQuery('document').ready(function () {
     Charts(FusionCharts);
 
     // Render the chart using `insertFusionCharts` method
-    $("#chart-container").insertFusionCharts({
+    jQuery("#chart-container").insertFusionCharts({
         type: "column2d",
         width: "500",
         height: "300",
@@ -82,6 +85,74 @@ jQuery('document').ready(function () {
 });
 ```
 
+#### Using import syntax:
+
+import jQuery from 'jquery';
+import FusionCharts from 'jquery-fusioncharts';
+// Load charts module to render Column2D chart
+import Charts from 'fusioncharts/fusioncharts.charts';
+
+jQuery('document').ready(function () {
+    // Once the window with a document is ready, execute the Chart module
+    // and pass FusionCharts as a dependency
+    Charts(FusionCharts);
+
+    // Render the chart using `insertFusionCharts` method
+    jQuery("#chart-container").insertFusionCharts({
+        type: "column2d",
+        width: "500",
+        height: "300",
+        dataFormat: "json",
+        dataSource: {
+            "chart": {
+                "caption": "Monthly revenue",
+                "subCaption": "Last Year",
+                "xAxisName": "Month",
+                "yAxisName": "Revenues",
+                "numberPrefix": "$",
+                "theme": "fint"
+            },
+            "data": [{
+                "label": "Jan",
+                "value": "420000"
+            }, {
+                "label": "Feb",
+                "value": "810000"
+            }, {
+                "label": "Mar",
+                "value": "720000"
+            }, {
+                "label": "Apr",
+                "value": "550000"
+            }, {
+                "label": "May",
+                "value": "910000"
+            }, {
+                "label": "Jun",
+                "value": "510000"
+            }, {
+                "label": "Jul",
+                "value": "680000"
+            }, {
+                "label": "Aug",
+                "value": "620000"
+            }, {
+                "label": "Sep",
+                "value": "610000"
+            }, {
+                "label": "Oct",
+                "value": "490000"
+            }, {
+                "label": "Nov",
+                "value": "900000"
+            }, {
+                "label": "Dec",
+                "value": "730000"
+            }]
+        }
+    });
+});
+
 You can also use the standalone build by including `package/jquery-fusioncharts.js` in your page. If you use this, make sure you have included jQuery, FusionCharts and FusionCharts charts module.
 
 ## Setting up the FusionCharts jQuery Plugin
@@ -119,7 +190,7 @@ This completes the setup and you are now ready to begin using the FusionCharts j
 <body>
 
     <div id="chart-container">FusionCharts will render here...</div>
-    
+
     <script type="text/javascript">
         jQuery('document').ready(function () {
             $("#chart-container").insertFusionCharts({
@@ -147,7 +218,7 @@ This completes the setup and you are now ready to begin using the FusionCharts j
                     }]
                 }
             });
-        });     
+        });
     </script>
 </body>
 </html>
@@ -176,7 +247,7 @@ For rendering new charts, you can use the following jQuery methods:
 
 ### insertFusionCharts Method:
 
-Renders charts inside HTML elements. The HTML elements have to be selected using jQuery selector. In case, multiple HTML elements are selected using the jQuery selector, a chart will be rendered inside each selected HTML element. All existing elements inside the selected elements will be replaced by the rendered charts. This method returns the jQuery selected element to allow chaining with other jQuery methods. 
+Renders charts inside HTML elements. The HTML elements have to be selected using jQuery selector. In case, multiple HTML elements are selected using the jQuery selector, a chart will be rendered inside each selected HTML element. All existing elements inside the selected elements will be replaced by the rendered charts. This method returns the jQuery selected element to allow chaining with other jQuery methods.
 
 An object of chart configurations (set of key, value pairs) can be passed as parameter. Click here to view complete list of chart configurations.
 
@@ -206,7 +277,7 @@ $("#chart-container").insertFusionCharts({
 
 ### appendFusionCharts Method:
 
-Renders charts at the end of selected HTML elements. The HTML elements need to be selected using jQuery selector. In case multiple HTML elements are selected, chart will be rendered inside each selected HTML element. All existing elements inside the selected elements will be preserved. The method returns the original jQuery selection to allow chaining of other jQuery methods. 
+Renders charts at the end of selected HTML elements. The HTML elements need to be selected using jQuery selector. In case multiple HTML elements are selected, chart will be rendered inside each selected HTML element. All existing elements inside the selected elements will be preserved. The method returns the original jQuery selection to allow chaining of other jQuery methods.
 
 An object of chart configurations (set of key, value pairs) can be passed as parameter. Click here to view complete list of chart configurations.
 
@@ -248,7 +319,7 @@ The cloneFusionCharts method accepts two arguments:
 
 ### prependFuionCharts Method
 
-Renders and inserts charts at the beginning of selected HTML elements. The HTML elements need to be selected using jQuery selector. In case multiple HTML elements are selected, chart will be rendered inside each selected HTML element. All existing elements inside the selected elements will be preserved. The method returns the original jQuery selection to allow chaining of other jQuery methods. 
+Renders and inserts charts at the beginning of selected HTML elements. The HTML elements need to be selected using jQuery selector. In case multiple HTML elements are selected, chart will be rendered inside each selected HTML element. All existing elements inside the selected elements will be preserved. The method returns the original jQuery selection to allow chaining of other jQuery methods.
 
 An object of chart configurations (set of key, value pairs) can be passed as parameter. Click here to view complete list of chart configurations.
 
