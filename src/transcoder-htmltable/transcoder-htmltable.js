@@ -866,7 +866,7 @@ function wrapper (FusionCharts) {
     };
 }
 
-export default {
+module.exports = {
     extension: wrapper,
     name: 'HTMLTable',
     type: 'transcoder',

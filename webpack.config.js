@@ -25,12 +25,11 @@ module.exports = [{
     entry: './src/jquery-fusioncharts.js',
     output: {
         filename: 'fusioncharts.jqueryplugin.js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist'),
+        libraryTarget: 'umd',
+        umdNamedDefine: true
     },
-    externals: {
-        FusionCharts: 'FusionCharts',
-        jquery: 'jQuery'
-    },
+    externals: /^(jquery|\$|fusioncharts)$/i,
     module: {
         rules: [{
             test: /\.js$/,
@@ -44,12 +43,11 @@ module.exports = [{
     entry: './src/jquery-fusioncharts.js',
     output: {
         filename: 'fusioncharts.jqueryplugin.min.js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist'),
+        libraryTarget: 'umd',
+        umdNamedDefine: true
     },
-    externals: {
-        FusionCharts: 'FusionCharts',
-        jquery: 'jQuery'
-    },
+    externals: /^(jquery|\$|fusioncharts)$/i,
     module: {
         rules: [{
             test: /\.js$/,

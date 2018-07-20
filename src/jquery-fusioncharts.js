@@ -1,10 +1,19 @@
-import FusionCharts from 'FusionCharts';
-import jQuery from 'jquery';
-import HTMLTableTranscoder from './transcoder-htmltable/transcoder-htmltable';
+var FusionCharts = require('fusioncharts');
+var jQuery = require('jquery');
+var HTMLTableTranscoder = require('./transcoder-htmltable/transcoder-htmltable');
+
+var win = typeof window !== 'undefined' ? window : {};
+
+if (typeof FusionCharts === 'undefined') {
+    FusionCharts = win.FusionCharts;
+}
+if (typeof jQuery === 'undefined') {
+    jQuery = win.jQuery;
+}
+
 FusionCharts.addDep(HTMLTableTranscoder);
 
-var win = window,
-    doc = win.document,
+var doc = win.document,
     jQ = jQuery,
     renderFusionCharts,
     captureAllFusionChartsEvents,
@@ -12,6 +21,7 @@ var win = window,
     configureLinkedCharts,
     math = win.Math,
     mathMin = math.min,
+    // FusionCharts = FusionCharts,
     isArray = (function () {
         // Use compiler's own isArray when available
         if (Array.isArray) {
@@ -665,3 +675,4 @@ jQ.extend(jQ.expr[':'], {
         return (obj.FusionCharts instanceof FusionCharts);
     }
 });
+// }
