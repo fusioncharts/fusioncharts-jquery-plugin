@@ -93,22 +93,24 @@ export default {
     }
 }`,
     sourceHTML:
-`<div id="chart-container">
+`<div id='chart-container'>
     FusionCharts will render here
 </div>`,
 sourceJS:
 `let FusionCharts = require('fusioncharts');
 let Widgets = require('fusioncharts/fusioncharts.widgets');
+let FusionTheme = require('fusioncharts/themes/fusioncharts.theme.fusion');
 let $ = require('jquery');
 let jQFc = require('jquery-fusioncharts');
 
 Widgets(FusionCharts);
+FusionTheme(FusionCharts);
 
 $('#chart-container').insertFusionCharts({
 	width: '600',
 	height: '400',
-	type: "angulargauge",
-	dataFormat: "json",
+	type: 'angulargauge',
+	dataFormat: 'json',
 	dataSource: {/* see data tab */ },
 });`,
         options: {

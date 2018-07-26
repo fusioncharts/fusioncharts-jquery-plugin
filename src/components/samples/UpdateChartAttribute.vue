@@ -8,7 +8,10 @@
                 :style="{ 'text-align': 'center' }"
                 ></fusioncharts>
                 <br />
-                <button @click="changeBackground">Change Chart Background</button>
+                <center>
+                    <button v-bind:style="{ padding: '5px 10px', margin: '0 2px', background: '#fbfbfb' }" @click="changeBackground">Change Background</button>
+                    <!-- <button v-bind:style="{ padding: '5px 10px', margin: '0 2px', background: '#fbfbfb' }" @click="changeBackground">Change Background</button> -->
+                </center>
         </div>
         <div class="code-viewer">
             <TabView border>
@@ -100,37 +103,43 @@ export default {
     }]
 }`,
     sourceHTML:
-`<div id="chart-container">
+`<div id='chart-container'>
     FusionCharts will render here
 </div>
-<button id='update'>Change Chart Background</button>`,
+<center>
+    <button id='update' style='padding: 5px 10px; margin: 0px 2px; background: rgb(251, 251, 251);'>Change Background</button>
+</center>`,
 sourceJS:
 `let FusionCharts = require('fusioncharts');
 let Charts = require('fusioncharts/fusioncharts.charts');
+let FusionTheme = require('fusioncharts/themes/fusioncharts.theme.fusion');
 let $ = require('jquery');
 let jQFc = require('jquery-fusioncharts');
 
 Charts(FusionCharts);
+FusionTheme(FusionCharts);
 
 FusionCharts.ready(function() {
-	var btn = document.getElementById("update");
+	var btn = document.getElementById('update');
 	var dataSource = {/* see data tab */ };
 
-	btn.addEventListener("click", function() {
+    // Handler for 'Change Background' button.
+    // Changes the chart background color.
+	btn.addEventListener('click', function() {
 		var dataArrayNew = $.extend({}, dataSource);
-		dataArrayNew.chart.bgColor = "#efefef";
-		$("#chart-container").updateFusionCharts({
-			dataFormat: "json",
+		dataArrayNew.chart.bgColor = '#efefef';
+		$('#chart-container').updateFusionCharts({
+			dataFormat: 'json',
 			dataSource: dataArrayNew
 		});
 	});
 
-  // Using FusionChart"s jQuery method insertFusionCharts() to create FusionCharts.
-	$("#chart-container").insertFusionCharts({
-		type: "column2d",
-		width: "500",
-		height: "300",
-		dataFormat: "json",
+  // Using FusionChart's jQuery method insertFusionCharts() to create FusionCharts.
+	$('#chart-container').insertFusionCharts({
+		type: 'column2d',
+		width: '500',
+		height: '300',
+		dataFormat: 'json',
 		dataSource: dataSource
 	})
 });`,

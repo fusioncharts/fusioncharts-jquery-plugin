@@ -2,6 +2,9 @@
     <div :style="{ display: !showMessage ? 'block' : 'none' }" class="clearfix">
         <div class="chart-viewer">
             <!-- <FrameView :styles="{width: '100%', height: '100%' }" :url="chartIframeURL" /> -->
+                <center>
+                    <button v-bind:style="{ padding: '5px 10px', background: '#fbfbfb' }" @click="exportToPdf">Export both charts as a single PDF</button>
+                </center>
                 <fusioncharts
                 :options="options"
                 :dataSource="dataSource.columnData"
@@ -10,12 +13,10 @@
                 <fusioncharts
                 width="600"
                 height="600"
-                type="bar2d"
+                type="stackedcolumn2d"
                 dataFormat="json"
-                :dataSource="dataSource.barData">
+                :dataSource="dataSource.stackedColumnData">
                 </fusioncharts>
-                <br/>
-                <button @click="exportToPdf">Export to PDF</button>
         </div>
         <div class="code-viewer">
             <TabView border>
@@ -108,152 +109,205 @@ export default {
             "value": "30"
         }]
     },
-    "barData":
+    "stackedColumnData":
     {
       "chart": {
-        "caption": "Lead sources by industry",
-        "yAxisName": "Number of Leads",
-        "alignCaptionWithCanvas": "0",
-        "plotToolText": "<b>$dataValue</b> leads received",
+        "caption": "Yearly Energy Production Rate",
+        "subCaption": " Top 5 Developed Countries",
+        "numbersuffix": " TWh",
+        "showSum": "1",
+        "plotToolText": "$label produces <b>$dataValue</b> of energy from $seriesName",
         "theme": "fusion"
       },
-
-      "data": [{
-          "label": "Travel & Leisure",
-          "value": "41"
+      "categories": [
+        {
+          "category": [
+            {
+              "label": "Canada"
+            },
+            {
+              "label": "China"
+            },
+            {
+              "label": "Russia"
+            },
+            {
+              "label": "Australia"
+            },
+            {
+              "label": "United States"
+            },
+            {
+              "label": "France"
+            }
+          ]
+        }
+      ],
+      "dataSet": [
+        {
+          "seriesName": "Coal",
+          "data": [
+            {
+              "value": "400"
+            },
+            {
+              "value": "830"
+            },
+            {
+              "value": "500"
+            },
+            {
+              "value": "420"
+            },
+            {
+              "value": "790"
+            },
+            {
+              "value": "380"
+            }
+          ]
         },
         {
-          "label": "Advertising/Marketing/PR",
-          "value": "39"
+          "seriesName": "Hydro",
+          "data": [
+            {
+              "value": "350"
+            },
+            {
+              "value": "620"
+            },
+            {
+              "value": "410"
+            },
+            {
+              "value": "370"
+            },
+            {
+              "value": "720"
+            },
+            {
+              "value": "310"
+            }
+          ]
         },
         {
-          "label": "Other",
-          "value": "38"
+          "seriesName": "Nuclear",
+          "data": [
+            {
+              "value": "210"
+            },
+            {
+              "value": "400"
+            },
+            {
+              "value": "450"
+            },
+            {
+              "value": "180"
+            },
+            {
+              "value": "570"
+            },
+            {
+              "value": "270"
+            }
+          ]
         },
         {
-          "label": "Real Estate",
-          "value": "32"
+          "seriesName": "Gas",
+          "data": [
+            {
+              "value": "180"
+            },
+            {
+              "value": "330"
+            },
+            {
+              "value": "230"
+            },
+            {
+              "value": "160"
+            },
+            {
+              "value": "440"
+            },
+            {
+              "value": "350"
+            }
+          ]
         },
         {
-          "label": "Communications/Cable/Phone",
-          "value": "26"
-        },
-        {
-          "label": "Construction",
-          "value": "25"
-        },
-        {
-          "label": "Entertainment",
-          "value": "25"
-        },
-        {
-          "label": "Staffing Firm/Full Time/Temporary",
-          "value": "24"
-        },
-        {
-          "label": "Transportation/Logistics",
-          "value": "23"
-        },
-        {
-          "label": "Utilities",
-          "value": "22"
-        },
-        {
-          "label": "Aerospace/Defense Products",
-          "value": "18"
-        },
-        {
-          "label": "Banking/Finance/Securities",
-          "value": "16"
-        },
-        {
-          "label": "Consumer Products - Non-Durables",
-          "value": "15"
-        },
-        {
-          "label": "Distribution",
-          "value": "13"
-        },
-        {
-          "label": "Education",
-          "value": "12"
-        },
-        {
-          "label": "Health Products & Services",
-          "value": "11"
-        },
-        {
-          "label": "Hospitality & Hotels",
-          "value": "10"
-        },
-        {
-          "label": "Non-Business/Residential",
-          "value": "6"
-        },
-        {
-          "label": "Pharmaceutical",
-          "value": "4"
-        },
-        {
-          "label": "Printing & Publishing",
-          "value": "1"
-        },
-        {
-          "label": "Professional Services",
-          "value": "1"
-        },
-        {
-          "label": "VAR/ISV",
-          "value": "1"
-        },
-        {
-          "label": "Warranty Administrators",
-          "value": "1"
+          "seriesName": "Oil",
+          "data": [
+            {
+              "value": "60"
+            },
+            {
+              "value": "200"
+            },
+            {
+              "value": "200"
+            },
+            {
+              "value": "50"
+            },
+            {
+              "value": "230"
+            },
+            {
+              "value": "150"
+            }
+          ]
         }
       ]
     }
 }`,
     sourceHTML:
-`<div id="chart-container1">
+`<div id='chart-container1'>
     FusionCharts will render here
 </div>
-<div id="chart-container2">
+<div id='chart-container2'>
     FusionCharts will render here
 </div>
-<button id='export'>Export to PDF</button>`,
+<center><button id='export' style="padding: 5px 10px; background: rgb(251, 251, 251);">Export both charts as a single PDF</button></center>
+`,
 sourceJS:
 `let FusionCharts = require('fusioncharts');
 let Charts = require('fusioncharts/fusioncharts.charts');
+let FusionTheme = require('fusioncharts/themes/fusioncharts.theme.fusion');
 let $ = require('jquery');
 let jQFc = require('jquery-fusioncharts');
 
 Charts(FusionCharts);
+FusionTheme(FusionCharts);
 
 FusionCharts.ready(function() {
-	var btn = document.getElementById("export");
+	var btn = document.getElementById('export');
 	var columnData = {/* see data tab */ }
-	var barData = {/* see data tab */ }
+	var stackedColumnData = {/* see data tab */ }
 
-	btn.addEventListener("click", function() {
+    // Handler for export button.
+    // Fires an export operation which exports all charts on the page as a PDF.
+	btn.addEventListener('click', function() {
 		FusionCharts.batchExport({
 			exportFormat:'pdf'
 		});
 	});
 
-  	// Using FusionChart"s jQuery method insertFusionCharts() to create FusionCharts.
-	$("#chart-container1").insertFusionCharts({
-		type: "column2d",
-		width: "500",
-		height: "300",
-		dataFormat: "json",
+  	// Using FusionChart's jQuery method insertFusionCharts() to create FusionCharts.
+	$('#chart-container1').insertFusionCharts({
+		type: 'column2d',
+		width: '500',
+		height: '300',
+		dataFormat: 'json',
 		dataSource: columnData
 	});
-	$("#chart-container2").insertFusionCharts({
-		type: "bar2d",
-		width: "500",
-		height: "500",
-		dataFormat: "json",
-		dataSource: barData
+	$('#chart-container2').insertFusionCharts({
+		type: 'stackedcolumn2d',
+		width: '500',
+		height: '500',
+		dataFormat: 'json',
+		dataSource: stackedColumnData
 	});
 });`,
             options: {

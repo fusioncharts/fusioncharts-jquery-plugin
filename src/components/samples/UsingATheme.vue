@@ -68,7 +68,7 @@ export default {
         "xAxisName": "Country",
         "yAxisName": "Reserves (MMbbl)",
         "numberSuffix": "K",
-        "theme": "fint"
+        "theme": "gammel"
     },
     "data": [{
         "label": "Venezuela",
@@ -97,24 +97,24 @@ export default {
     }]
 }`,
 sourceHTML:
-`<div id="chart-container">
+`<div id='chart-container'>
     FusionCharts will render here
 </div>`,
 sourceJS:
 `let FusionCharts = require('fusioncharts');
 let Charts = require('fusioncharts/fusioncharts.charts');
-let FintTheme = require('fusioncharts/themes/fusioncharts.theme.fint');
+let GammelTheme = require('fusioncharts/themes/fusioncharts.theme.gammel');
 let $ = require('jquery');
 let jQFc = require('jquery-fusioncharts');
 
 Charts(FusionCharts);
-FintTheme(FusionCharts);
+GammelTheme(FusionCharts);
 
 $('#chart-container').insertFusionCharts({
-    type: "column2d",
-    width: "600",
-    height: "400",
-    dataFormat: "json",
+    type: 'column2d',
+    width: '600',
+    height: '400',
+    dataFormat: 'json',
     dataSource: {/* see data tab */ },
 });`,
         options: {

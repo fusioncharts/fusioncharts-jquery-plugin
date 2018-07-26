@@ -7,7 +7,7 @@
                 :dataSource="dataSource"
                 :style="{ 'text-align': 'center' }"
                 ></fusioncharts>
-                <p>The value that you have selected is: {{ displayValue }}</p>
+                <p v-bind:style="{ padding: '10px', background: '#f5f2f0'}">{{ displayValue }}</p>
         </div>
         <div class="code-viewer">
             <TabView border>
@@ -98,28 +98,34 @@ export default {
     }]
 }`,
     sourceHTML:
-`<div id="chart-container">
+`<div id='chart-container'>
     FusionCharts will render here
 </div>
-<p id="message">The value that you have selected is: <span></span></p>`,
+<p style="padding: 10px; background: rgb(245, 242, 240);" id='message'>
+    Hover on the plot to see the value along with the label
+</p>`,
 sourceJS:
 `let FusionCharts = require('fusioncharts');
 let Charts = require('fusioncharts/fusioncharts.charts');
+let FusionTheme = require('fusioncharts/themes/fusioncharts.theme.fusion');
 let $ = require('jquery');
 let jQFc = require('jquery-fusioncharts');
 
 Charts(FusionCharts);
+FusionTheme(FusionCharts);
 
 $('#chart-container').insertFusionCharts({
-    type: "column2d",
-    width: "600",
-    height: "400",
-    dataFormat: "json",
+    type: 'column2d',
+    width: '600',
+    height: '400',
+    dataFormat: 'json',
     dataSource: {/* see data tab */ },
 });
 
+// Event callback binding for 'dataplotRollOver'.
+// Shows the value of the hovered plot on the page.
 $('#chart-container').bind('fusionchartsdataplotrollover', function(event, args) {
-    $('#message span').text(args.displayValue);
+    $('#message').text('You’re are currently hovering over ' + args.categoryLabel + ' whose value is ' + args.displayValue);
 });`,
         options: {
             width: '600',
@@ -131,7 +137,7 @@ $('#chart-container').bind('fusionchartsdataplotrollover', function(event, args)
                 dataplotRollover: null
             }
         },
-        displayValue:''
+        displayValue:'Hover on the plot to see the value along with the label'
         }
     },
     computed: {
@@ -141,7 +147,7 @@ $('#chart-container').bind('fusionchartsdataplotrollover', function(event, args)
     },
     created: function(){
         this.options.events.dataplotRollover = (e, arg)=>{
-            this.displayValue = arg.displayValue;
+            this.displayValue = 'You’re are currently hovering over ' + arg.categoryLabel + ' whose value is ' + arg.displayValue;
         }
     },
     components:{

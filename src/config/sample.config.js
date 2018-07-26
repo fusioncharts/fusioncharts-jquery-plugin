@@ -9,7 +9,7 @@ export default {
         "6": "update-chart-data",
         "7": "update-chart-attribute",
         "8": "trigger-event-from-chart",
-        // "9": "percentage-calculation",
+        "9": "percentage-calculation",
         "10": "client-side-export",
         "11": "drill-down-chart",
         "12": "render-a-widget",
@@ -67,38 +67,38 @@ export default {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }
         },
-        // "9": {
-        //     "title": "Percentage Calculation",
-        //     "interactiveViewURL": {
-        //         "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
-        //     }
-        // },
+        "9": {
+            "title": "Percentage Calculation",
+            "interactiveViewURL": {
+                "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
+            }
+        },
         "10": {
-            "title": "Client side exporting",
+            "title": "Export multiple charts",
             "interactiveViewURL": {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }
         },
         "11": {
-            "title": "Drill Down Chart",
+            "title": "Add drill-down to chart",
             "interactiveViewURL": {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }
         },
         "12": {
-            "title": "Render a  Widget",
+            "title": "A simple gauge",
             "interactiveViewURL": {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }
         },
         "13": {
-            "title": "Render a Map",
+            "title": "World Map",
             "interactiveViewURL": {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }
         },
         "14": {
-            "title": "Using a Theme",
+            "title": "Applying a different theme",
             "interactiveViewURL": {
                 "vue-fc": "//jsfiddle.net/fusioncharts/f0b2e0ms/embedded/"
             }

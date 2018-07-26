@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 
 import FusionCharts from 'fusioncharts'
-import Charts from 'fusioncharts/fusioncharts.charts'; 
+import Charts from 'fusioncharts/fusioncharts.charts';
 import Widgets from 'fusioncharts/fusioncharts.widgets'
 import Maps from 'fusioncharts/fusioncharts.maps'
 import world from 'fusioncharts/maps/fusioncharts.world'
@@ -17,6 +17,8 @@ import './assets/css/slick.min.css'
 import './assets/css/slick-theme.min.css'
 import './assets/css/fusioncharts.theme.fusion.css'
 import './assets/js/fusioncharts.theme.fusion'
+import './assets/css/fusioncharts.theme.gammel.css'
+import './assets/js/fusioncharts.theme.gammel'
 ////////
 
 new Vue({

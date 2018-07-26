@@ -97,23 +97,25 @@ export default {
     }]
 }`,
     sourceHTML:
-`<div id="chart-container">
+`<div id='chart-container'>
     FusionCharts will render here
 </div>`,
 sourceJS:
 `let FusionCharts = require('fusioncharts');
 let Charts = require('fusioncharts/fusioncharts.charts');
+let FusionTheme = require('fusioncharts/themes/fusioncharts.theme.fusion');
 let $ = require('jquery');
 let jQFc = require('jquery-fusioncharts');
 
 Charts(FusionCharts);
+FusionTheme(FusionCharts);
 
 $('#chart-container').insertFusionCharts({
-    type: "mscombi2d",
-    width: "600",
-    height: "400",
-    dataFormat: "jsonurl",
-    dataSource: "data.json"
+    type: 'mscombi2d',
+    width: '600',
+    height: '400',
+    dataFormat: 'jsonurl',
+    dataSource: 'data.json'
 }`,
         options: {
                 type: "column2d",

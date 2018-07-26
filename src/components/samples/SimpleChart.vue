@@ -103,16 +103,18 @@ export default {
 sourceJS:
 `let FusionCharts = require('fusioncharts');
 let Charts = require('fusioncharts/fusioncharts.charts');
+let FusionTheme = require('fusioncharts/themes/fusioncharts.theme.fusion');
 let $ = require('jquery');
 let jQFc = require('jquery-fusioncharts');
 
 Charts(FusionCharts);
+FusionTheme(FusionCharts);
 
 $('#chart-container').insertFusionCharts({
-    type: "column2d",
-    width: "600",
-    height: "400",
-    dataFormat: "json",
+    type: 'column2d',
+    width: '600',
+    height: '400',
+    dataFormat: 'json',
     dataSource: {/* see data tab */ },
 });`,
         options: {

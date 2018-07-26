@@ -129,24 +129,26 @@ export default {
     ]
 }`,
 sourceHTML:
-`<div id="chart-container">
+`<div id='chart-container'>
     FusionCharts will render here
 </div>`,
 sourceJS:
 `let FusionCharts = require('fusioncharts');
 let Maps = require('fusioncharts/fusioncharts.maps');
 let World = require('fusioncharts/maps/fusioncharts.world');
+let FusionTheme = require('fusioncharts/themes/fusioncharts.theme.fusion');
 let $ = require('jquery');
 let jQFc = require('jquery-fusioncharts');
 
 Maps(FusionCharts);
 World(FusionCharts);
+FusionTheme(FusionCharts);
 
 $('#chart-container').insertFusionCharts({
-	type: "world",
+	type: 'world',
 	width: '600',
 	height: '400',
-	dataFormat: "json",
+	dataFormat: 'json',
 	dataSource: {/* see data tab */ },
 });`,
         options: {

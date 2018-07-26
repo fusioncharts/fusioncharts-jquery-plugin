@@ -5,9 +5,10 @@
                 <fusioncharts
                 :options="options"
                 :dataSource="dataSource"
+                :total="total"
                 :style="{ 'text-align': 'center' }"
                 ></fusioncharts>
-                <h3>Percentage is {{displayValue}}% of the total</h3>
+                <p v-bind:style="{ padding: '10px', background: '#f5f2f0'}">{{ displayValue }}</p>
         </div>
         <div class="code-viewer">
             <TabView border>
@@ -57,7 +58,7 @@ import Tab from './../Tab'
 import CodeWrapper from './../CodeWrapper'
 
 export default {
-    name: 'PercentageCalculation',
+    name: 'TriggerEventFromChart',
     props:['showMessage'],
     data(){
         return {
@@ -97,49 +98,39 @@ export default {
         "value": "30"
     }]
 }`,
-        sourceHTML:
-`<div id="app">
-    <fusioncharts
-    :type="type"
-    :width="width"
-    :height="height"
-    :dataFormat="dataFormat"
-    :events="events"
-    :dataSource="dataSource"
-    ></fusioncharts>
-    <p>The value that you have selected is: {{ displayValue }}</p>
-</div>`,
-        sourceJS:
-`FusionCharts.ready(function() {
+    sourceHTML:
+`<div id='chart-container'>
+    FusionCharts will render here
+</div>
+<p style="padding: 10px; background: rgb(245, 242, 240);" id='message'>
+    Hover on the plot to see the value along with the label
+</p>`,
+sourceJS:
+`let FusionCharts = require('fusioncharts');
+let Charts = require('fusioncharts/fusioncharts.charts');
+let FusionTheme = require('fusioncharts/themes/fusioncharts.theme.fusion');
+let $ = require('jquery');
+let jQFc = require('jquery-fusioncharts');
 
-    Vue.use(VueFusionCharts);
-    
-    // Load datasource from data.json
-    var dataSource = getDataSource(); 
+Charts(FusionCharts);
+FusionTheme(FusionCharts);
 
-    var app = new Vue({
-        el: "#app",
-        data: {
-            width: '600',
-            height: '400',
-            type: "column2d",
-            dataFormat: "json",
-            dataSource: dataSource,
-            events: {
-                dataplotRollover: null
-            },
-            displayValue:""
-        },
-        created: function(){
-            let myData = this.dataSource.data;
-            this.total = myData.reduce((p,c)=>p+Number(c.value), 0);
-    
-            this.options.events.dataplotRollover = (e, arg)=>{
-                let value = (arg.value / this.total * 100).toFixed(2);
-                this.displayValue = value;
-            }
-        },
-    });
+let dataSource = {/* see data tab */ };
+let total = dataSource.data.reduce((p,c)=>p+Number(c.value), 0);
+
+$('#chart-container').insertFusionCharts({
+    type: 'column2d',
+    width: '600',
+    height: '400',
+    dataFormat: 'json',
+    dataSource: dataSource,
+});
+
+// Event callback binding for 'dataplotRollOver'.
+// Shows the percentage of the hovered plot on the page.
+$('#chart-container').bind('fusionchartsdataplotrollover', function(event, args) {
+    let value = (args.value / total * 100).toFixed(2);
+    $('#message').text(args.categoryLabel + " is " + value + "% of the total");
 });`,
         options: {
             width: '600',
@@ -151,21 +142,21 @@ export default {
                 dataplotRollover: null
             }
         },
-        displayValue:'0'
+        displayValue:'Hover on the plot to see the value along with the label',
         }
     },
     computed: {
         dataSource: function(){
             return JSON.parse(this.sourceData)
+        },
+        total: function() {
+        	return JSON.parse(this.sourceData).data.reduce((p,c)=>p+Number(c.value), 0);
         }
     },
     created: function(){
-        let myData = this.dataSource.data;
-        this.total = myData.reduce((p,c)=>p+Number(c.value), 0);
- 
         this.options.events.dataplotRollover = (e, arg)=>{
-            let value = (arg.value / this.total * 100).toFixed(2);
-            this.displayValue = value;
+    		let value = (arg.value / this.total * 100).toFixed(2);
+            this.displayValue = arg.categoryLabel + ' is ' + value + '% of the total';
         }
     },
     components:{

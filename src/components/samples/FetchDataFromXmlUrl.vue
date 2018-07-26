@@ -72,23 +72,25 @@ export default {
     <set label="China" value="30" />
 </chart>`,
     sourceHTML:
-`<div id="chart-container">
+`<div id='chart-container'>
     FusionCharts will render here
 </div>`,
 sourceJS:
 `let FusionCharts = require('fusioncharts');
 let Charts = require('fusioncharts/fusioncharts.charts');
+let FusionTheme = require('fusioncharts/themes/fusioncharts.theme.fusion');
 let $ = require('jquery');
 let jQFc = require('jquery-fusioncharts');
 
 Charts(FusionCharts);
+FusionTheme(FusionCharts);
 
 $('#chart-container').insertFusionCharts({
-    type: "mscombi2d",
-    width: "600",
-    height: "400",
-    dataFormat: "jsonurl",
-    dataSource: "data.xml"
+    type: 'mscombi2d',
+    width: '600',
+    height: '400',
+    dataFormat: 'jsonurl',
+    dataSource: 'data.xml'
 }`,
         options: {
                 type: "column2d",
