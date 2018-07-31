@@ -2,24 +2,12 @@
 <template>
   <div class="sample-tabs">
         <TabView :border="false">
-          <Tab label="Non-Interactive View" slot='tab'>
+          <Tab slot='tab'>
             <div class="main-tab">
               <div :style="{ display: showMessage ? 'block' : 'none' }" class="sample-loading-text">
                 {{ message }}
               </div>
               <component :is='componentName' :showMessage='showMessage'></component>
-            </div>
-          </Tab>
-          <Tab label="Interactive View" slot="tab">
-            <div class="main-tab">
-              <div :style="{ display: showMessage ? 'block' : 'none' }" class="sample-loading-text">
-                {{ message }}
-              </div>
-              <div :style="{ display: !showMessage ? 'block' : 'none' }">
-                <div class="interactive-viewer">
-                  <embed :style="{ width: '100%', height: '100%'}" :src="interactiveViewURL" >
-                </div>
-              </div>
             </div>
           </Tab>
         </TabView>
