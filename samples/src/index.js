@@ -1,11 +1,13 @@
-var FusionCharts = require('../../lib/jquery-fusioncharts');
-var Charts = require('fusioncharts/fusioncharts.charts');
+global.jQuery = require('jquery');
+global.FusionCharts = require('fusioncharts/fusioncharts');
+global.Charts = require('fusioncharts/fusioncharts.charts')(global.FusionCharts);
+require('../../dist/fusioncharts.jqueryplugin.js');
 var $ = require('jquery');
 
 $('document').ready(function() {
 	// Load the chart module and pass FusionCharts as parameter
 	// after the window with a document is ready.
-	Charts(FusionCharts);
+	// Charts(FusionCharts);
 
 	// Render chart using insertFusionCharts method
 	$('#chart-container').insertFusionCharts({

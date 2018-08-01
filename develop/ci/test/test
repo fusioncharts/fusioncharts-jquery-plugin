@@ -1,0 +1,28 @@
+#!/bin/bash
+# ----------------------------------------------------------------------------------------------------------------------
+# This script triggers other scripts that compile themes and produce final, consumable output. In the process, it also
+# tests for coding style and syntax errors.
+# ----------------------------------------------------------------------------------------------------------------------
+
+
+# Stop on first error
+set -e;
+
+# Clean workspace directory
+if [ -d ./dist ]; then
+    rm -rf ./dist;
+fi
+mkdir ./dist;
+
+# The following needs to be executed for artefact creation
+# --------------------------------------------------------
+# 1. Lint source files
+# 2. Preprocess and build files
+# npm run-script lint;
+npm run-script lint;
+npm run-script build;
+npm run-script build:sample;
+karma start karma.conf.js --single-run=true;
+mv ./dist/*.* ./package;
+rm -rf ./dist;
+

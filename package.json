@@ -2,7 +2,7 @@
   "name": "jquery-fusioncharts",
   "description": "FusionCharts jQuery Plugin",
   "src": "./src",
-  "main": "./lib/jquery-fusioncharts.js",
+  "main": "./dist/fusioncharts.jqueryplugin.js",
   "build": {
     "dist": "./package",
     "name": "fusioncharts-jquery-plugin"
@@ -29,23 +29,22 @@
     "url": "https://github.com/fusioncharts/fusioncharts-jquery-plugin.git"
   },
   "scripts": {
-    "test": "npm run lint && gulp build && karma start karma.conf.js --single-run=true",
-    "watch": "gulp watch",
-    "start": "gulp start",
+    "test": "develop/ci/test/test",
     "lint": "eslint ./src/ gulpfile.js",
     "build:sample": "gulp build:sample",
-    "build": "gulp build"
+    "build": "webpack"
   },
-  "dependencies": {
-    "fusioncharts": "^3.11.3-sr.1",
-    "jquery": "^3.1.1"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
     "babelify": "^7.3.0",
     "browserify": "^14.1.0",
     "browserify-shim": "^3.8.13",
     "del": "^2.2.2",
     "eslint": "^3.17.1",
+    "google-closure-compiler": "20160208.4.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-connect": "^5.0.0",
@@ -56,8 +55,10 @@
     "gulp-streamify": "^1.0.2",
     "gulp-uglify": "^2.0.1",
     "gulp-util": "^3.0.8",
+    "gulp-wrap": "^0.13.0",
     "jasmine": "^2.5.3",
     "jasmine-core": "^2.5.2",
+    "jshint": "2.4.2",
     "karma": "^1.5.0",
     "karma-browserify": "^5.1.1",
     "karma-chrome-launcher": "^2.0.0",
@@ -65,9 +66,11 @@
     "karma-jasmine": "^1.1.0",
     "karma-phantomjs-launcher": "^1.0.2",
     "map": "^1.0.1",
+    "metascript": "0.18.0",
     "path": "^0.12.7",
     "vinyl-source-stream": "^1.1.0",
-    "watchify": "^3.9.0"
+    "watchify": "^3.9.0",
+    "webpack": "^3.12.0"
   },
   "browserify-shim": {
     "jquery": "global:$",
