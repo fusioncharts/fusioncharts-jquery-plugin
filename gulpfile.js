@@ -99,7 +99,7 @@ gulp.task('copy:html', function () {
 });
 
 
-gulp.task('build:sample', ['create:lib', 'copy:html'], function () {
+gulp.task('build:sample', ['copy:html'], function () {
     var standalone = browserify(pkgJSON.samples.root + '/' + pkgJSON.samples.src + '/index.js')
 			.transform(babelify.configure());
 
