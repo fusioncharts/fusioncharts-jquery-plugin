@@ -18,67 +18,55 @@ jQuery needs to be imported before the `jquery-fusioncharts` plugin is included 
 #### Using require syntax:
 
 ```
-var jQuery = require('jquery');
-var FusionCharts = require('jquery-fusioncharts');
+var $ = require('jquery');
+var FusionCharts = require('fusioncharts');
 // Load charts module to render Column2D chart
 var Charts = require('fusioncharts/fusioncharts.charts');
+require('jquery-fusioncharts');
 
-jQuery('document').ready(function () {
+$('document').ready(function () {
     // Once the window with a document is ready, execute the Chart module
     // and pass FusionCharts as a dependency
     Charts(FusionCharts);
 
     // Render the chart using `insertFusionCharts` method
-    jQuery("#chart-container").insertFusionCharts({
+    $("#chart-container").insertFusionCharts({
         type: "column2d",
-        width: "500",
-        height: "300",
+        width: "600",
+        height: "400",
         dataFormat: "json",
         dataSource: {
             "chart": {
-                "caption": "Monthly revenue",
-                "subCaption": "Last Year",
-                "xAxisName": "Month",
-                "yAxisName": "Revenues",
-                "numberPrefix": "$",
-                "theme": "fint"
+                "caption": "Countries With Most Oil Reserves [2017-18]",
+                "subCaption": "In MMbbl = One Million barrels",
+                "xAxisName": "Country",
+                "yAxisName": "Reserves (MMbbl)",
+                "numberSuffix": "K"
             },
             "data": [{
-                "label": "Jan",
-                "value": "420000"
+                "label": "Venezuela",
+                "value": "290"
             }, {
-                "label": "Feb",
-                "value": "810000"
+                "label": "Saudi",
+                "value": "260"
             }, {
-                "label": "Mar",
-                "value": "720000"
+                "label": "Canada",
+                "value": "180"
             }, {
-                "label": "Apr",
-                "value": "550000"
+                "label": "Iran",
+                "value": "140"
             }, {
-                "label": "May",
-                "value": "910000"
+                "label": "Russia",
+                "value": "115"
             }, {
-                "label": "Jun",
-                "value": "510000"
+                "label": "UAE",
+                "value": "100"
             }, {
-                "label": "Jul",
-                "value": "680000"
+                "label": "US",
+                "value": "30"
             }, {
-                "label": "Aug",
-                "value": "620000"
-            }, {
-                "label": "Sep",
-                "value": "610000"
-            }, {
-                "label": "Oct",
-                "value": "490000"
-            }, {
-                "label": "Nov",
-                "value": "900000"
-            }, {
-                "label": "Dec",
-                "value": "730000"
+                "label": "China",
+                "value": "30"
             }]
         }
     });
@@ -87,71 +75,63 @@ jQuery('document').ready(function () {
 
 #### Using import syntax:
 
-import jQuery from 'jquery';
-import FusionCharts from 'jquery-fusioncharts';
+```
+import $ from 'jquery';
+import FusionCharts from 'fusioncharts';
 // Load charts module to render Column2D chart
 import Charts from 'fusioncharts/fusioncharts.charts';
+import 'jquery-fusioncharts';
 
-jQuery('document').ready(function () {
+$('document').ready(function () {
     // Once the window with a document is ready, execute the Chart module
     // and pass FusionCharts as a dependency
     Charts(FusionCharts);
 
     // Render the chart using `insertFusionCharts` method
-    jQuery("#chart-container").insertFusionCharts({
+    $("#chart-container").insertFusionCharts({
         type: "column2d",
-        width: "500",
-        height: "300",
+        width: "600",
+        height: "400",
         dataFormat: "json",
         dataSource: {
             "chart": {
-                "caption": "Monthly revenue",
-                "subCaption": "Last Year",
-                "xAxisName": "Month",
-                "yAxisName": "Revenues",
-                "numberPrefix": "$",
-                "theme": "fint"
+                "caption": "Countries With Most Oil Reserves [2017-18]",
+                "subCaption": "In MMbbl = One Million barrels",
+                "xAxisName": "Country",
+                "yAxisName": "Reserves (MMbbl)",
+                "numberSuffix": "K"
             },
             "data": [{
-                "label": "Jan",
-                "value": "420000"
+                "label": "Venezuela",
+                "value": "290"
             }, {
-                "label": "Feb",
-                "value": "810000"
+                "label": "Saudi",
+                "value": "260"
             }, {
-                "label": "Mar",
-                "value": "720000"
+                "label": "Canada",
+                "value": "180"
             }, {
-                "label": "Apr",
-                "value": "550000"
+                "label": "Iran",
+                "value": "140"
             }, {
-                "label": "May",
-                "value": "910000"
+                "label": "Russia",
+                "value": "115"
             }, {
-                "label": "Jun",
-                "value": "510000"
+                "label": "UAE",
+                "value": "100"
             }, {
-                "label": "Jul",
-                "value": "680000"
+                "label": "US",
+                "value": "30"
             }, {
-                "label": "Aug",
-                "value": "620000"
-            }, {
-                "label": "Sep",
-                "value": "610000"
-            }, {
-                "label": "Oct",
-                "value": "490000"
-            }, {
-                "label": "Nov",
-                "value": "900000"
-            }, {
-                "label": "Dec",
-                "value": "730000"
+                "label": "China",
+                "value": "30"
             }]
         }
     });
 });
+```
+
+
 
 You can also use the standalone build by including `package/jquery-fusioncharts.js` in your page. If you use this, make sure you have included jQuery, FusionCharts and FusionCharts charts module.
 
@@ -159,68 +139,88 @@ You can also use the standalone build by including `package/jquery-fusioncharts.
 
 To set up the FusionCharts jQuery plugin, follow the steps given below:
 
-* Include jquery.min.js to enable jQuery in your project:
-
+#### Step 1: Include jquery.min.js to enable jQuery in your project:
 ```
-<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="path/to/local/jquery.min.js"></script>
 ```
 jQuery needs to be imported before the FusionCharts jQuery plugin is included in the project. Note that in order to support IE 6/7/8, jQuery 1.x versions need to be used.
 
-* Copy fusioncharts.js and fusioncharts.jqueryplugin.js from the FusionCharts Download Package > js folder in your project
-* Add references to the required JavaScript files in your code:
+#### Step 2: Include the FusionCharts package
+* Copy fusioncharts.js from the FusionCharts Download Package > js folder in your project
+* Add reference to the file in your code
 ```
-<script type="text/javascript" src="fusioncharts.js"></script>
-<script type="text/javascript" src="fusioncharts.jqueryplugin.js"></script>
+<script type="text/javascript" src="path/to/local/fusioncharts.js"></script>
+```
+
+#### Step 3: Include the jquery-fusioncharts module
+* Copy fusioncharts.jqueryplugin.js from the FusionCharts Download Package > js folder in your project
+* Add reference to the file in your code
+```
+<script type="text/javascript" src="path/to/local/fusioncharts.theme.fusion.js"></script>
+```
+
+#### Step 4 (optional): Include the theme file.
+This step is optional, the chart will render with the default theme even if the theme file is not included.
+```
+<script type="text/javascript" src="path/to/local/fusioncharts.jqueryplugin.js"></script>
 ```
 
 This completes the setup and you are now ready to begin using the FusionCharts jQuery plugin.
+
+In addition to using all the existing features, the jQuery plugin lets you do the following:
+
+* Render jQuery charts that work across PCs (including IE6/7/8), Macs, iPads, iPhones, and Android devices seamlessly
+* Update chart type, data, and individual cosmetic properties at run-time
+* Insert, prepend, and append multiple charts in an existing chart container
+* Customize the look and feel of all elements on the chart
+* Plot charts from data contained in HTML tables
 
 
 ```
 <!DOCTYPE html>
 <html>
-<head>
-    <title>jQuery FusionCharts Plugin Sample</title>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.js"></script>
-    <script type="text/javascript" src="https://unpkg.com/fusioncharts@3.12.0/fusioncharts.js"></script>
-    <script type="text/javascript" src="https://unpkg.com/fusioncharts@3.12.0/fusioncharts.charts.js"></script>
-    <script type="text/javascript" src="https://unpkg.com/fusioncharts@3.12.0/themes/fusioncharts.theme.fint.js"></script>
-    <script type="text/javascript" src="https://rawgit.com/fusioncharts/fusioncharts-jquery-plugin/feature/node-commonjs-support/package/fusioncharts-jquery-plugin.js"></script>
-</head>
-<body>
+    <head>
+        <title>jQuery FusionCharts Plugin Sample</title>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/fusioncharts/fusioncharts.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/fusioncharts/themes/fusioncharts.theme.fusion.js"></script>
+        <script type="text/javascript" src="https://rawgit.com/fusioncharts/fusioncharts-jquery-plugin/develop/dist/fusioncharts.jqueryplugin.min.js"></script>
+    </head>
+    <body>
 
-    <div id="chart-container">FusionCharts will render here...</div>
+        <div id="chart-container">FusionCharts will render here...</div>
 
-    <script type="text/javascript">
-        jQuery('document').ready(function () {
-            $("#chart-container").insertFusionCharts({
-                type: "column2d",
-                width: "500",
-                height: "300",
-                dataFormat: "json",
-                dataSource: {
-                    "chart": {
-                        "caption": "Yearly revenue",
-                        "xAxisName": "Year",
-                        "yAxisName": "Revenues",
-                        "numberPrefix": "$",
-                        "theme": "fint"
-                    },
-                    "data": [{
-                        "label": "2015",
-                        "value": "5548900"
-                    }, {
-                        "label": "2016",
-                        "value": "8100000"
-                    }, {
-                        "label": "2017",
-                        "value": "7200000"
-                    }]
-                }
+        <script type="text/javascript">
+            console.log(jQuery);
+            $('document').ready(function () {
+                $("#chart-container").insertFusionCharts({
+                    type: "column2d",
+                    width: "500",
+                    height: "300",
+                    dataFormat: "json",
+                    dataSource: {
+                        "chart": {
+                            "caption": "Yearly revenue",
+                            "xAxisName": "Year",
+                            "yAxisName": "Revenues",
+                            "numberPrefix": "$",
+                            "theme": "fusion"
+                        },
+                        "data": [{
+                            "label": "2015",
+                            "value": "5548900"
+                        }, {
+                            "label": "2016",
+                            "value": "8100000"
+                        }, {
+                            "label": "2017",
+                            "value": "7200000"
+                        }]
+                    }
+                });
             });
-        });
-    </script>
-</body>
+        </script>
+    </body>
 </html>
 ```
 
@@ -228,14 +228,12 @@ This completes the setup and you are now ready to begin using the FusionCharts j
 In addition to using all the existing features, the jQuery plugin lets you do the following:
 
 * Render jQuery charts that work across PCs (including IE6/7/8), Macs, iPads, iPhones, and Android devices seamlessly
-
 * Update chart type, data, and individual cosmetic properties at run-time
-
 * Insert, prepend, and append multiple charts in an existing chart container
-
 * Customize the look and feel of all elements on the chart
-
 * Plot charts from data contained in HTML tables
+
+
 
 ## Rendering charts using jQuery
 
@@ -244,6 +242,7 @@ For rendering new charts, you can use the following jQuery methods:
 * `insertFusionCharts`
 * `appendFusionCharts`
 * `prependFusionCharts`
+
 
 ### insertFusionCharts Method:
 
@@ -314,8 +313,8 @@ In the above code snippet, the cloneFusionCharts method is used to create a colu
 The cloneFusionCharts method accepts two arguments:
 
 * An anonymous callback function: An array of cloned charts (in this Array) is passed to this function for further processing
-
 * A configuration object: An object containing chart configurations which are applied to each cloned chart
+
 
 ### prependFuionCharts Method
 
@@ -369,4 +368,3 @@ npm start
 ```
 
 And then open [`localhost:8080`](http://localhost:8080) in the browser.
-
