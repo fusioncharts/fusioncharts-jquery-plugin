@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//s3-eu-west-1.amazonaws.com/fcdesignsystem/1.0.0/css/fusionDesign.css">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../../assets/css/fusioncharts.theme.fusion.css" />
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div id="chart-container"></div>
+    <p style="padding: 10px; background: rgb(245, 242, 240);" id='message'>
+      Hover on the plot to see the value along with the label
+    </p>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- FusionCharts -->
+    <script src="../../assets/scripts/fusioncharts/fusioncharts.js"></script>
+    <script src="../../assets/scripts/fusioncharts.theme.fusion.js"></script>
+    <!-- jQuery-FC -->
+    <script src="../../assets/scripts/fusioncharts.jqueryplugin.min.js"></script>
+
+
+    <script type="text/javascript">
+      jQuery('document').ready(function () {
+          $("#chart-container").insertFusionCharts({
+              type: "column2d",
+              width: "100%",
+              height: "85%",
+              dataFormat: "json",
+              dataSource: {
+                  "chart": {
+                      "caption": "Countries With Most Oil Reserves [2017-18]",
+                      "subCaption": "In MMbbl = One Million barrels",
+                      "xAxisName": "Country",
+                      "yAxisName": "Reserves (MMbbl)",
+                      "numberSuffix": "K",
+                      "theme": "fusion"
+                  },
+                  "data": [
+                      {
+                          "label": "Venezuela",
+                          "value": "290"
+                      },
+                      {
+                          "label": "Saudi",
+                          "value": "260"
+                      },
+                      {
+                          "label": "Canada",
+                          "value": "180"
+                      },
+                      {
+                          "label": "Iran",
+                          "value": "140"
+                      },
+                      {
+                          "label": "Russia",
+                          "value": "115"
+                      },
+                      {
+                          "label": "UAE",
+                          "value": "100"
+                      },
+                      {
+                          "label": "US",
+                          "value": "30"
+                      },
+                      {
+                          "label": "China",
+                          "value": "30"
+                      }
+                  ]
+              }
+          });
+
+      $('#chart-container').bind('fusionchartsdataplotrollover', function(event, args) {
+        $('#message').text('You’re are currently hovering over ' + args.categoryLabel + ' whose value is ' + args.displayValue);
+      });
+    });
+  </script>
+
+</body>
+</html>
