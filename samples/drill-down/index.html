@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//s3-eu-west-1.amazonaws.com/fcdesignsystem/1.0.0/css/fusionDesign.css">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../../assets/css/fusioncharts.theme.fusion.css" />
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div id="chart-container"></div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- FusionCharts -->
+    <script src="../../assets/scripts/fusioncharts/fusioncharts.js"></script>
+    <script src="../../assets/scripts/fusioncharts.theme.fusion.js"></script>
+    <!-- jQuery-FC -->
+    <script src="../../assets/scripts/fusioncharts.jqueryplugin.min.js"></script>
+
+
+    <script type="text/javascript">
+      jQuery('document').ready(function () {
+        var dataSource = {
+            "chart": {
+                "caption": "Sales of top 3 juice flavors last year",
+                "subcaption": "Click on a column to see details",
+                "xaxisname": "Flavor",
+                "yaxisname": "Amount (In USD)",
+                "numberprefix": "$",
+                "theme": "fusion",
+                "rotateValues": "0"
+            },
+            "data": [
+                {
+                    "label": "Apple",
+                    "value": "810000",
+                    "link": "newchart-xml-apple"
+                },
+                {
+                    "label": "Cranberry",
+                    "value": "620000",
+                    "link": "newchart-xml-cranberry"
+                },
+                {
+                    "label": "Grape",
+                    "value": "350000",
+                    "link": "newchart-xml-grape"
+                }
+            ],
+            "linkeddata": [
+                {
+                    "id": "apple",
+                    "linkedchart": {
+                        "chart": {
+                            "caption": "Apple Juice - Quarterly Sales",
+                            "subcaption": "Last year",
+                            "numberprefix": "$",
+                            "theme": "fusion",
+                            "rotateValues": "0",
+                            "plottooltext": "$label, $dataValue,  $percentValue"
+                        },
+                        "data": [{
+                            "label": "Q1",
+                            "value": "157000",
+                            "displayValue": "Q1, $157K"
+                        }, {
+                            "label": "Q2",
+                            "value": "172000",
+                            "displayValue": "Q2, $172K"
+                        }, {
+                            "label": "Q3",
+                            "value": "206000",
+                            "displayValue": "Q3, $206K"
+                        }, {
+                            "label": "Q4",
+                            "value": "275000",
+                            "displayValue": "Q4, $275K"
+                        }]
+                    }
+                },
+                {
+                    "id": "cranberry",
+                    "linkedchart": {
+                        "chart": {
+                            "caption": "Cranberry Juice - Quarterly Sales",
+                            "subcaption": "Last year",
+                            "numberprefix": "$",
+                            "theme": "fusion",
+                            "plottooltext": "$label, $dataValue,  $percentValue"
+                        },
+                        "data": [
+                            {
+                                "label": "Q1",
+                                "value": "102000",
+                                "displayValue": "Q1, $102K"
+                            },
+                            {
+                                "label": "Q2",
+                                "value": "142000",
+                                "displayValue": "Q2, $142K"
+                            },
+                            {
+                                "label": "Q3",
+                                "value": "187000",
+                                "displayValue": "Q3, $187K"
+                            },
+                            {
+                                "label": "Q4",
+                                "value": "189000",
+                                "displayValue": "Q4, $189K"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "grape",
+                    "linkedchart": {
+                        "chart": {
+                            "caption": "Grape Juice - Quarterly Sales",
+                            "subcaption": "Last year",
+                            "numberprefix": "$",
+                            "theme": "fusion",
+                            "rotateValues": "0",
+                            "plottooltext": "$label, $dataValue,  $percentValue"
+                        },
+                        "data": [{
+                            "label": "Q1",
+                            "value": "45000",
+                            "displayValue": "Q1, $45K"
+                        }, {
+                            "label": "Q2",
+                            "value": "72000",
+                            "displayValue": "Q2, $72K"
+                        }, {
+                            "label": "Q3",
+                            "value": "95000",
+                            "displayValue": "Q3, $95K"
+                        }, {
+                            "label": "Q4",
+                            "value": "108000",
+                            "displayValue": "Q4, $108K"
+                        }]
+                    }
+                }
+            ]
+        };
+        $("#chart-container").insertFusionCharts({
+            id: 'drill-down-chart',
+            type: 'column2d',
+            width: "100%",
+            height: "100%",
+            dataFormat: "json",
+            dataSource: dataSource
+        });
+
+        $('#chart-container').bind('fusionchartsrendered', function(event, args) {
+          FusionCharts.items['drill-down-chart'].configureLink({
+            type: 'pie2d',
+            width: '500',
+            overlayButton: {
+              message: 'Back',
+              fontColor: '880000',
+              bgColor: 'FFEEEE',
+              borderColor: '660000',
+            },
+          }, 0);
+        });
+
+      });
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//s3-eu-west-1.amazonaws.com/fcdesignsystem/1.0.0/css/fusionDesign.css">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../../assets/css/fusioncharts.theme.fusion.css" />
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div id="chart-container1"></div>
+    <div id="chart-container2"></div>
+    <center><button id='export' class="btn btn-custom">Export both charts as a single PDF</button></center>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- FusionCharts -->
+    <script src="../../assets/scripts/fusioncharts/fusioncharts.js"></script>
+    <script src="../../assets/scripts/fusioncharts.theme.fusion.js"></script>
+    <!-- jQuery-FC -->
+    <script src="../../assets/scripts/fusioncharts.jqueryplugin.min.js"></script>
+
+
+    <script type="text/javascript">
+      jQuery('document').ready(function () {
+        var btn = document.getElementById('export');
+          var columnData = {
+              "chart": {
+                  "caption": "Countries With Most Oil Reserves [2017-18]",
+                  "subCaption": "In MMbbl = One Million barrels",
+                  "xAxisName": "Country",
+                  "yAxisName": "Reserves (MMbbl)",
+                  "numberSuffix": "K",
+                  "theme": "fusion"
+              },
+              "data": [
+                  {
+                      "label": "Venezuela",
+                      "value": "290"
+                  },
+                  {
+                      "label": "Saudi",
+                      "value": "260"
+                  },
+                  {
+                      "label": "Canada",
+                      "value": "180"
+                  },
+                  {
+                      "label": "Iran",
+                      "value": "140"
+                  },
+                  {
+                      "label": "Russia",
+                      "value": "115"
+                  },
+                  {
+                      "label": "UAE",
+                      "value": "100"
+                  },
+                  {
+                      "label": "US",
+                      "value": "30"
+                  },
+                  {
+                      "label": "China",
+                      "value": "30"
+                  }
+              ]
+          };
+          var stackedColumnData = {
+              "chart": {
+                  "caption": "Yearly Energy Production Rate",
+                  "subCaption": " Top 5 Developed Countries",
+                  "numbersuffix": " TWh",
+                  "showSum": "1",
+                  "plotToolText": "$label produces <b>$dataValue</b> of energy from $seriesName",
+                  "theme": "fusion"
+              },
+              "categories": [
+                  {
+                      "category": [
+                          {
+                              "label": "Canada"
+                          },
+                          {
+                              "label": "China"
+                          },
+                          {
+                              "label": "Russia"
+                          },
+                          {
+                              "label": "Australia"
+                          },
+                          {
+                              "label": "United States"
+                          },
+                          {
+                              "label": "France"
+                          }
+                      ]
+                  }
+              ],
+              "dataSet": [
+                  {
+                      "seriesName": "Coal",
+                      "data": [
+                          {
+                              "value": "400"
+                          },
+                          {
+                              "value": "830"
+                          },
+                          {
+                              "value": "500"
+                          },
+                          {
+                              "value": "420"
+                          },
+                          {
+                              "value": "790"
+                          },
+                          {
+                              "value": "380"
+                          }
+                      ]
+                  },
+                  {
+                      "seriesName": "Hydro",
+                      "data": [
+                          {
+                              "value": "350"
+                          },
+                          {
+                              "value": "620"
+                          },
+                          {
+                              "value": "410"
+                          },
+                          {
+                              "value": "370"
+                          },
+                          {
+                              "value": "720"
+                          },
+                          {
+                              "value": "310"
+                          }
+                      ]
+                  },
+                  {
+                      "seriesName": "Nuclear",
+                      "data": [
+                          {
+                              "value": "210"
+                          },
+                          {
+                              "value": "400"
+                          },
+                          {
+                              "value": "450"
+                          },
+                          {
+                              "value": "180"
+                          },
+                          {
+                              "value": "570"
+                          },
+                          {
+                              "value": "270"
+                          }
+                      ]
+                  },
+                  {
+                      "seriesName": "Gas",
+                      "data": [
+                          {
+                              "value": "180"
+                          },
+                          {
+                              "value": "330"
+                          },
+                          {
+                              "value": "230"
+                          },
+                          {
+                              "value": "160"
+                          },
+                          {
+                              "value": "440"
+                          },
+                          {
+                              "value": "350"
+                          }
+                      ]
+                  },
+                  {
+                      "seriesName": "Oil",
+                      "data": [
+                          {
+                              "value": "60"
+                          },
+                          {
+                              "value": "200"
+                          },
+                          {
+                              "value": "200"
+                          },
+                          {
+                              "value": "50"
+                          },
+                          {
+                              "value": "230"
+                          },
+                          {
+                              "value": "150"
+                          }
+                      ]
+                  }
+              ]
+          };
+
+          btn.addEventListener('click', function() {
+              FusionCharts.batchExport({
+                  exportFormat:'pdf'
+              });
+          });
+
+          $('#chart-container1').insertFusionCharts({
+            type: 'column2d',
+            width: 700,
+            height: 400,
+            dataFormat: 'json',
+            dataSource: columnData
+          });
+          $('#chart-container2').insertFusionCharts({
+            type: 'stackedcolumn2d',
+            width: 600,
+            height: 500,
+            dataFormat: 'json',
+            dataSource: stackedColumnData
+          });
+      });
+  </script>
+
+</body>
+</html>

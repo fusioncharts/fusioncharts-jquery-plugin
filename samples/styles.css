@@ -1,0 +1,17 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  text-align: center;
+}
+
+.btn { font-family: 'Source Sans Pro'; }
+.btn.btn-custom { background: #4a4d8c;  transition: all 300ms; color: white; margin: 0 2px; }
+.btn.btn-custom:hover{ background: #5c62b5; }
+.btn.btn-custom:active{ background:#4a4d8c }
+
+.btn.btn-red { background: #e65050;  transition: all 300ms; color: white; margin: 0 2px; }
+.btn.btn-red:hover{ background: #ec7171; }
+.btn.btn-red:active{ background:#e65050 }

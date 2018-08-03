@@ -1,184 +1,498 @@
 <!doctype html>
-<html>
-    <head>
-        <title>FusionCharts jQuery Plugin</title>
-        <style type="text/css">
-            pre {
-                max-height: 400px;
-            }
+<html lang="en">
 
-            /* From the passportjs.org website */
-            .masthead {
-              margin-bottom: 20px;
-              padding-bottom: 5px;
-              border-bottom: 1px solid #eeeeee;
-            }
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- CSS Resources -->
+    <link rel="stylesheet" href="//s3-eu-west-1.amazonaws.com/fcdesignsystem/1.0.0/css/fusionDesign.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/codemirror.css">
+    <link rel="stylesheet" href="./assets/css/dracula.css">
 
-            .masthead .logo {
-              height: 38px;
-              width: 210px;
-            }
+    <!-- JS Resources -->
+    <script src="//s3-eu-west-1.amazonaws.com/fcdesignsystem/1.0.0/js/fusionDesign.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.39.2/codemirror.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.39.2/addon/mode/multiplex.min.js"></script>
+    <script src="./assets/scripts/javascript.min.js"></script>
+    <script src="./assets/scripts/xml.js"></script>
+    <script src="./assets/scripts/htmlembedded.js"></script>
+    <title>jQuery Component for FusionCharts JavaScript Charting Library</title>
 
-            .masthead h3 a {
-              color: #333333;;
-              text-decoration: none;
-            }
+    <!-- Extra resources for demo purpose (can be removed) -->
+    <!-- <script src="//static.fusioncharts.com/code/latest/fusioncharts.js"></script> -->
+    <!-- <script src="//csm.fusioncharts.com/files/assets/fusion-theme/fusioncharts.theme.fusion.js"></script> -->
+    <link rel="stylesheet" href="//csm.fusioncharts.com/files/assets/fusion-theme/fusioncharts.theme.fusion.css">
+    <!-- <script src="./assets/scripts/dummy.js"></script> -->
+</head>
 
-            .masthead h3 a:hover {
-              color: #333333;
-              text-decoration: none;
-            }
+<body>
+    <div id="app">
+        <!-- navbar start -->
+        <nav id="navbar" class="navbar navbar-light navbar-expand-lg bg-light">
+            <!-- logo -->
+            <a href="/" target="_self" class="navbar-brand active">
+                <img src="./assets/images/fc-logo.svg" width="149" height="27" alt="FusionCharts" class="img-circle">
+            </a>
+            <!-- FC home -->
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="header-link" href="//github.com/fusioncharts/fusioncharts-jquery-plugin" target="_blank">GitHub Repository</a>
+                </li>
+            </ul>
+        </nav>
+        <!-- navbar end -->
 
-           
-        </style>
-        <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
-    </head>
-    <body>
-        <div class="container">
-            <div class="row">
-                <div class="masthead">
-                    <ul class="nav nav-pills pull-right">
-                        <li><a href="http://fusioncharts.com/">FusionCharts Home</a></li>
+        <div class="page-container">
+            <div id="mainContainer" class="main-container">
+                <div class="content-container">
+                    <!-- Banner start -->
+                    <div class="jumbotron banner-bg-3 heroContainer fixed-bg home-banner pl-2 pr-2 pl-sm-3 pr-sm-3 pl-md-3 pr-md-3 pl-lg-6 pr-lg-6 pb-4 pt-4">
+                        <div class="container container-1440 info-wrapper">
+                            <div class="row">
+                                <div class="col-md-8 offset-md-2">
+                                    <div class="h1 text-white text-center">
+                                        <img id="lang-logo" class="img-valign" src="./assets/images/jquery.svg" width="40" height="40" alt="jQuery" />
+                                        <img id="fc-logo" class="img-valign" src="./assets/images/fc-min-logo.svg" width="40" height="40" alt="FusionCharts" />
+                                        <span class="title pl-1">jQuery-FusionCharts</span>
+                                    </div>
+                                    <div class="h3 text-white text-center mt-2">
+                                        <span class="sub-title primary">
+                                            An easy-to-use, lightweight jQuery component for the FusionCharts JavaScript Charting Library
+                                        </span>
+                                    </div>
+                                    <div class="p text-white text-center mt-2">
+                                        <span class="sub-title secondary">
+                                            The jQuery-FusionCharts component lets you easily include FusionCharts in your jQuery projects and add interactive charts to
+                                            your jQuery applications.
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Banner end -->
+
+
+                <!-- Feature Section start -->
+                <div class="container container-1200 info-wrapper pb-3">
+                    <div class="row">
+                        <div class="col">
+                            <div class="h2 mt-2">Features</div>
+                            <!-- list start -->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul class="feature-list">
+                                        <li>
+                                            <span>
+                                                <i class="icn-inline icn-success fc_select"></i>
+                                            </span>
+                                            <div>Allows to include interactivity between javascript charts.</div>
+                                        </li>
+                                        <li>
+                                            <span>
+                                                <i class="icn-inline icn-success fc_select"></i>
+                                            </span>
+                                            <div>Offers advanced control by giving you access to the complete FusionCharts object (that contains the chart configuration).</div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul class="feature-list">
+                                        <li>
+                                            <span>
+                                                <i class="icn-inline icn-success fc_select"></i>
+                                            </span>
+                                            <div>Allows to include interactivity between javascript charts.</div>
+                                        </li>
+                                        <li>
+                                            <span>
+                                                <i class="icn-inline icn-success fc_select"></i>
+                                            </span>
+                                            <div>Offers advanced control by giving you access to the complete FusionCharts object (that contains the chart configuration).</div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- list end -->
+                        </div>
+                    </div>
+                </div>
+                <!-- Feature Section end -->
+
+
+                <!-- Demo Section start -->
+                <div class="demo bg-light-purple pt-4 pb-4">
+                    <div class="container container-1200 info-wrapper">
+                        <!-- Chart selection for mobile devices - start -->
+                        <div class="row">
+                            <div class="col-12 d-flex justify-content-center d-md-none">
+                                <div id="mobileChart-selector" class="base-dropdown chart-selector">
+                                    <div class="selector">A Simple Column Chart</div>
+                                    <div class="placeholder">Quick Demo:</div>
+                                    <div class="caret">
+                                        <i class="fc_dropdown"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal for selection (Only for Mobile Devices) -->
+                        <div id="myModal" class="modal hidden">
+
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <div class="nav-list">
+                                    <div class="nav-item selected">
+                                        <div class="p">A Simple Column Chart</div>
+                                    </div>
+                                    <div class="nav-item">
+                                        <div class="p">A 3D Pie Chart</div>
+                                    </div>
+                                    <div class="nav-item">
+                                        <div class="p">A Column, Area and Line Combi Chart</div>
+                                    </div>
+                                    <div class="nav-item">
+                                        <div class="p">Fetch data from JSON URL</div>
+                                    </div>
+                                    <div class="nav-item">
+                                        <div class="p">Update chart data from component</div>
+                                    </div>
+                                    <div class="nav-item">
+                                        <div class="p">Trigger events from chart</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- Chart selection for mobile devices - end -->
+
+                        <div class="row">
+                            <div class="side-nav col-3 d-none d-md-block">
+                                <div class="nav-heading">Quick Demo:</div>
+                                <div class="nav-list">
+                                    <div data-id="simple-chart" class="nav-item selected">
+                                        <div class="h5">A Simple Chart</div>
+                                        <div class="p item-desc">A simple chart with all data embedded into the directive</div>
+                                    </div>
+                                    <div data-id="3d-pie-chart"class="nav-item">
+                                        <div class="h5">A 3D Pie Chart</div>
+                                        <div class="p item-desc">A 3D pie chart using the datasource attribute from components scope</div>
+                                    </div>
+                                    <div data-id="column-line-area-combi-chart" class="nav-item">
+                                        <div class="h5">A Column, Line and Area Combi Chart</div>
+                                        <div class="p item-desc">A column, line and area combination chart using the datasource attribute</div>
+                                    </div>
+                                    <div data-id="fetch-data-from-json-url" class="nav-item">
+                                        <div class="h5">Fetch data from JSON URL</div>
+                                        <div class="p item-desc">Fetch data remotely from a JSON file or URL</div>
+                                    </div>
+                                    <div data-id="fetch-data-from-xml-url" class="nav-item">
+                                      <div class="h5">Fetch data from XML URL</div>
+                                      <div class="p item-desc">Fetch data remotely from a XML file or URL</div>
+                                    </div>
+                                    <div data-id="update-chart-data" class="nav-item">
+                                        <div class="h5">Update chart data from component</div>
+                                        <div class="p item-desc">Change the data dynamically in the component and watch the chart update automatically</div>
+                                    </div>
+                                    <div data-id="update-chart-attributes" class="nav-item">
+                                      <div class="h5">Update chart attribute from component</div>
+                                      <div class="p item-desc">Change a parameter in the components variable and see it automatically update the chart</div>
+                                    </div>
+                                    <div data-id="trigger-events-from-chart" class="nav-item">
+                                        <div class="h5">Trigger events from chart</div>
+                                        <div class="p item-desc">Hover on a plot to trigger an event in the component, and update variables</div>
+                                    </div>
+                                    <div data-id="percentage-calculation" class="nav-item">
+                                      <div class="h5">Percentage Calculation</div>
+                                      <div class="p item-desc">Hover on a plot to see the percentage value with respect to total</div>
+                                    </div>
+                                    <div data-id="export-charts" class="nav-item">
+                                      <div class="h5">Export multiple charts</div>
+                                      <div class="p item-desc">Use Batch Export to export multiple charts as a single image/PDF</div>
+                                    </div>
+                                    <div data-id="drill-down" class="nav-item">
+                                      <div class="h5">Add drill-down to chart</div>
+                                      <div class="p item-desc">Use LinkedCharts to quickly add drill-down to charts</div>
+                                    </div>
+                                    <div data-id="simple-gauge" class="nav-item">
+                                      <div class="h5">A simple gauge</div>
+                                      <div class="p item-desc">A simple gauge to show customer satisfaction score</div>
+                                    </div>
+                                    <div data-id="world-map" class="nav-item">
+                                      <div class="h5">World Map</div>
+                                      <div class="p item-desc">World map showing data for different continents</div>
+                                    </div>
+                                    <div data-id="apply-theme" class="nav-item">
+                                      <div class="h5">Applying a different theme</div>
+                                      <div class="p item-desc">Choosing from different themes available in FusionCharts Suite</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-9 col-12">
+                                <div class="card shadow">
+                                    <div class="card-body chart-wrapper">
+                                        <div class="chart-wrapper-inner">
+                                            <!-- render chart here -->
+                                            <div id="chart-container-wrapper">
+                                                <iframe id="chart-container"></iframe>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="code-view mt-2">
+                                    <div class="card-shadow" style="background: #03040B;">
+                                        <div class="code-nav-btns btn-group" role="group" aria-label="Basic example">
+                                            <button data-id="code" type="button" class="btn btn-code selected">JavaScript</button>
+                                            <button data-id="html" type="button" class="btn btn-code">HTML</button>
+                                            <button data-id="data" type="button" class="btn btn-code">Data</button>
+                                        </div>
+                                        <div class="card-body p-0">
+                                            <div class="code-panel">
+                                                <div class="code-panel-header">
+                                                    <div id="chartCode"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Demo Section end -->
+
+                <!-- info section start -->
+                <div class="container container-1200 info-wrapper pt-4">
+                    <div class="row">
+                        <div class="col">
+                            <div class="h2 mt-2">Quick Start</div>
+                        </div>
+                    </div>
+                    <div class="h4 mt-2">Setting up the FusionCharts jQuery Plugin</div>
+                    <!-- steps -->
+                    <div class="row">
+                        <div class="col-12 pt-1">
+                            <div class="h6">
+                                <span>Step 1: Include <a href="https://jquery.com/download/" target="_blank">jquery.min.js</a> to enable jQuery in your project:</span>
+                            </div>
+                            <div class="code-view mt-2">
+                                <div class="card-shadow">
+                                    <div class="card-body p-0">
+                                        <div class="code-panel">
+                                            <div class="codeMirrorDiv" id="c1"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="code-desc mt-2 mb-1">
+                                jQuery needs to be imported before the FusionCharts jQuery plugin is included in the project. Note that in order to support IE 6/7/8, jQuery 1.x versions need to be used.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- steps -->
+                    <div class="row">
+                        <div class="col-12 pt-3">
+                            <div class="h6">
+                                <span>Step 2: Include the FusionCharts package</span>
+                            </div>
+                            <ul>
+                                <li>Copy fusioncharts.js from the FusionCharts Download Package > js folder in your project</li>
+                                <li>Add reference to the file in your code</li>
+                            </ul>
+                            <div class="code-view mt-2">
+                                <div class="card-shadow">
+                                    <div class="card-body p-0">
+                                        <div class="code-panel">
+                                            <div class="codeMirrorDiv" id="c2"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- steps -->
+                    <div class="row">
+                        <div class="col-12 pt-3">
+                            <div class="h6">
+                                <span>Step 3: Include the jquery-fusioncharts module</span>
+                            </div>
+                            <ul>
+                                <li>Copy fusioncharts.jqueryplugin.js from the FusionCharts Download Package > js folder in your project</li>
+                                <li>Add reference to the file in your code</li>
+                            </ul>
+                            <div class="code-view mt-2">
+                                <div class="card-shadow">
+                                    <div class="card-body p-0">
+                                        <div class="code-panel">
+                                            <div class="codeMirrorDiv" id="c4"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- steps -->
+                    <div class="row">
+                        <div class="col-12 pt-3">
+                            <div class="h6">
+                                <span>Step 4 (optional): Include the theme file.</span>
+                            </div>
+                            <p class="code-desc mb-1">This step is optional, the chart will render with the default theme even if the theme file is not included.</p>
+                            <div class="code-view mt-2">
+                                <div class="card-shadow">
+                                    <div class="card-body p-0">
+                                        <div class="code-panel">
+                                            <div class="codeMirrorDiv" id="c3"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="code-desc mt-2 mb-1">This completes the setup and you are now ready to begin using the FusionCharts jQuery plugin.</p>
+
+                    <p class="code-desc mb-1">In addition to using all the existing features, the jQuery plugin lets you do the following:</p>
+
+                    <ul>
+                        <li>Render jQuery charts that work across PCs (including IE6/7/8), Macs, iPads, iPhones, and Android devices seamlessly</li>
+                        <li>Update chart type, data, and individual cosmetic properties at run-time</li>
+                        <li>Insert, prepend, and append multiple charts in an existing chart container</li>
+                        <li>Customize the look and feel of all elements on the chart</li>
+                        <li>Plot charts from data contained in HTML tables</li>
                     </ul>
-                    <h3>
-                        <a href="http://fusioncharts.github.io/angular-fusioncharts/"><img src="http://www.fusioncharts.com/theme/210x38xlogo.png.pagespeed.ic.KZD9tJ7qIK.png" class="logo"></a>
-                    </h3>
-                </div>
-                <div class="jumbotron">
-                    <h1>FusionCharts jQuery Plugin</h1>
-                    <p>Lightweight jQuery plugin to render charts and graphs seamlessly across all browsers and devices.</p>
-                    <p><a class="btn btn-primary btn-lg" href="https://github.com/fusioncharts/fusioncharts-jquery-plugin/archive/master.zip" role="button"><i class="glyphicon glyphicon-download"></i> Download (1.0)</a></p>
-                </div>
-                <div class="readme">
-                    <p>The FusionCharts Suite XT jQuery plugin allows you to use jQuery syntax to render and manipulate your charts and graphs seamlessly across all browsers and devices.</p>
-<p>It helps you add interactive JavaScript charts to your web and mobile applications, combining the delight and comprehensiveness of the FusionCharts Suite XT with the easy-to-use jQuery syntax.</p>
-<h2 id="setting-up-the-fusioncharts-jquery-plugin">Setting up the FusionCharts jQuery Plugin</h2>
-<p>To set up the FusionCharts jQuery plugin, follow the steps given below:</p>
-<ul>
-<li>Include jquery.min.js to enable jQuery in your project:</li>
-</ul>
-<pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;jquery.min.js&quot;&gt;&lt;/script&gt;
-</code></pre><p>jQuery needs to be imported before the FusionCharts jQuery plugin is included in the project. Note that in order to support IE 6/7/8, jQuery 1.x versions need to be used.</p>
-<ul>
-<li>Copy fusioncharts.js and fusioncharts.jqueryplugin.js from the FusionCharts Download Package &gt; js folder in your project</li>
-<li>Add references to the required JavaScript files in your code:<pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;fusioncharts.js&quot;&gt;&lt;/script&gt;
-&lt;script type=&quot;text/javascript&quot; src=&quot;fusioncharts.jqueryplugin.js&quot;&gt;&lt;/script&gt;
-</code></pre></li>
-</ul>
-<p>This completes the setup and you are now ready to begin using the FusionCharts jQuery plugin.</p>
-<p>In addition to using all the existing features, the jQuery plugin lets you do the following:</p>
-<ul>
-<li><p>Render jQuery charts that work across PCs (including IE6/7/8), Macs, iPads, iPhones, and Android devices seamlessly</p>
-</li>
-<li><p>Update chart type, data, and individual cosmetic properties at run-time</p>
-</li>
-<li><p>Insert, prepend, and append multiple charts in an existing chart container</p>
-</li>
-<li><p>Customize the look and feel of all elements on the chart</p>
-</li>
-<li><p>Plot charts from data contained in HTML tables</p>
-</li>
-</ul>
-<h2 id="rendering-charts-using-jquery">Rendering charts using jQuery</h2>
-<p>For rendering new charts, you can use the following jQuery methods:</p>
-<ul>
-<li><code>insertFusionCharts</code></li>
-<li><code>appendFusionCharts</code></li>
-<li><code>prependFusionCharts</code></li>
-</ul>
-<h3 id="insertfusioncharts-method-">insertFusionCharts Method:</h3>
-<p>Renders charts inside HTML elements. The HTML elements have to be selected using jQuery selector. In case, multiple HTML elements are selected using the jQuery selector, a chart will be rendered inside each selected HTML element. All existing elements inside the selected elements will be replaced by the rendered charts. This method returns the jQuery selected element to allow chaining with other jQuery methods. </p>
-<p>An object of chart configurations (set of key, value pairs) can be passed as parameter. Click here to view complete list of chart configurations.</p>
-<pre><code>$(&quot;#chart-container&quot;).insertFusionCharts({
-    type: &#39;hlineargauge&#39;,
-    width: &#39;400&#39;,
-    height: &#39;150&#39;,
-    dataFormat: &#39;json&#39;,
-    dataSource: {
-        &quot;chart&quot;: {
-            ...
-        },
-        &quot;colorRange&quot;: {
-            &quot;color&quot;: [
-                ...
-            ]
-        },
-        &quot;pointers&quot;: {
-            &quot;pointer&quot;: [
-                ...
-            ]
-        }
-    }
-});
-</code></pre><h3 id="appendfusioncharts-method-">appendFusionCharts Method:</h3>
-<p>Renders charts at the end of selected HTML elements. The HTML elements need to be selected using jQuery selector. In case multiple HTML elements are selected, chart will be rendered inside each selected HTML element. All existing elements inside the selected elements will be preserved. The method returns the original jQuery selection to allow chaining of other jQuery methods. </p>
-<p>An object of chart configurations (set of key, value pairs) can be passed as parameter. Click here to view complete list of chart configurations.</p>
-<pre><code>$(&#39;#chart-container&#39;).insertFusionCharts({
-    type: &#39;pie2d&#39;,
-    width: &#39;450&#39;,
-    height: &#39;300&#39;,
-    dataFormat: &#39;json&#39;,
-    dataSource: {
-        &quot;chart&quot;: {
-                ...
-        },
-        &quot;data&quot;: [...]
-    }
-});
 
-$(&#39;#btnClone&#39;).click(function() {
-    // Clone the chart to create a column chart representation of the same data
-    $(â€˜#chart-containerâ€™).cloneFusionCharts(function() {
-        // Append the cloned chart to the same chart container
-        $(â€˜#chart-containerâ€™).appendFusionCharts(this[0]);
-    }, {
-        &#39;id&#39;: &#39;chart-clone&#39;,
-        &#39;type&#39;: &#39;column2d&#39;
-    });
-});
-</code></pre><p>In the above example, the horizontal linear gauge has been rendered using the insertFusionCharts method. The constructor object is passed as an argument to the insertFusionCharts method</p>
-<p>In the above code snippet, the cloneFusionCharts method is used to create a column-chart clone of the existing pie-chart.This method finds all the charts in the selected element and returns of list of their clones.</p>
-<p>The cloneFusionCharts method accepts two arguments:</p>
-<ul>
-<li><p>An anonymous callback function: An array of cloned charts (in this Array) is passed to this function for further processing</p>
-</li>
-<li><p>A configuration object: An object containing chart configurations which are applied to each cloned chart</p>
-</li>
-</ul>
-<h3 id="prependfuioncharts-method">prependFuionCharts Method</h3>
-<p>Renders and inserts charts at the beginning of selected HTML elements. The HTML elements need to be selected using jQuery selector. In case multiple HTML elements are selected, chart will be rendered inside each selected HTML element. All existing elements inside the selected elements will be preserved. The method returns the original jQuery selection to allow chaining of other jQuery methods. </p>
-<p>An object of chart configurations (set of key, value pairs) can be passed as parameter. Click here to view complete list of chart configurations.</p>
-<pre><code>$(&#39;#chart-container&#39;).insertFusionCharts({
-    type: &#39;pie2d&#39;,
-    width: &#39;450&#39;,
-    height: &#39;300&#39;,
-    dataFormat: &#39;json&#39;,
-    dataSource: {
-        &quot;chart&quot;: {
-            ...
-        },
-        &quot;data&quot;: [
-            ...
-        ]
-    }
-});
+                    <div class="h4 mt-5">Rendering charts using jQuery</div>
 
-$(&#39;#btnClone&#39;).click(function() {
-    // Clone the chart to create a column chart representation of the same data
-    $(â€˜#chart-containerâ€™).cloneFusionCharts(function() {
-        // Prepend the cloned chart to the same chart container
-        $(â€˜#chart-containerâ€™).prependFusionCharts(this[0]);
-    }, {
-        &#39;id&#39;: &#39;chart-clone&#39;,
-        &#39;type&#39;: &#39;column2d&#39;
-    });
-});
-</code></pre><p>Similar to the appendFusionCharts method example, the cloneFusionCharts method is used here to clone the existing pie chart, which is then prepended as a column chart.</p>
-<p>There! You have now seen the various methods you can use to render charts using the jQuery plugin.</p>
-<p>More detailed information and documentation can be found <a href="http://docs.fusioncharts.com/tutorial-using-with-javascript-libraries-jquery-introduction.html">here</a>.</p>
+                    <p class="code-desc mb-1">For rendering new charts, you can use the following jQuery methods:</p>
 
+                    <ul>
+                        <li>insertFusionCharts</li>
+                        <li>appendFusionCharts</li>
+                        <li>prependFusionCharts</li>
+                    </ul>
+
+                    <div class="row mt-2">
+                        <div class="col-12 pt-1">
+                            <div class="h6">
+                                <span>insertFusionCharts Method:</span>
+                            </div>
+                            <p class="code-desc mt-1 mb-1">
+                                Renders charts inside HTML elements. The HTML elements have to be selected using jQuery selector. In case, multiple HTML elements are selected using the jQuery selector, a chart will be rendered inside each selected HTML element. All existing elements inside the selected elements will be replaced by the rendered charts. This method returns the jQuery selected element to allow chaining with other jQuery methods.
+                            </p>
+                            <p class="code-desc mt-2 mb-1">
+                                An object of chart configurations (set of key, value pairs) can be passed as parameter. Click here to view complete list of chart configurations.
+                            </p>
+                            <div class="code-view mt-2">
+                                <div class="card-shadow">
+                                    <div class="card-body p-0">
+                                        <div class="code-panel">
+                                            <div class="codeMirrorDiv" id="c5"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col-12 pt-1">
+                            <div class="h6">
+                                <span>appendFusionCharts Method:</span>
+                            </div>
+                            <p class="code-desc mt-1 mb-1">
+                                Renders charts at the end of selected HTML elements. The HTML elements need to be selected using jQuery selector. In case multiple HTML elements are selected, chart will be rendered inside each selected HTML element. All existing elements inside the selected elements will be preserved. The method returns the original jQuery selection to allow chaining of other jQuery methods.
+                            </p>
+                            <p class="code-desc mt-2 mb-1">
+                                An object of chart configurations (set of key, value pairs) can be passed as parameter. Click here to view complete list of chart configurations.
+                            </p>
+                            <div class="code-view mt-2">
+                                <div class="card-shadow">
+                                    <div class="card-body p-0">
+                                        <div class="code-panel">
+                                            <div class="codeMirrorDiv" id="c6"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class="code-desc mb-1">In the above example, the horizontal linear gauge has been rendered using the insertFusionCharts method. The constructor object is passed as an argument to the insertFusionCharts method</p>
+                            <p class="code-desc mb-1">In the above code snippet, the cloneFusionCharts method is used to create a column-chart clone of the existing pie-chart.This method finds all the charts in the selected element and returns of list of their clones.</p>
+                            <p class="code-desc mb-1">The cloneFusionCharts method accepts two arguments:</p>
+                            <ul>
+                                <li>An anonymous callback function: An array of cloned charts (in this Array) is passed to this function for further processing</li>
+                                <li>A configuration object: An object containing chart configurations which are applied to each cloned chart</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col-12 pt-1">
+                            <div class="h6">
+                                <span>prependFuionCharts Method:</span>
+                            </div>
+                            <p class="code-desc mt-1 mb-1">
+                                Renders and inserts charts at the beginning of selected HTML elements. The HTML elements need to be selected using jQuery selector. In case multiple HTML elements are selected, chart will be rendered inside each selected HTML element. All existing elements inside the selected elements will be preserved. The method returns the original jQuery selection to allow chaining of other jQuery methods.
+                            </p>
+                            <p class="code-desc mt-2 mb-1">
+                                An object of chart configurations (set of key, value pairs) can be passed as parameter. Click here to view complete list of chart configurations.
+                            </p>
+                            <div class="code-view mt-2">
+                                <div class="card-shadow">
+                                    <div class="card-body p-0">
+                                        <div class="code-panel">
+                                            <div class="codeMirrorDiv" id="c7"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="code-desc mb-1">Similar to the appendFusionCharts method example, the cloneFusionCharts method is used here to clone the existing pie chart, which is then prepended as a column chart.</p>
+                    <p class="code-desc mb-1">There! You have now seen the various methods you can use to render charts using the jQuery plugin.</p>
+                    <p class="code-desc mb-1">More detailed information and documentation can be found here.</p>
+
+                    <!-- steps end -->
+                    <div class="row">
+                        <div class="col-12 pt-3">
+                            <div class="h5">Support</div>
+                            <p>
+                                <a class="ref-link" href="//github.com/fusioncharts/fusioncharts-jquery-plugin/issues" target="_blank">GitHub Issues</a> |
+                                <a class="ref-link" href="mailto:support@fusioncharts.com" target="_blank">Contact FusionCharts Support</a>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- licensing footer starts -->
+                    <div class="row">
+                        <div class="col-12 pt-3">
+                            <div class="h5">Licensing</div>
+                            <p>jQuery-FusionCharts module is licensed under open-source, distributed under the terms of the MIT/X11
+                                License. You will still need to include FusionCharts in your page, as this project provides
+                                no direct functionality. You can download a free evaluation version
+                                <a class="ref-link" href="//www.fusioncharts.com/download/" target="_blank">here</a>. To use in a commercial environment, please
+                                <a class="ref-link" href="//www.fusioncharts.com/buy/" target="_blank">purchase a FusionCharts license</a>.</p>
+                        </div>
+                    </div>
+                    <!-- licensing footer ends -->
+                    <!-- info section end -->
                 </div>
+
+                <!-- footer start -->
+                <div id="footbar" class="row text-center mt-2">
+                    <div class="col-12">
+                        <p class="foot-item pt-4">© 2002-2018 InfoSoft Global Private Limited. All Rights Reserved.</p>
+                    </div>
+                </div>
+                <!-- footer end -->
             </div>
         </div>
-    </body>
+        <script src="./assets/scripts/samples.js"></script>
+        <script src="./assets/scripts/app.js"></script>
+
+</body>
+
 </html>
