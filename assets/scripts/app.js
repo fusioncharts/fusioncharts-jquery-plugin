@@ -130,14 +130,14 @@ var btn = document.getElementById("mobileChart-selector");
 
 // When the user clicks the button, open the modal
 btn.onclick = function() {
-    modal.style.display = "block";
+  modal.style.display = "block";
 }
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
+modal.onclick = function(event) {
+    // if (event.target == modal) {
         modal.style.display = "none";
-    }
+    // }
 }
 
 // Samples
@@ -152,7 +152,7 @@ var tabMode = {
   "data": "javascript"
 };
 
-Array.from(document.querySelectorAll(".side-nav .nav-item")).forEach(
+Array.from(document.querySelectorAll(".nav-list .nav-item")).forEach(
   item => {
     item.onclick = function(event) {
       // Get the tab ID and Chart ID
@@ -163,11 +163,15 @@ Array.from(document.querySelectorAll(".side-nav .nav-item")).forEach(
 
       if (tabID && activeBtnID) {
         // Switch the selected tab
-        document.querySelector(".side-nav .nav-item.selected").classList.remove("selected");
+        Array.from(document.querySelectorAll(".nav-list .nav-item.selected")).forEach(
+          item => {
+            item.classList.remove("selected");
+          }
+        );
         event.currentTarget.classList.add("selected");
 
         // Change the sample iframe src
-        document.getElementById("chart-container").src = window.location.href + "/samples/" + tabID + "/";
+        document.getElementById("chart-container").src = window.location.href + "samples/" + tabID + "/";
         document.getElementById("chart-container").className = '';
         document.getElementById("chart-container").classList.add(tabID);
 
@@ -178,6 +182,9 @@ Array.from(document.querySelectorAll(".side-nav .nav-item")).forEach(
         } else {
           jsonCode.setOption("mode", tabMode[activeBtnID]);
         }
+
+        // Set the mobile select active title
+        document.querySelector('#mobileChart-selector .selector').innerText = event.currentTarget.innerText;
       }
     }
   }
@@ -189,7 +196,7 @@ Array.from(document.querySelectorAll(".code-nav-btns button")).forEach(
       var btnID = (event.currentTarget.getAttribute("data-id"));
 
       // Get the active tab
-      var activeTabID = document.querySelector(".side-nav .nav-item.selected").getAttribute("data-id");
+      var activeTabID = document.querySelector(".nav-list .nav-item.selected").getAttribute("data-id");
 
       if (btnID && activeTabID) {
         // Switch the selected button

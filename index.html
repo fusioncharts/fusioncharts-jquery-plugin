@@ -5,6 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="./favicon.ico">
     <!-- CSS Resources -->
     <link rel="stylesheet" href="//s3-eu-west-1.amazonaws.com/fcdesignsystem/1.0.0/css/fusionDesign.css">
     <link rel="stylesheet" href="./assets/css/style.css">
@@ -18,7 +19,7 @@
     <script src="./assets/scripts/javascript.min.js"></script>
     <script src="./assets/scripts/xml.js"></script>
     <script src="./assets/scripts/htmlembedded.js"></script>
-    <title>jQuery Component for FusionCharts JavaScript Charting Library</title>
+    <title>jQuery FusionCharts</title>
 
     <!-- Extra resources for demo purpose (can be removed) -->
     <!-- <script src="//static.fusioncharts.com/code/latest/fusioncharts.js"></script> -->
@@ -130,7 +131,7 @@
                         <div class="row">
                             <div class="col-12 d-flex justify-content-center d-md-none">
                                 <div id="mobileChart-selector" class="base-dropdown chart-selector">
-                                    <div class="selector">A Simple Column Chart</div>
+                                    <div class="selector">A Simple Chart</div>
                                     <div class="placeholder">Quick Demo:</div>
                                     <div class="caret">
                                         <i class="fc_dropdown"></i>
@@ -144,23 +145,47 @@
                             <!-- Modal content -->
                             <div class="modal-content">
                                 <div class="nav-list">
-                                    <div class="nav-item selected">
-                                        <div class="p">A Simple Column Chart</div>
+                                    <div data-id="simple-chart" class="nav-item selected">
+                                        <div class="p">A Simple Chart</div>
                                     </div>
-                                    <div class="nav-item">
+                                    <div data-id="3d-pie-chart"class="nav-item">
                                         <div class="p">A 3D Pie Chart</div>
                                     </div>
-                                    <div class="nav-item">
-                                        <div class="p">A Column, Area and Line Combi Chart</div>
+                                    <div data-id="column-line-area-combi-chart" class="nav-item">
+                                        <div class="p">A Column, Line and Area Combi Chart</div>
                                     </div>
-                                    <div class="nav-item">
+                                    <div data-id="fetch-data-from-json-url" class="nav-item">
                                         <div class="p">Fetch data from JSON URL</div>
                                     </div>
-                                    <div class="nav-item">
+                                    <div data-id="fetch-data-from-xml-url" class="nav-item">
+                                        <div class="p">Fetch data from XML URL</div>
+                                    </div>
+                                    <div data-id="update-chart-data" class="nav-item">
                                         <div class="p">Update chart data from component</div>
                                     </div>
-                                    <div class="nav-item">
+                                    <div data-id="update-chart-attributes" class="nav-item">
+                                        <div class="p">Update chart attribute from component</div>
+                                    </div>
+                                    <div data-id="trigger-events-from-chart" class="nav-item">
                                         <div class="p">Trigger events from chart</div>
+                                    </div>
+                                    <div data-id="percentage-calculation" class="nav-item">
+                                        <div class="p">Percentage Calculation</div>
+                                    </div>
+                                    <div data-id="export-charts" class="nav-item">
+                                        <div class="p">Export multiple charts</div>
+                                    </div>
+                                    <div data-id="drill-down" class="nav-item">
+                                        <div class="p">Add drill-down to chart</div>
+                                    </div>
+                                    <div data-id="simple-gauge" class="nav-item">
+                                        <div class="p">A simple gauge</div>
+                                    </div>
+                                    <div data-id="world-map" class="nav-item">
+                                        <div class="p">World Map</div>
+                                    </div>
+                                    <div data-id="apply-theme" class="nav-item">
+                                        <div class="p">Applying a different theme</div>
                                     </div>
                                 </div>
                             </div>
@@ -482,7 +507,7 @@
                 </div>
 
                 <!-- footer start -->
-                <div id="footbar" class="row text-center mt-2">
+                <div id="footbar" class="text-center mt-2">
                     <div class="col-12">
                         <p class="foot-item pt-4">© 2002-2018 InfoSoft Global Private Limited. All Rights Reserved.</p>
                     </div>
