@@ -1,4 +1,3 @@
-var FusionCharts = require('fusioncharts');
 var jQuery = require('jquery');
 var HTMLTableTranscoder = require('./transcoder-htmltable/transcoder-htmltable');
 
@@ -675,4 +674,3 @@ jQ.extend(jQ.expr[':'], {
         return (obj.FusionCharts instanceof FusionCharts);
     }
 });
-// }
