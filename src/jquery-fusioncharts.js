@@ -437,6 +437,17 @@ jQ.fn.updateFusionCharts = function (options) {
 };
 
 /**
+ *  @id: jQuery.fn.getFusionCharts
+ *  @id: $.fn.getFusionCharts
+ *
+ *  @return {object} Contains list of HTML elements that have the
+ *  FusionCharts object.
+ */
+jQ.fn.getFusionCharts = function() {
+    return getChartObjectsFromSelection(this);
+};
+
+/**
  *  @id: jQuery.fn.cloneFusionCharts
  *  @id: $.fn.cloneFusionCharts
  *
