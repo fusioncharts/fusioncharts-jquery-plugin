@@ -191,7 +191,6 @@ In addition to using all the existing features, the jQuery plugin lets you do th
         <div id="chart-container">FusionCharts will render here...</div>
 
         <script type="text/javascript">
-            console.log(jQuery);
             $('document').ready(function () {
                 $("#chart-container").insertFusionCharts({
                     type: "column2d",
@@ -355,6 +354,189 @@ Similar to the appendFusionCharts method example, the cloneFusionCharts method i
 There! You have now seen the various methods you can use to render charts using the jQuery plugin.
 
 More detailed information and documentation can be found [here](http://docs.fusioncharts.com/tutorial-using-with-javascript-libraries-jquery-introduction.html).
+
+
+## Working with Events
+
+To attach events to FusionCharts element, you can use bind or on with jQuery selectors.
+
+The event name string should be of the pattern 'fusioncharts[event name in lowercase]', eg. to attach an event listener to dataplotRollOver, the string will be 'fusionchartsdataplotrollover'.
+
+```javascript
+$("#chart-container").on('fusioncharts[event name in lowercase]', function(eventObj, dataObj) {
+    [code goes here]
+});
+```
+
+###### Consider the example below that tracks hover events on a data plot.
+
+```javascript
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jQuery FusionCharts Plugin Sample</title>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/fusioncharts/fusioncharts.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/fusioncharts/themes/fusioncharts.theme.fusion.js"></script>
+        <script type="text/javascript" src="https://rawgit.com/fusioncharts/fusioncharts-jquery-plugin/develop/dist/fusioncharts.jqueryplugin.min.js"></script>
+    </head>
+    <body>
+
+        <div id="chart-container">FusionCharts will render here...</div>
+				<p style="padding: 10px;background: #f5f2f0;text-align: center;">Hover on the plot to see the value along with the label</p>
+
+        <script type="text/javascript">
+            $('document').ready(function () {
+                $("#chart-container").insertFusionCharts({
+                    type: "column2d",
+                    width: "500",
+                    height: "300",
+                    dataFormat: "json",
+                    dataSource: {
+                        "chart": {
+                            "caption": "Countries With Most Oil Reserves [2017-18]",
+                            "subCaption": "In MMbbl = One Million barrels",
+                            "xAxisName": "Country",
+                            "yAxisName": "Reserves (MMbbl)",
+                            "numberSuffix": "K",
+                            "theme": "fusion"
+                        },
+                        "data": [
+                            {
+                                "label": "Venezuela",
+                                "value": "290"
+                            },
+                            {
+                                "label": "Saudi",
+                                "value": "260"
+                            },
+                            {
+                                "label": "Canada",
+                                "value": "180"
+                            },
+                            {
+                                "label": "Iran",
+                                "value": "140"
+                            },
+                            {
+                                "label": "Russia",
+                                "value": "115"
+                            },
+                            {
+                                "label": "UAE",
+                                "value": "100"
+                            },
+                            {
+                                "label": "US",
+                                "value": "30"
+                            },
+                            {
+                                "label": "China",
+                                "value": "30"
+                            }
+                        ]
+                    }
+                });
+                $("#chart-container").on('fusionchartsdataplotrollover', function(eventObj, dataObj) {
+                    $('body p').text('You’re are currently hovering over ' + dataObj.categoryLabel + ' whose value is ' + dataObj.displayValue);
+                });
+            });
+        </script>
+    </body>
+</html>
+```
+
+## Working with APIs
+
+To call APIs we will need the chart object. To get the chart object, use the method getFusionCharts. It returns an array of all chart objects inside the given selector. Once you have the chart object, you can use any FusionCharts API on it.
+
+```javascript
+var chartObjects = $("#chart-container").getFusionCharts();
+chartObjects.forEach(function (chart) {
+    chart.[API Call]
+});
+```
+
+###### Consider the example below that converts a Column 2D chart to a Pie 2D chart after 5 seconds.
+
+```javascript
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jQuery FusionCharts Plugin Sample</title>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/fusioncharts/fusioncharts.js"></script>
+        <script type="text/javascript" src="https://unpkg.com/fusioncharts/themes/fusioncharts.theme.fusion.js"></script>
+        <script type="text/javascript" src="https://rawgit.com/fusioncharts/fusioncharts-jquery-plugin/develop/dist/fusioncharts.jqueryplugin.min.js"></script>
+    </head>
+    <body>
+
+        <div id="chart-container">FusionCharts will render here...</div>
+
+        <script type="text/javascript">
+            $('document').ready(function () {
+                $("#chart-container").insertFusionCharts({
+                    type: "column2d",
+                    width: "500",
+                    height: "300",
+                    dataFormat: "json",
+                    dataSource: {
+                        "chart": {
+                            "caption": "Countries With Most Oil Reserves [2017-18]",
+                            "subCaption": "In MMbbl = One Million barrels",
+                            "xAxisName": "Country",
+                            "yAxisName": "Reserves (MMbbl)",
+                            "numberSuffix": "K",
+                            "theme": "fusion"
+                        },
+                        "data": [
+                            {
+                                "label": "Venezuela",
+                                "value": "290"
+                            },
+                            {
+                                "label": "Saudi",
+                                "value": "260"
+                            },
+                            {
+                                "label": "Canada",
+                                "value": "180"
+                            },
+                            {
+                                "label": "Iran",
+                                "value": "140"
+                            },
+                            {
+                                "label": "Russia",
+                                "value": "115"
+                            },
+                            {
+                                "label": "UAE",
+                                "value": "100"
+                            },
+                            {
+                                "label": "US",
+                                "value": "30"
+                            },
+                            {
+                                "label": "China",
+                                "value": "30"
+                            }
+                        ]
+                    }
+                });
+
+                setTimeout(() => {
+                    var chartObjects = $("#chart-container").getFusionCharts();
+                    chartObjects.forEach(function (chart) {
+                        chart.chartType('pie2d');
+                    });
+                }, 5000);
+            });
+        </script>
+    </body>
+</html>
+```
 
 ## Demo & Examples
 
