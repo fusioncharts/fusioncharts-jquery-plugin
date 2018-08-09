@@ -515,6 +515,21 @@ jQ.fn.updateFusionCharts = function (options) {
 };
 
 /**
+ *  @id: jQuery.fn.getFusionCharts
+ *  @id: $.fn.getFusionCharts
+ *
+ *  @return {object} Contains an array of FusionCharts chart objects.
+ */
+jQ.fn.getFusionCharts = function () {
+    var charts = getChartObjectsFromSelection(this);
+    var chartArr = [];
+    charts.each(function () {
+        chartArr.push(this.FusionCharts);
+    });
+    return chartArr;
+};
+
+/**
  *  @id: jQuery.fn.cloneFusionCharts
  *  @id: $.fn.cloneFusionCharts
  *
