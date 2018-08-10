@@ -23,6 +23,7 @@ Thumbs.db
 # - Prevent NetBeans IDE files from being commited to repository
 nbproject/
 
+
 # - Prevent extra `jshint` configuration from being committed from anywhere. Only `package.json` will be used as
 #   accepted source of config.
 .jshintrc
@@ -36,4 +37,15 @@ nbproject/
 *.LOCAL.*
 *.REMOTE.*
 *.orig
+
+# ----------------------------------------------------------------------------------------------------------------------
+# NPMIGNORE ADDITIONS
+# ===================
+
+
+# - Do not distribute source code
+/src/
+
+# - Do not distribute submodule sources
+/.gitmodules
 
