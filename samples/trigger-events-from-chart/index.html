@@ -27,7 +27,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <!-- FusionCharts -->
     <script src="../../assets/scripts/fusioncharts/fusioncharts.js"></script>
-    <script src="../../assets/scripts/fusioncharts.theme.fusion.js"></script>
+    <script src="../../assets/scripts/fusioncharts/themes/fusioncharts.theme.fusion.js"></script>
     <!-- jQuery-FC -->
     <script src="../../assets/scripts/fusioncharts.jqueryplugin.min.js"></script>
 
@@ -86,7 +86,10 @@
           });
 
       $('#chart-container').bind('fusionchartsdataplotrollover', function(event, args) {
-        $('#message').text('You’re are currently hovering over ' + args.categoryLabel + ' whose value is ' + args.displayValue);
+        $('#message').text('You are currently hovering over ' + args.categoryLabel + ' whose value is ' + args.displayValue);
+      });
+      $('#chart-container').bind('fusionchartsdataplotrollout', function(event, args) {
+        $('#message').text('Hover on the plot to see the value along with the label');
       });
     });
   </script>
