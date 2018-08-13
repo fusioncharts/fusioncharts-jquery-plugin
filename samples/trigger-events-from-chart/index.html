@@ -86,10 +86,10 @@
           });
 
       $('#chart-container').bind('fusionchartsdataplotrollover', function(event, args) {
-        $('#message').text('You are currently hovering over ' + args.categoryLabel + ' whose value is ' + args.displayValue);
+        $('#message').html('You are currently hovering over <b>' + args.categoryLabel + '</b> whose value is <b>' + args.displayValue + '</b>');
       });
       $('#chart-container').bind('fusionchartsdataplotrollout', function(event, args) {
-        $('#message').text('Hover on the plot to see the value along with the label');
+        $('#message').html('Hover on the plot to see the value along with the label');
       });
     });
   </script>
