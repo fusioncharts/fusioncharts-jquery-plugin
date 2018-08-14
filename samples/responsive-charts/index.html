@@ -84,6 +84,15 @@
     .change-type input:checked~label:after {
       background: #55bd8d;
     }
+    #config-container {
+      display: flex;
+      position: absolute;
+      bottom: 2px;
+      left: 15%;
+    }
+    #chart-container {
+      margin-top: 0px;
+    }
   </style>
 </head>
 
@@ -93,7 +102,7 @@
     <![endif]-->
 
   <div id="chart-container"></div>
-  <div style='display: flex; justify-content: center'>
+  <div id="config-container">
     <span id="select-text">Choose a dimension:</span>
     <div class="change-type">
       <div id="radio1" onclick="click(400, 250)">

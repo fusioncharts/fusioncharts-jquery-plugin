@@ -12,6 +12,30 @@
     <link rel="stylesheet" href="//s3-eu-west-1.amazonaws.com/fcdesignsystem/1.0.0/css/fusionDesign.css">
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="../../assets/css/fusioncharts.theme.fusion.css" />
+    <style>
+        .btn {
+            font-family: 'Source Sans Pro';
+            margin: 5px;
+        }
+
+        .btn.btn-primary {
+            background: #4a4d8c;
+            transition: all 300ms;
+        }
+
+        .btn.btn-primary:hover {
+            background: #5c62b5;
+        }
+
+        .btn.btn-primary:active {
+            background: #4a4d8c
+        }
+        #btn-container {
+            bottom: 0px;
+            left: 22%;
+            position: absolute;
+        }
+    </style>
   </head>
   <body>
     <!--[if lt IE 7]>
@@ -19,11 +43,11 @@
     <![endif]-->
 
     <div id="chart-container"></div>
-    <center>
-      <button class='btn btn-custom' id="change-background">Change Background</button>
-      <button class='btn btn-custom' id="change-caption-alignment">Change Caption Alignment</button>
-      <button class="btn btn-red" id="reset-chart">Reset</button>
-    </center>
+    <div id="btn-container">
+      <button class='btn btn-outline-secondary btn-sm' id="change-background">Change Background</button>
+      <button class='btn btn-outline-secondary btn-sm' id="change-caption-alignment">Change Caption Alignment</button>
+      <button class="btn btn-outline-secondary btn-sm" id="reset-chart">Reset</button>
+    </div>
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -84,7 +108,7 @@
         $("#chart-container").insertFusionCharts({
             type: "column2d",
             width: "100%",
-            height: "85%",
+            height: "90%",
             dataFormat: "json",
             dataSource: dataSource
         });

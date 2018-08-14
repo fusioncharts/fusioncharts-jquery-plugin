@@ -86,13 +86,21 @@
         }
       </style>
   </head>
+  <style>
+    #config-container {
+      display: flex;
+      position: absolute;
+      bottom: 1px;
+      left: 15%;
+    }
+  </style>
   <body>
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <div id="chart-container"></div>
-    <div style='display: flex; justify-content: center'>
+    <div id="config-container">
       <span id="select-text">Choose a chart:</span>
       <div class="change-type">
         <div id="radio1" onclick="click(400, 250)">

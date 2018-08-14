@@ -12,6 +12,15 @@
     <link rel="stylesheet" href="//s3-eu-west-1.amazonaws.com/fcdesignsystem/1.0.0/css/fusionDesign.css">
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="../../assets/css/fusioncharts.theme.fusion.css" />
+    <style>
+        #message {
+            position: absolute;
+            bottom: 0px;
+            text-align: center;
+            width: 100%;
+            margin: 0px;
+        }
+    </style>
   </head>
   <body>
     <!--[if lt IE 7]>
@@ -83,16 +92,19 @@
         $("#chart-container").insertFusionCharts({
             type: "column2d",
             width: "100%",
-            height: "85%",
+            height: "90%",
             dataFormat: "json",
             dataSource: dataSource
         });
 
         $('#chart-container').bind('fusionchartsdataplotrollover', function(event, args) {
           let value = (args.value / total * 100).toFixed(2);
-          $('#message').text(args.categoryLabel + " is " + value + "% of the total");
+          $('#message').html("<b>" + args.categoryLabel + "</b> is <b>" + value + "%</b> of the total");
         });
-
+        $('#chart-container').bind('fusionchartsdataplotrollout', function(event, args) {
+          let value = (args.value / total * 100).toFixed(2);
+          $('#message').html("Hover on the plot to see the percentage along with the label");
+        });
       });
     </script>
 
