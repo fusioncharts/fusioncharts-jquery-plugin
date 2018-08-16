@@ -164,18 +164,16 @@
             dataSource: dataSource
         });
 
-        $('#chart-container').bind('fusionchartsrendered', function(event, args) {
-          FusionCharts.items['drill-down-chart'].configureLink({
+        FusionCharts.items['drill-down-chart'].configureLink({
             type: 'pie2d',
             width: '100%',
             overlayButton: {
-              message: 'Back',
-              fontColor: '880000',
-              bgColor: 'FFEEEE',
-              borderColor: '660000',
-            },
-          }, 0);
-        });
+                message: 'Back',
+                fontColor: '880000',
+                bgColor: 'FFEEEE',
+                borderColor: '660000',
+            }
+        }, 0);
 
       });
     </script>

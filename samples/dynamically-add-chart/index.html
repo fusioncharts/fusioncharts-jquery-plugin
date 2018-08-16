@@ -41,9 +41,9 @@
     <div style="padding: 0px; background: rgb(255, 255, 255);" id='message'>
         Click on <b>TRACK DATA PLOT CLICK</b> button to listen to dataplotclick event
     </div>
-    <div style='display: flex; justify-content: center; margin: 0px'>
-        <a class="btn btn-outline-secondary btn-sm" onclick="track()">Track Data Plot Clicks</a>
-        <a class="btn btn-outline-secondary btn-sm" onclick="reset()">Reset</a>
+    <div style="display: flex; justify-content: center; margin: 0px">
+        <a class="btn btn-outline-secondary btn-sm" id="track-link" >Track Data Plot Clicks</a>
+        <a class="btn btn-outline-secondary btn-sm" id="reset-link" >Reset</a>
     </div>
 
     <!-- jQuery -->
@@ -56,15 +56,16 @@
 
 
     <script type="text/javascript">
-        function track () {
-            $("#chart-container").bind('fusionchartsdataplotclick', function (event, data) {
-                $('#message').text("You have clicked on plot " + data.categoryLabel + " whose value is " + data.displayValue);
+        $('#track-link').click(function () {
+            $('#message').html('Click on the plot to see the value along with the label');
+            $('#chart-container').bind('fusionchartsdataplotclick', function (event, data) {
+                $('#message').html('You have clicked on plot <b>' + data.categoryLabel + '</b> whose value is <b>' + data.displayValue + '</b>');
             });
-        }
-        function reset () {
-            $("#chart-container").unbind('fusionchartsdataplotclick');
-            $("#message").html("Click on <b>TRACK DATA PLOT CLICK</b> button to listen to dataplotclick event");
-        }
+        });
+        $('#reset-link').click(function () {
+            $('#chart-container').unbind('fusionchartsdataplotclick');
+            $('#message').html('Click on <b>TRACK DATA PLOT CLICK</b> button to listen to dataplotclick event');
+        });
         jQuery('document').ready(function () {
             var dataSource = {
                 "chart": {

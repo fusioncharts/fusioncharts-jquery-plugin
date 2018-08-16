@@ -39,8 +39,8 @@
 
     <div id="chart-container"></div>
     <div style='display: flex; justify-content: center; margin: 0px'>
-        <a class="btn btn-outline-secondary btn-sm" onclick="track()">SLICE OUT MICROSOFT</a>
-        <a class="btn btn-outline-secondary btn-sm" onclick="reset()">RESET</a>
+        <a class="btn btn-outline-secondary btn-sm" id="track-link">SLICE OUT MICROSOFT</a>
+        <a class="btn btn-outline-secondary btn-sm" id="reset-link">RESET</a>
     </div>
 
     <!-- jQuery -->
@@ -53,48 +53,48 @@
 
 
     <script type="text/javascript">
-      var chart;
-      function track () {
-          FusionCharts.items['pie-slice-chart'].slicePlotItem(1, true);
-      }
-      function reset () {
-        FusionCharts.items['pie-slice-chart'].slicePlotItem(1, false);
-      }
-      jQuery('document').ready(function () {
-          var dataSource = {
-              "chart": {
-              "caption": "Market Share of Web Servers",
-              "plottooltext": "<b>$percentValue</b> of web servers run on $label servers",
-              "showLegend": "1",
-              "showPercentValues": "1",
-              "legendPosition": "bottom",
-              "useDataPlotColorForLabels": "1",
-              "theme": "fusion",
-              },
-              "data": [{
-              "label": "Apache",
-              "value": "32647479"
-              }, {
-              "label": "Microsoft",
-              "value": "22100932"
-              }, {
-              "label": "Zeus",
-              "value": "14376"
-              }, {
-              "label": "Other",
-              "value": "18674221"
-              }]
-          };
+        var chart;
+        $('#track-link').click(function () {
+            FusionCharts.items['pie-slice-chart'].slicePlotItem(1, true);
+        });
+        $("#reset-link").click(function () {
+            FusionCharts.items['pie-slice-chart'].slicePlotItem(1, false);
+        });
+        jQuery('document').ready(function () {
+            var dataSource = {
+                "chart": {
+                "caption": "Market Share of Web Servers",
+                "plottooltext": "<b>$percentValue</b> of web servers run on $label servers",
+                "showLegend": "1",
+                "showPercentValues": "1",
+                "legendPosition": "bottom",
+                "useDataPlotColorForLabels": "1",
+                "theme": "fusion",
+                },
+                "data": [{
+                "label": "Apache",
+                "value": "32647479"
+                }, {
+                "label": "Microsoft",
+                "value": "22100932"
+                }, {
+                "label": "Zeus",
+                "value": "14376"
+                }, {
+                "label": "Other",
+                "value": "18674221"
+                }]
+            };
 
-          $("#chart-container").insertFusionCharts({
-              id: "pie-slice-chart",
-              type: "pie2d",
-              width: "100%",
-              height: "90%",
-              dataFormat: "json",
-              dataSource: dataSource
-          });
-      });
+            $("#chart-container").insertFusionCharts({
+                id: "pie-slice-chart",
+                type: "pie2d",
+                width: "100%",
+                height: "90%",
+                dataFormat: "json",
+                dataSource: dataSource
+            });
+        });
       
     </script>
 

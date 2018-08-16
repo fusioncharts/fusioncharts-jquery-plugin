@@ -116,11 +116,11 @@
 
         // Data update handler code
 
-        var btnBG = document.getElementById('change-background');
-        var btnCA = document.getElementById('change-caption-alignment');
-        var btnReset = document.getElementById('reset-chart');
+        var btnBG = $('#change-background');
+        var btnCA = $('#change-caption-alignment');
+        var btnReset = $('#reset-chart');
 
-        btnBG.addEventListener('click', function() {
+        btnBG.click(function() {
           var dataArrayNew = $.extend({}, dataSource);
           dataArrayNew.chart.bgColor = '#efefef';
           $('#chart-container').updateFusionCharts({
@@ -129,7 +129,7 @@
           });
         });
 
-        btnCA.addEventListener('click', function() {
+        btnCA.click(function() {
           var dataArrayNew = $.extend({}, dataSource);
           dataArrayNew.chart.captionAlignment = 'left';
           $('#chart-container').updateFusionCharts({
@@ -138,7 +138,7 @@
           });
         });
 
-        btnReset.addEventListener('click', function() {
+        btnReset.click(function() {
           var dataArrayNew = JSON.parse(JSON.stringify(dataSourceOrg));
           dataSource = JSON.parse(JSON.stringify(dataSourceOrg));
           $('#chart-container').updateFusionCharts({
