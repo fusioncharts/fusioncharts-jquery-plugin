@@ -122,7 +122,7 @@
           return Math.round(((max - min) * Math.random()) + min);
         }
 
-        btn.addEventListener('click', function() {
+        btn.click(function() {
           var dataArrayNew = $.extend({}, dataSource);
           dataArrayNew.data[2].value = getRandomNumber();
           dataArrayNew.data[3].value = getRandomNumber();

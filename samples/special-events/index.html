@@ -2,8 +2,11 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-  <head>
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title></title>
@@ -21,8 +24,9 @@
             margin: 0px;
         }
     </style>
-  </head>
-  <body>
+</head>
+
+<body>
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -42,94 +46,96 @@
 
 
     <script type="text/javascript">
-      jQuery('document').ready(function () {
-        var dataSource = {
-            "chart": {
-            "caption": "App Publishing Trend",
-            "subCaption": "2012-2016",
-            "xAxisName": "Years",
-            "yAxisName" : "Total number of apps in store",
-            "formatnumberscale": "1",
-            "drawCrossLine":"1",
-            "plotToolText" : "<b>$dataValue</b> apps on $seriesName in $label",
-            "theme": "fusion",
-            "showvalues": "1"
-            },
+        jQuery('document').ready(function () {
+            var dataSource = {
+                    "chart": {
+                        "caption": "App Publishing Trend",
+                        "subCaption": "2012-2016",
+                        "xAxisName": "Years",
+                        "yAxisName": "Total number of apps in store",
+                        "formatnumberscale": "1",
+                        "drawCrossLine": "1",
+                        "plotToolText": "<b>$dataValue</b> apps on $seriesName in $label",
+                        "theme": "fusion",
+                        "showvalues": "1"
+                    },
 
-            "categories": [{
-            "category": [{
-                "label": "2012"
-            }, {
-                "label": "2013"
-            }, {
-                "label": "2014"
-            }, {
-                "label": "2015"
-            },{
-            "label": "2016"
-            }
-            ]
-            }],
-            "dataset": [{
-            "seriesname": "iOS App Store",
-            "data": [{
-                "value": "125000"
-            }, {
-                "value": "300000"
-            }, {
-                "value": "480000"
-            }, {
-                "value": "800000"
-            }, {
-                "value": "1100000"
-            }]
-            }, {
-            "seriesname": "Google Play Store",
-            "data": [{
-                "value": "70000"
-            }, {
-                "value": "150000"
-            }, {
-                "value": "350000"
-            }, {
-                "value": "600000"
-            },{
-                "value": "1400000"
-            }]
-            }, {
-            "seriesname": "Amazon AppStore",
-            "data": [{
-                "value": "10000"
-            }, {
-                "value": "100000"
-            }, {
-                "value": "300000"
-            }, {
-                "value": "600000"
-            },{
-                "value": "900000"
-            }]
-            }]
-        },
-        prevValue,
-        curValue;
+                    "categories": [{
+                        "category": [{
+                            "label": "2012"
+                        }, {
+                            "label": "2013"
+                        }, {
+                            "label": "2014"
+                        }, {
+                            "label": "2015"
+                        }, {
+                            "label": "2016"
+                        }]
+                    }],
+                    "dataset": [{
+                        "seriesname": "iOS App Store",
+                        "data": [{
+                            "value": "125000"
+                        }, {
+                            "value": "300000"
+                        }, {
+                            "value": "480000"
+                        }, {
+                            "value": "800000"
+                        }, {
+                            "value": "1100000"
+                        }]
+                    }, {
+                        "seriesname": "Google Play Store",
+                        "data": [{
+                            "value": "70000"
+                        }, {
+                            "value": "150000"
+                        }, {
+                            "value": "350000"
+                        }, {
+                            "value": "600000"
+                        }, {
+                            "value": "1400000"
+                        }]
+                    }, {
+                        "seriesname": "Amazon AppStore",
+                        "data": [{
+                            "value": "10000"
+                        }, {
+                            "value": "100000"
+                        }, {
+                            "value": "300000"
+                        }, {
+                            "value": "600000"
+                        }, {
+                            "value": "900000"
+                        }]
+                    }]
+                },
+                prevValue,
+                curValue;
 
-        $("#chart-container").insertFusionCharts({
-            type: "dragcolumn2d",
-            width: "100%",
-            height: "90%",
-            dataFormat: "json",
-            dataSource: dataSource
+            $("#chart-container").insertFusionCharts({
+                type: "dragcolumn2d",
+                width: "100%",
+                height: "90%",
+                dataFormat: "json",
+                dataSource: dataSource
+            });
+
+            $('#chart-container').bind('fusionchartsdataplotdragend', function (event, args) {
+                prevValue = FusionCharts.formatNumber(args.startValue.toFixed(2));
+                curValue = FusionCharts.formatNumber(args.endValue.toFixed(2));
+                $('#message').html("You have dragged a plot of <b>" + args.datasetName +
+                    "</b> dataset, its previous value was <b>" + prevValue +
+                    "</b> and its current value is <b>" + curValue + '</b>');
+            });
+
         });
-
-        $('#chart-container').bind('fusionchartsdataplotdragend', function(event, args) {
-            prevValue = FusionCharts.formatNumber(args.startValue.toFixed(2));
-            curValue = FusionCharts.formatNumber(args.endValue.toFixed(2));
-            $('#message').html("You have dragged a plot of <b>" + args.datasetName + "</b> dataset, its previous value was <b>" + prevValue + "</b> and its current value is <b>" + curValue + '</b>');
-        });
-
-      });
     </script>
 
-  </body>
+</body>
+
 </html>

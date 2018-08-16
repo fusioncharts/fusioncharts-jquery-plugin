@@ -2,8 +2,11 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-  <head>
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title></title>
@@ -12,8 +15,9 @@
     <link rel="stylesheet" href="//s3-eu-west-1.amazonaws.com/fcdesignsystem/1.0.0/css/fusionDesign.css">
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="../../assets/css/fusioncharts.theme.fusion.css" />
-  </head>
-  <body>
+</head>
+
+<body>
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -30,57 +34,54 @@
 
 
     <script type="text/javascript">
-      jQuery('document').ready(function () {
-        $("#chart-container").insertFusionCharts({
-            type: "spline",
-            width: "100%",
-            height: "100%",
-            dataFormat: "json",
-            dataSource: {
-                "chart": {
-                    "caption": "Bakersfield Central - Total footfalls",
-                    "subCaption": "Last week",
-                    "xAxisName": "Day",
-                    "yAxisName": "No. of Visitors (In 1000s)",
-                    "showValues": "0",
-                    "theme": "fusion"
-                },
-                "data": [
-                    {
-                        "label": "Mon",
-                        "value": "15123"
+        jQuery('document').ready(function () {
+            $("#chart-container").insertFusionCharts({
+                type: "spline",
+                width: "100%",
+                height: "100%",
+                dataFormat: "json",
+                dataSource: {
+                    "chart": {
+                        "caption": "Bakersfield Central - Total footfalls",
+                        "subCaption": "Last week",
+                        "xAxisName": "Day",
+                        "yAxisName": "No. of Visitors (In 1000s)",
+                        "showValues": "0",
+                        "theme": "fusion"
                     },
-                    {
-                        "label": "Tue",
-                        "value": "14233"
-                    },
-                    {
-                        "label": "Wed",
-                        "value": "25507"
-                    },
-                    {
-                        "label": "Thu",
-                        "value": "9110"
-                    },
-                    {
-                        "label": "Fri",
-                        "value": "15529"
-                    },
-                    {
-                        "label": "Sat",
-                        "value": "20803"
-                    },
-                    {
-                        "label": "Sun",
-                        "value": "19202"
-                    }
-                ],
-                "annotations": {
-                    "groups": [
+                    "data": [{
+                            "label": "Mon",
+                            "value": "15123"
+                        },
                         {
+                            "label": "Tue",
+                            "value": "14233"
+                        },
+                        {
+                            "label": "Wed",
+                            "value": "25507"
+                        },
+                        {
+                            "label": "Thu",
+                            "value": "9110"
+                        },
+                        {
+                            "label": "Fri",
+                            "value": "15529"
+                        },
+                        {
+                            "label": "Sat",
+                            "value": "20803"
+                        },
+                        {
+                            "label": "Sun",
+                            "value": "19202"
+                        }
+                    ],
+                    "annotations": {
+                        "groups": [{
                             "id": "anchor-highlight",
-                            "items": [
-                                {
+                            "items": [{
                                     "id": "high-star",
                                     "type": "circle",
                                     "x": "$dataset.0.set.2.x",
@@ -100,13 +101,13 @@
                                     "y": "$dataset.0.set.2.y-2"
                                 }
                             ]
-                        }
-                    ]
+                        }]
+                    }
                 }
-            }
+            });
         });
-      });
     </script>
 
 </body>
+
 </html>

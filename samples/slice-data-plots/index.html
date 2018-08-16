@@ -2,8 +2,11 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-  <head>
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title></title>
@@ -31,8 +34,9 @@
             background: #4a4d8c
         }
     </style>
-  </head>
-  <body>
+</head>
+
+<body>
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -53,36 +57,29 @@
 
 
     <script type="text/javascript">
-        var chart;
-        $('#track-link').click(function () {
-            FusionCharts.items['pie-slice-chart'].slicePlotItem(1, true);
-        });
-        $("#reset-link").click(function () {
-            FusionCharts.items['pie-slice-chart'].slicePlotItem(1, false);
-        });
         jQuery('document').ready(function () {
             var dataSource = {
                 "chart": {
-                "caption": "Market Share of Web Servers",
-                "plottooltext": "<b>$percentValue</b> of web servers run on $label servers",
-                "showLegend": "1",
-                "showPercentValues": "1",
-                "legendPosition": "bottom",
-                "useDataPlotColorForLabels": "1",
-                "theme": "fusion",
+                    "caption": "Market Share of Web Servers",
+                    "plottooltext": "<b>$percentValue</b> of web servers run on $label servers",
+                    "showLegend": "1",
+                    "showPercentValues": "1",
+                    "legendPosition": "bottom",
+                    "useDataPlotColorForLabels": "1",
+                    "theme": "fusion",
                 },
                 "data": [{
-                "label": "Apache",
-                "value": "32647479"
+                    "label": "Apache",
+                    "value": "32647479"
                 }, {
-                "label": "Microsoft",
-                "value": "22100932"
+                    "label": "Microsoft",
+                    "value": "22100932"
                 }, {
-                "label": "Zeus",
-                "value": "14376"
+                    "label": "Zeus",
+                    "value": "14376"
                 }, {
-                "label": "Other",
-                "value": "18674221"
+                    "label": "Other",
+                    "value": "18674221"
                 }]
             };
 
@@ -94,9 +91,16 @@
                 dataFormat: "json",
                 dataSource: dataSource
             });
+
+            $('#track-link').click(function () {
+                FusionCharts.items['pie-slice-chart'].slicePlotItem(1, true);
+            });
+            $("#reset-link").click(function () {
+                FusionCharts.items['pie-slice-chart'].slicePlotItem(1, false);
+            });
         });
-      
     </script>
 
-  </body>
+</body>
+
 </html>

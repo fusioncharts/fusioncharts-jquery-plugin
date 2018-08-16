@@ -2,8 +2,11 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-  <head>
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title></title>
@@ -31,19 +34,21 @@
             background: #4a4d8c
         }
     </style>
-  </head>
-  <body>
+</head>
+
+<body>
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <div id="chart-container"></div>
     <div style="padding: 0px; background: rgb(255, 255, 255);" id='message'>
-        Click on <b>TRACK DATA PLOT CLICK</b> button to listen to dataplotclick event
+        Click on
+        <b>TRACK DATA PLOT CLICK</b> button to listen to dataplotclick event
     </div>
     <div style="display: flex; justify-content: center; margin: 0px">
-        <a class="btn btn-outline-secondary btn-sm" id="track-link" >Track Data Plot Clicks</a>
-        <a class="btn btn-outline-secondary btn-sm" id="reset-link" >Reset</a>
+        <a class="btn btn-outline-secondary btn-sm" id="track-link">Track Data Plot Clicks</a>
+        <a class="btn btn-outline-secondary btn-sm" id="reset-link">Reset</a>
     </div>
 
     <!-- jQuery -->
@@ -56,16 +61,6 @@
 
 
     <script type="text/javascript">
-        $('#track-link').click(function () {
-            $('#message').html('Click on the plot to see the value along with the label');
-            $('#chart-container').bind('fusionchartsdataplotclick', function (event, data) {
-                $('#message').html('You have clicked on plot <b>' + data.categoryLabel + '</b> whose value is <b>' + data.displayValue + '</b>');
-            });
-        });
-        $('#reset-link').click(function () {
-            $('#chart-container').unbind('fusionchartsdataplotclick');
-            $('#message').html('Click on <b>TRACK DATA PLOT CLICK</b> button to listen to dataplotclick event');
-        });
         jQuery('document').ready(function () {
             var dataSource = {
                 "chart": {
@@ -76,8 +71,7 @@
                     "numberSuffix": "K",
                     "theme": "fusion"
                 },
-                "data": [
-                    {
+                "data": [{
                         "label": "Venezuela",
                         "value": "290"
                     },
@@ -119,8 +113,22 @@
                 dataFormat: "json",
                 dataSource: dataSource
             });
+
+            // Handlers for tracking click events
+            $('#track-link').click(function () {
+                $('#message').html('Click on the plot to see the value along with the label');
+                $('#chart-container').bind('fusionchartsdataplotclick', function (event, data) {
+                    $('#message').html('You have clicked on plot <b>' + data.categoryLabel +
+                        '</b> whose value is <b>' + data.displayValue + '</b>');
+                });
+            });
+            $('#reset-link').click(function () {
+                $('#chart-container').unbind('fusionchartsdataplotclick');
+                $('#message').html('Click on <b>TRACK DATA PLOT CLICK</b> button to listen to dataplotclick event');
+            });
         });
     </script>
 
-  </body>
+</body>
+
 </html>

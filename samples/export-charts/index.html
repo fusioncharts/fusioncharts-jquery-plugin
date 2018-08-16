@@ -2,8 +2,11 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-  <head>
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title></title>
@@ -30,21 +33,25 @@
         .btn.btn-primary:active {
             background: #4a4d8c
         }
+
         #btn-container {
             bottom: 0px;
             left: 37%;
             position: absolute;
         }
     </style>
-  </head>
-  <body>
+</head>
+
+<body>
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <div id="chart-container1"></div>
     <div id="chart-container2"></div>
-    <div id="btn-container"><button id='export' class="btn btn-outline-secondary btn-sm">Export both charts as a single PDF</button></div>
+    <div id="btn-container">
+        <button id='export' class="btn btn-outline-secondary btn-sm">Export both charts as a single PDF</button>
+    </div>
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -56,90 +63,84 @@
 
 
     <script type="text/javascript">
-      jQuery('document').ready(function () {
-        var btn = $('#export')[0];
-          var columnData = {
-              "chart": {
-                  "caption": "Countries With Most Oil Reserves [2017-18]",
-                  "subCaption": "In MMbbl = One Million barrels",
-                  "xAxisName": "Country",
-                  "yAxisName": "Reserves (MMbbl)",
-                  "numberSuffix": "K",
-                  "theme": "fusion"
-              },
-              "data": [
-                  {
-                      "label": "Venezuela",
-                      "value": "290"
-                  },
-                  {
-                      "label": "Saudi",
-                      "value": "260"
-                  },
-                  {
-                      "label": "Canada",
-                      "value": "180"
-                  },
-                  {
-                      "label": "Iran",
-                      "value": "140"
-                  },
-                  {
-                      "label": "Russia",
-                      "value": "115"
-                  },
-                  {
-                      "label": "UAE",
-                      "value": "100"
-                  },
-                  {
-                      "label": "US",
-                      "value": "30"
-                  },
-                  {
-                      "label": "China",
-                      "value": "30"
-                  }
-              ]
-          };
-          var stackedColumnData = {
-              "chart": {
-                  "caption": "Yearly Energy Production Rate",
-                  "subCaption": " Top 5 Developed Countries",
-                  "numbersuffix": " TWh",
-                  "showSum": "1",
-                  "plotToolText": "$label produces <b>$dataValue</b> of energy from $seriesName",
-                  "theme": "fusion"
+        jQuery('document').ready(function () {
+            var btn = $('#export')[0];
+            var columnData = {
+                "chart": {
+                    "caption": "Countries With Most Oil Reserves [2017-18]",
+                    "subCaption": "In MMbbl = One Million barrels",
+                    "xAxisName": "Country",
+                    "yAxisName": "Reserves (MMbbl)",
+                    "numberSuffix": "K",
+                    "theme": "fusion"
                 },
-                "categories": [
+                "data": [{
+                        "label": "Venezuela",
+                        "value": "290"
+                    },
                     {
-                        "category": [
-                            {
-                                "label": "Canada"
-                            },
-                            {
-                                "label": "China"
-                            },
-                            {
-                                "label": "Russia"
-                            },
-                            {
-                                "label": "Australia"
-                            },
-                            {
-                                "label": "United States"
-                            },
-                            {
-                                "label": "France"
-                            }
-                        ]
+                        "label": "Saudi",
+                        "value": "260"
+                    },
+                    {
+                        "label": "Canada",
+                        "value": "180"
+                    },
+                    {
+                        "label": "Iran",
+                        "value": "140"
+                    },
+                    {
+                        "label": "Russia",
+                        "value": "115"
+                    },
+                    {
+                        "label": "UAE",
+                        "value": "100"
+                    },
+                    {
+                        "label": "US",
+                        "value": "30"
+                    },
+                    {
+                        "label": "China",
+                        "value": "30"
                     }
-                ],
-                "dataSet": [
-                    {
+                ]
+            };
+            var stackedColumnData = {
+                "chart": {
+                    "caption": "Yearly Energy Production Rate",
+                    "subCaption": " Top 5 Developed Countries",
+                    "numbersuffix": " TWh",
+                    "showSum": "1",
+                    "plotToolText": "$label produces <b>$dataValue</b> of energy from $seriesName",
+                    "theme": "fusion"
+                },
+                "categories": [{
+                    "category": [{
+                            "label": "Canada"
+                        },
+                        {
+                            "label": "China"
+                        },
+                        {
+                            "label": "Russia"
+                        },
+                        {
+                            "label": "Australia"
+                        },
+                        {
+                            "label": "United States"
+                        },
+                        {
+                            "label": "France"
+                        }
+                    ]
+                }],
+                "dataSet": [{
                         "seriesName": "Coal",
-                        "data": [
-                            {
+                        "data": [{
                                 "value": "400"
                             },
                             {
@@ -161,8 +162,7 @@
                     },
                     {
                         "seriesName": "Hydro",
-                        "data": [
-                            {
+                        "data": [{
                                 "value": "350"
                             },
                             {
@@ -184,8 +184,7 @@
                     },
                     {
                         "seriesName": "Nuclear",
-                        "data": [
-                            {
+                        "data": [{
                                 "value": "210"
                             },
                             {
@@ -207,8 +206,7 @@
                     },
                     {
                         "seriesName": "Gas",
-                        "data": [
-                            {
+                        "data": [{
                                 "value": "180"
                             },
                             {
@@ -230,8 +228,7 @@
                     },
                     {
                         "seriesName": "Oil",
-                        "data": [
-                            {
+                        "data": [{
                                 "value": "60"
                             },
                             {
@@ -252,30 +249,31 @@
                         ]
                     }
                 ]
-          };
+            };
 
-          btn.addEventListener('click', function() {
-              FusionCharts.batchExport({
-                  exportFormat:'pdf'
-              });
-          });
+            btn.addEventListener('click', function () {
+                FusionCharts.batchExport({
+                    exportFormat: 'pdf'
+                });
+            });
 
-          $('#chart-container1').insertFusionCharts({
-            type: 'column2d',
-            width: 700,
-            height: 400,
-            dataFormat: 'json',
-            dataSource: columnData
-          });
-          $('#chart-container2').insertFusionCharts({
-            type: 'stackedcolumn2d',
-            width: 600,
-            height: 500,
-            dataFormat: 'json',
-            dataSource: stackedColumnData
-          });
-      });
-  </script>
+            $('#chart-container1').insertFusionCharts({
+                type: 'column2d',
+                width: 700,
+                height: 400,
+                dataFormat: 'json',
+                dataSource: columnData
+            });
+            $('#chart-container2').insertFusionCharts({
+                type: 'stackedcolumn2d',
+                width: 600,
+                height: 500,
+                dataFormat: 'json',
+                dataSource: stackedColumnData
+            });
+        });
+    </script>
 
 </body>
+
 </html>
