@@ -114,15 +114,12 @@
 
 
         // Data update handler code
-
-        var btn = $('#update')[0];
-
         function getRandomNumber() {
           var max = 300, min = 50;
           return Math.round(((max - min) * Math.random()) + min);
         }
 
-        btn.click(function() {
+        $('#update').click(function() {
           var dataArrayNew = $.extend({}, dataSource);
           dataArrayNew.data[2].value = getRandomNumber();
           dataArrayNew.data[3].value = getRandomNumber();
