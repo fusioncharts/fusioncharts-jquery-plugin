@@ -98,31 +98,31 @@
     <![endif]-->
 
     <div id="chart-container"></div>
-    <div style='display: flex; position: absolute; bottom: 2px;'>
+    <div style="display: flex; position: absolute; bottom: 2px;">
         <div id="select-text">Choose a theme:</div>
         <div class="change-type">
             <div id="radio1">
-                <input name="theme-selecter" id="radioButton1" type="radio" value="400X250" checked="checked" />
+                <input name="theme-selecter" id="radioButton1" type="radio" checked="checked" />
                 <label>Fusion</label>
             </div>
             <div id="radio2">
-                <input name="theme-selecter" id="radioButton2" type="radio" value="600X350" />
+                <input name="theme-selecter" id="radioButton2" type="radio"/>
                 <label>Gammel</label>
             </div>
             <div id="radio3">
-                <input name="theme-selecter" id="radioButton3" type="radio" value="700X400" />
+                <input name="theme-selecter" id="radioButton3" type="radio"/>
                 <label>Candy</label>
             </div>
             <div id="radio4">
-                <input name="theme-selecter" id="radioButton4" type="radio" value="700X400" />
+                <input name="theme-selecter" id="radioButton4" type="radio"/>
                 <label>Zune</label>
             </div>
             <div id="radio5">
-                <input name="theme-selecter" id="radioButton5" type="radio" value="700X400" />
+                <input name="theme-selecter" id="radioButton5" type="radio"/>
                 <label>Ocean</label>
             </div>
             <div id="radio6">
-                <input name="theme-selecter" id="radioButton6" type="radio" value="700X400" />
+                <input name="theme-selecter" id="radioButton6" type="radio"/>
                 <label>Carbon</label>
             </div>
         </div>
@@ -201,22 +201,22 @@
             });
 
             // Handlers for changing the theme using setChartAttribute method
-            $("#radio1").click(function (width, height) {
+            $("#radio1").click(function () {
                 FusionCharts.items['theme-chart'].setChartAttribute('theme', 'fusion');
             });
-            $("#radio2").click(function (width, height) {
+            $("#radio2").click(function () {
                 FusionCharts.items['theme-chart'].setChartAttribute('theme', 'gammel');
             });
-            $("#radio3").click(function (width, height) {
+            $("#radio3").click(function () {
                 FusionCharts.items['theme-chart'].setChartAttribute('theme', 'candy');
             });
-            $("#radio4").click(function (width, height) {
+            $("#radio4").click(function () {
                 FusionCharts.items['theme-chart'].setChartAttribute('theme', 'zune');
             });
-            $("#radio5").click(function (width, height) {
+            $("#radio5").click(function () {
                 FusionCharts.items['theme-chart'].setChartAttribute('theme', 'ocean');
             });
-            $("#radio6").click(function (width, height) {
+            $("#radio6").click(function () {
                 FusionCharts.items['theme-chart'].setChartAttribute('theme', 'carbon');
             });
         });
