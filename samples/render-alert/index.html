@@ -33,7 +33,7 @@
 
     <div id="chart-container"></div>
     <p style="padding: 10px; background: rgb(245, 242, 240);" id='message'>
-        You will see notification here after chart completes rendering
+        Status: 
     </p>
 
     <!-- jQuery -->
@@ -91,18 +91,29 @@
                 ]
             };
 
-            $("#chart-container").insertFusionCharts({
-                type: "column2d",
-                width: "100%",
-                height: "90%",
-                dataFormat: "json",
+            // bind beforeDataUpdate and dataUpdated events
+            $('#chart-container').bind('fusionchartsbeforedataupdate', function (event, args) {
+                $('#message').append('beforeDataUpdate, ');
+            });
+            $('#chart-container').bind('fusionchartsdataupdated', function (event, args) {
+                $('#message').append('dataUpdated, ');
+            });
+
+            $('#chart-container').insertFusionCharts({
+                type: 'column2d',
+                width: '100%',
+                height: '90%',
+                dataFormat: 'json',
                 dataSource: dataSource
             });
 
-            $('#chart-container').bind('fusionchartsrendered', function (event, args) {
-                $('#message').text("Chart has completed rendering");
+            // bind drawComplete and renderComplete events
+            $('#chart-container').bind('fusionchartsdrawcomplete', function (event, args) {
+                $('#message').append('drawComplete, ');
             });
-
+            $('#chart-container').bind('fusionchartsrendercomplete', function (event, args) {
+                $('#message').append('renderComplete');
+            });
         });
     </script>
 
