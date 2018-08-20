@@ -43,12 +43,11 @@
 
     <div id="chart-container"></div>
     <div style="padding: 0px; background: rgb(255, 255, 255);" id='message'>
-        Click on
-        <b>TRACK DATA PLOT CLICK</b> button to listen to dataplotclick event
+        Click the below buttons to add an event dynamically to a chart
     </div>
     <div style="display: flex; justify-content: center; margin: 0px">
-        <a class="btn btn-outline-secondary btn-sm" id="track-link">Track Data Plot Clicks</a>
-        <a class="btn btn-outline-secondary btn-sm" id="reset-link">Reset</a>
+        <button class="btn btn-outline-secondary btn-sm" id="track">ADD/LISTEN TO DATAPLOTCLICK EVENT</button>
+        <button class="btn btn-outline-secondary btn-sm" id="reset" disabled="true">REMOVE DATAPLOTCLICK EVENT</button>
     </div>
 
     <!-- jQuery -->
@@ -115,16 +114,20 @@
             });
 
             // Handlers for tracking click events
-            $('#track-link').click(function () {
+            $('#track').click(function () {
                 $('#message').html('Click on the plot to see the value along with the label');
                 $('#chart-container').bind('fusionchartsdataplotclick', function (event, data) {
                     $('#message').html('You have clicked on plot <b>' + data.categoryLabel +
                         '</b> whose value is <b>' + data.displayValue + '</b>');
                 });
+                $('#track').attr('disabled', 'disabled');
+                $('#reset').removeAttr('disabled');
             });
-            $('#reset-link').click(function () {
+            $('#reset').click(function () {
                 $('#chart-container').unbind('fusionchartsdataplotclick');
-                $('#message').html('Click on <b>TRACK DATA PLOT CLICK</b> button to listen to dataplotclick event');
+                $('#message').html('Click the below buttons to add an event dynamically to a chart');
+                $('#track').removeAttr('disabled');
+                $('#reset').attr('disabled', 'disabled');
             });
         });
     </script>
