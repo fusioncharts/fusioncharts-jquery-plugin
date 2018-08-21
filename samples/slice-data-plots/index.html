@@ -143,6 +143,7 @@
                     "legendPosition": "bottom",
                     "useDataPlotColorForLabels": "1",
                     "enablemultislicing": "0",
+                    "showlegend": "0",
                     "theme": "fusion",
                 },
                 "data": [{
@@ -168,6 +169,14 @@
                 dataFormat: "json",
                 dataSource: dataSource
             });
+
+            $('#chart-container').bind('fusionchartsdataplotclick', function (event, args) {
+                if (args.isSliced) {
+                    $('#radioButton1').prop('checked', true);
+                } else {
+                    $('#radioButton' + (args.index + 2)).prop('checked', true);
+                }
+            })
 
             $('#radio1').click(function () {
                 for (var i in dataSource.data) {
