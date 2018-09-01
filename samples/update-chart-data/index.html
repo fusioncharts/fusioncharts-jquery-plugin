@@ -46,7 +46,9 @@
     <![endif]-->
 
     <div id="chart-container"></div>
-    <div id='btn-container'><button id="update" class="btn btn-outline-secondary btn-sm">Change Chart Data</button></div>
+    <div id="btn-container">
+        <button id="update" class="btn btn-outline-secondary btn-sm">Change Chart Data</button>
+    </div>
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -113,12 +115,12 @@
         });
 
 
-        // Data update handler code
         function getRandomNumber() {
           var max = 300, min = 50;
           return Math.round(((max - min) * Math.random()) + min);
         }
 
+        // Data update handler code
         $('#update').click(function() {
           var dataArrayNew = $.extend({}, dataSource);
           dataArrayNew.data[2].value = getRandomNumber();
