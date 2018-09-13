@@ -63,8 +63,8 @@
 
 
     <script type="text/javascript">
-        jQuery('document').ready(function () {
-            var btn = $('#export')[0];
+        $('document').ready(function () {
+            var btn = $('#export');
             var columnData = {
                 "chart": {
                     "caption": "Countries With Most Oil Reserves [2017-18]",
@@ -251,7 +251,7 @@
                 ]
             };
 
-            btn.addEventListener('click', function () {
+            btn.on('click', function () {
                 FusionCharts.batchExport({
                     exportFormat: 'pdf'
                 });

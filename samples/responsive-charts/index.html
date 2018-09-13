@@ -100,14 +100,17 @@
 		#select-text {
 			padding: 4px;
 		}
+		#chart-container{
+			width: 600px;
+			height: 350px;
+		}
 	</style>
 </head>
 
 <body>
 	<!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-
+		<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
 	<div id="chart-container"></div>
 	<div id="config-container">
 		<span id="select-text">Choose a dimension:</span>
@@ -138,7 +141,7 @@
 
 
 	<script type="text/javascript">
-		jQuery('document').ready(function () {
+		$('document').ready(function () {
 			var dataSource = {
 					"chart": {
 						"caption": "Countries With Most Oil Reserves [2017-18]",
@@ -181,26 +184,26 @@
 							"value": "30"
 						}
 					]
-				};
+			};
 
 			$("#chart-container").insertFusionCharts({
 				id: 'resize-chart',
 				type: "column2d",
-				width: "650",
-				height: "350",
+				width: "100%",
+				height: "100%",
 				dataFormat: "json",
 				dataSource: dataSource
 			});
 
 			// Handlers for resizing the chart
-			$("#radio1").click(function (width, height) {
-				FusionCharts.items['resize-chart'].resizeTo(400, 250);
+			$("#radio1").click(function (e) {
+				$('#chart-container').width(400).height(250);
 			});
-			$("#radio2").click(function (width, height) {
-				FusionCharts.items['resize-chart'].resizeTo(600, 350);
+			$("#radio2").click(function (e) {
+				$('#chart-container').width(600).height(350);
 			});
 			$("#radio3").click(function (width, height) {
-				FusionCharts.items['resize-chart'].resizeTo(700, 400);
+				$('#chart-container').width(700).height(400);
 			});
 		});
 	</script>

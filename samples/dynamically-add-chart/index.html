@@ -118,7 +118,7 @@
                 $('#message').html('Click on the plot to see the value along with the label');
                 $('#chart-container').bind('fusionchartsdataplotclick', function (event, data) {
                     $('#message').html('You have clicked on plot <b>' + data.categoryLabel +
-                        '</b> whose value is <b>' + data.displayValue + '</b>');
+                        '</b> which has a value of <b>' + data.displayValue + '</b>');
                 });
                 $('#track').attr('disabled', 'disabled');
                 $('#reset').removeAttr('disabled');

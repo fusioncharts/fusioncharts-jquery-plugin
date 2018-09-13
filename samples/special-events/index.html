@@ -131,8 +131,8 @@
             $('#chart-container').bind('fusionchartsdataplotdragend', function (event, args) {
                 prevValue = FusionCharts.formatNumber(args.startValue.toFixed(2));
                 curValue = FusionCharts.formatNumber(args.endValue.toFixed(2));
-                $('#message').html('<b>' + args.datasetName + '</b> is modified to <b>$' + prevValue + 'M</b> from <b>$' +
-                curValue + 'M</b>');
+                $('#message').html('<b>' + args.datasetName + '</b> is modified to <b>$' + curValue + 'M</b> from <b>$' +
+                prevValue + 'M</b>');
             });
         });
     </script>

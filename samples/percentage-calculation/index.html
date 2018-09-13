@@ -103,10 +103,9 @@
             $('#chart-container').bind('fusionchartsdataplotrollover', function (event, args) {
                 let value = (args.value / total * 100).toFixed(2);
                 $('#message').html("<b>" + args.categoryLabel + "</b> is <b>" + value +
-                    "%</b> of the total");
+                    "%</b> of top 8 oil reserve countries");
             });
             $('#chart-container').bind('fusionchartsdataplotrollout', function (event, args) {
-                let value = (args.value / total * 100).toFixed(2);
                 $('#message').html("Hover on the plot to see the percentage along with the label");
             });
         });
