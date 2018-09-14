@@ -1,28 +1,31 @@
 const path = require('path'),
-    webpack = require('webpack');
+    WrapperPlugin = require('wrapper-webpack-plugin'),
+    header = module.exports = `
+    (function (factory) {
+        if (typeof module === 'object' && typeof module.exports !== "undefined") {
+            module.exports = factory;
+        } else {
+            factory(FusionCharts);
+        }
+    }(function (FusionCharts) {
+
+`,
+    footer = `}));
+`;
 
 function getPlugins () {
     return [
-        new webpack.optimize.UglifyJsPlugin({
-            mangle: false,
-            sourceMap: true,
-            mangleProperties: {
-                screw_ie8: false,
-                ignore_quoted: true
-            },
-            compress: {
-                screw_ie8: false,
-                properties: false
-            },
-            output: {
-                screw_ie8: false
-            }
+        new WrapperPlugin({
+            test: /^fusioncharts\.jqueryplugin\.js/,
+            header: header,
+            footer: footer
         })
     ];
 }
 
 module.exports = [{
     entry: './src/jquery-fusioncharts.js',
+    mode: 'none',
     output: {
         filename: 'fusioncharts.jqueryplugin.js',
         path: path.resolve(__dirname, 'dist'),
@@ -37,10 +40,10 @@ module.exports = [{
             loader: 'babel-loader'
         }]
     },
-    devtool: 'source-map'
-},
-{
+    plugins: getPlugins()
+}, {
     entry: './src/jquery-fusioncharts.js',
+    mode: 'production',
     output: {
         filename: 'fusioncharts.jqueryplugin.min.js',
         path: path.resolve(__dirname, 'dist'),
@@ -55,6 +58,6 @@ module.exports = [{
             loader: 'babel-loader'
         }]
     },
-    devtool: 'source-map',
+    // devtool: 'source-map',
     plugins: getPlugins()
 }];

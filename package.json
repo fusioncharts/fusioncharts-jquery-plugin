@@ -15,7 +15,7 @@
     "port": "8080"
   },
   "homepage": "http://www.fusioncharts.com/",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "license": "MIT",
   "author": "FusionCharts Technologies <support@fusioncharts.com>",
   "keywords": [
@@ -70,7 +70,9 @@
     "path": "^0.12.7",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.9.0",
-    "webpack": "^3.12.0"
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0",
+    "wrapper-webpack-plugin": "^2.0.0"
   },
   "browserify-shim": {
     "jquery": "global:$",
