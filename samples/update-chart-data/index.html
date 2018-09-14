@@ -12,6 +12,33 @@
     <link rel="stylesheet" href="//s3-eu-west-1.amazonaws.com/fcdesignsystem/1.0.0/css/fusionDesign.css">
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="../../assets/css/fusioncharts.theme.fusion.css" />
+    <style>
+        .btn {
+            font-family: 'Source Sans Pro';
+            margin: 5px;
+        }
+
+        .btn.btn-primary {
+            background: #4a4d8c;
+            transition: all 300ms;
+        }
+
+        .btn.btn-primary:hover {
+            background: #5c62b5;
+        }
+
+        .btn.btn-primary:active {
+            background: #4a4d8c
+        }
+        #update {
+            bottom: 2px;
+        }
+        #btn-container {
+            bottom: 0px;
+            left: 43%;
+            position: absolute;
+        }
+    </style>
   </head>
   <body>
     <!--[if lt IE 7]>
@@ -19,13 +46,15 @@
     <![endif]-->
 
     <div id="chart-container"></div>
-    <center><button id='update' class="btn btn-custom">Change Chart Data</button></center>
+    <div id="btn-container">
+        <button id="update" class="btn btn-outline-secondary btn-sm">Change Chart Data</button>
+    </div>
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <!-- FusionCharts -->
     <script src="../../assets/scripts/fusioncharts/fusioncharts.js"></script>
-    <script src="../../assets/scripts/fusioncharts.theme.fusion.js"></script>
+    <script src="../../assets/scripts/fusioncharts/themes/fusioncharts.theme.fusion.js"></script>
     <!-- jQuery-FC -->
     <script src="../../assets/scripts/fusioncharts.jqueryplugin.min.js"></script>
 
@@ -80,22 +109,19 @@
         $("#chart-container").insertFusionCharts({
             type: "column2d",
             width: "100%",
-            height: "85%",
+            height: "90%",
             dataFormat: "json",
             dataSource: dataSource
         });
 
-
-        // Data update handler code
-
-        var btn = document.getElementById('update');
 
         function getRandomNumber() {
           var max = 300, min = 50;
           return Math.round(((max - min) * Math.random()) + min);
         }
 
-        btn.addEventListener('click', function() {
+        // Data update handler code
+        $('#update').click(function() {
           var dataArrayNew = $.extend({}, dataSource);
           dataArrayNew.data[2].value = getRandomNumber();
           dataArrayNew.data[3].value = getRandomNumber();
