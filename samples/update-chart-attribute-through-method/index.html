@@ -7,17 +7,17 @@
 <!--<![endif]-->
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="//s3-eu-west-1.amazonaws.com/fcdesignsystem/1.0.0/css/fusionDesign.css">
-    <link rel="stylesheet" href="../styles.css">
-    <link rel="stylesheet" href="../../assets/css/fusioncharts.theme.fusion.css" />
-    <link rel="stylesheet" href="../../assets/css/fusioncharts.theme.gammel.css" />
-    <style>
-        .btn {
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="//s3-eu-west-1.amazonaws.com/fcdesignsystem/1.0.0/css/fusionDesign.css">
+	<link rel="stylesheet" href="../styles.css">
+	<link rel="stylesheet" href="../../assets/css/fusioncharts.theme.fusion.css" />
+	<link rel="stylesheet" href="../../assets/css/fusioncharts.theme.gammel.css" />
+	<style>
+		.btn {
             font-family: 'Source Sans Pro';
             margin: 5px;
         }
@@ -38,101 +38,100 @@
 </head>
 
 <body>
-    <!--[if lt IE 7]>
+	<!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div id="chart-container"></div>
-    <div style="justify-content: center; margin: 0px">
-        <button class="btn btn-outline-secondary btn-sm" id="caption">CHANGE CAPTION TO: CAPTION</button>
-        <button class="btn btn-outline-secondary btn-sm" id="xaxis-name">CHANGE X_AXIS NAME TO: X-AXIS NAME</button>
-        <button class="btn btn-outline-secondary btn-sm" id="yaxis-name">CHANGE Y_AXIS NAME TO: Y-AXIS NAME</button>
-        <button class="btn btn-outline-secondary btn-sm" id="reset">RESET</button>
-    </div>
+	<div id="chart-container"></div>
+	<div style="justify-content: center; margin: 0px">
+		<button class="btn btn-outline-secondary btn-sm" id="caption">CHANGE CAPTION TO: CAPTION</button>
+		<button class="btn btn-outline-secondary btn-sm" id="xaxis-name">CHANGE X_AXIS NAME TO: X-AXIS NAME</button>
+		<button class="btn btn-outline-secondary btn-sm" id="yaxis-name">CHANGE Y_AXIS NAME TO: Y-AXIS NAME</button>
+		<button class="btn btn-outline-secondary btn-sm" id="reset">RESET</button>
+	</div>
 
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <!-- FusionCharts -->
-    <script src="../../assets/scripts/fusioncharts/fusioncharts.js"></script>
-    <script src="../../assets/scripts/fusioncharts/themes/fusioncharts.theme.fusion.js"></script>
-    <!-- jQuery-FC -->
-    <script src="../../assets/scripts/fusioncharts.jqueryplugin.min.js"></script>
+	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<!-- FusionCharts -->
+	<script src="../../assets/scripts/fusioncharts/fusioncharts.js"></script>
+	<script src="../../assets/scripts/fusioncharts/themes/fusioncharts.theme.fusion.js"></script>
+	<!-- jQuery-FC -->
+	<script src="../../assets/scripts/fusioncharts.jqueryplugin.min.js"></script>
 
 
-    <script type="text/javascript">
-        jQuery('document').ready(function () {
-            var dataSource = {
-                    "chart": {
-                        "caption": "Countries With Most Oil Reserves [2017-18]",
-                        "subCaption": "In MMbbl = One Million barrels",
-                        "xAxisName": "Country",
-                        "yAxisName": "Reserves (MMbbl)",
-                        "numberSuffix": "K",
-                        "theme": "fusion"
-                    },
-                    "data": [
-                        {
-                            "label": "Venezuela",
-                            "value": "290"
-                        },
-                        {
-                            "label": "Saudi",
-                            "value": "260"
-                        },
-                        {
-                            "label": "Canada",
-                            "value": "180"
-                        },
-                        {
-                            "label": "Iran",
-                            "value": "140"
-                        },
-                        {
-                            "label": "Russia",
-                            "value": "115"
-                        },
-                        {
-                            "label": "UAE",
-                            "value": "100"
-                        },
-                        {
-                            "label": "US",
-                            "value": "30"
-                        },
-                        {
-                            "label": "China",
-                            "value": "30"
-                        }
-                    ]
-                };
+	<script type="text/javascript">
+		jQuery('document').ready(function () {
+			var dataSource = {
+				"chart": {
+					"caption": "Countries With Most Oil Reserves [2017-18]",
+					"subCaption": "In MMbbl = One Million barrels",
+					"xAxisName": "Country",
+					"yAxisName": "Reserves (MMbbl)",
+					"numberSuffix": "K",
+					"theme": "fusion"
+				},
+				"data": [{
+						"label": "Venezuela",
+						"value": "290"
+					},
+					{
+						"label": "Saudi",
+						"value": "260"
+					},
+					{
+						"label": "Canada",
+						"value": "180"
+					},
+					{
+						"label": "Iran",
+						"value": "140"
+					},
+					{
+						"label": "Russia",
+						"value": "115"
+					},
+					{
+						"label": "UAE",
+						"value": "100"
+					},
+					{
+						"label": "US",
+						"value": "30"
+					},
+					{
+						"label": "China",
+						"value": "30"
+					}
+				]
+			};
 
-            $('#chart-container').insertFusionCharts({
-                id: 'column-chart',
-                type: 'column2d',
-                width: '100%',
-                height: '85%',
-                dataFormat: 'json',
-                dataSource: dataSource
-            });
+			$('#chart-container').insertFusionCharts({
+				id: 'column-chart',
+				type: 'column2d',
+				width: '100%',
+				height: '85%',
+				dataFormat: 'json',
+				dataSource: dataSource
+			});
 
-            // Handlers for changing the theme using setChartAttribute method
-            $('#caption').click(function () {
-                FusionCharts.items['column-chart'].setChartAttribute('caption', 'CAPTION');
-            });
-            $('#xaxis-name').click(function () {
-                FusionCharts.items['column-chart'].setChartAttribute('xaxisname', 'X-AXIS NAME');
-            });
-            $('#yaxis-name').click(function () {
-                FusionCharts.items['column-chart'].setChartAttribute('yaxisname', 'Y-AXIS NAME');
-            });
-            $('#reset').click(function () {
-                var chart = FusionCharts.items['column-chart'];
-                chart.setChartAttribute('caption', 'Countries With Most Oil Reserves [2017-18]');
-                chart.setChartAttribute('xaxisname', 'Country');
-                chart.setChartAttribute('yaxisname', 'Reserves (MMbbl)');
-            });
-        });
-    </script>
+			// Handlers for changing the theme using setChartAttribute method
+			$('#caption').click(function () {
+				FusionCharts.items['column-chart'].setChartAttribute('caption', 'CAPTION');
+			});
+			$('#xaxis-name').click(function () {
+				FusionCharts.items['column-chart'].setChartAttribute('xaxisname', 'X-AXIS NAME');
+			});
+			$('#yaxis-name').click(function () {
+				FusionCharts.items['column-chart'].setChartAttribute('yaxisname', 'Y-AXIS NAME');
+			});
+			$('#reset').click(function () {
+				var chart = FusionCharts.items['column-chart'];
+				chart.setChartAttribute('caption', 'Countries With Most Oil Reserves [2017-18]');
+				chart.setChartAttribute('xaxisname', 'Country');
+				chart.setChartAttribute('yaxisname', 'Reserves (MMbbl)');
+			});
+		});
+	</script>
 
 </body>
 
