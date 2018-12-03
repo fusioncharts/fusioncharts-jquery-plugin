@@ -15,7 +15,7 @@
     "port": "8080"
   },
   "homepage": "http://www.fusioncharts.com/",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "license": "MIT",
   "author": "FusionCharts Technologies <support@fusioncharts.com>",
   "keywords": [
