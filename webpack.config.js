@@ -8,7 +8,6 @@ const path = require('path'),
             factory(FusionCharts);
         }
     }(function (FusionCharts) {
-
 `,
     footer = `}));
 `;
@@ -40,24 +39,5 @@ module.exports = [{
             loader: 'babel-loader'
         }]
     },
-    plugins: getPlugins()
-}, {
-    entry: './src/jquery-fusioncharts.js',
-    mode: 'production',
-    output: {
-        filename: 'fusioncharts.jqueryplugin.min.js',
-        path: path.resolve(__dirname, 'dist'),
-        libraryTarget: 'umd',
-        umdNamedDefine: true
-    },
-    externals: /^(jquery|\$|fusioncharts)$/i,
-    module: {
-        rules: [{
-            test: /\.js$/,
-            exclude: /node_modules/,
-            loader: 'babel-loader'
-        }]
-    },
-    // devtool: 'source-map',
     plugins: getPlugins()
 }];
