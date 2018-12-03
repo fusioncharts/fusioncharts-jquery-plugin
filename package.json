@@ -32,13 +32,17 @@
     "test": "develop/ci/test/test",
     "lint": "eslint ./src/ gulpfile.js",
     "build:sample": "gulp build:sample",
-    "build": "webpack"
+    "build:development": "webpack",
+    "build:production": "webpack --config webpack.build.config.js --env.minify=\"true\" --env.ie8=\"true\"",
+    "build": "npm run build:development && npm run build:production"
   },
   "dependencies": {},
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.0",
+    "babel-plugin-transform-es3-member-expression-literals": "^6.22.0",
+    "babel-plugin-transform-es3-property-literals": "^6.22.0",
     "babelify": "^7.3.0",
     "browserify": "^14.1.0",
     "browserify-shim": "^3.8.13",
