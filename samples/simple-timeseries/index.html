@@ -37,61 +37,56 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <!-- FusionCharts -->
     <script src="http://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+    <script src="http://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.timeseries.js"></script>
     <script src="../../assets/scripts/fusioncharts/themes/fusioncharts.theme.fusion.js"></script>
     <!-- jQuery-FC -->
     <script src="../../assets/scripts/fusioncharts.jqueryplugin.min.js"></script>
 
     <script type="text/javascript">
-      jQuery('document').ready(function() {
-        $('#chart-container').insertFusionCharts({
-          type: 'column2d',
-          width: '100%',
-          height: '100%',
-          dataFormat: 'json',
-          dataSource: {
-            chart: {
-              caption: 'Countries With Most Oil Reserves [2017-18]',
-              subCaption: 'In MMbbl = One Million barrels',
-              xAxisName: 'Country',
-              yAxisName: 'Reserves (MMbbl)',
-              numberSuffix: 'K',
-              theme: 'fusion'
-            },
-            data: [
-              {
-                label: 'Venezuela',
-                value: '290'
+      var jsonify = res => res.json();
+      var dataFetch = fetch(
+        'https://s3.eu-central-1.amazonaws.com/fusion.store/ft/data/line-chart-with-time-axis-data.json'
+      ).then(jsonify);
+      var schemaFetch = fetch(
+        'https://s3.eu-central-1.amazonaws.com/fusion.store/ft/schema/line-chart-with-time-axis-schema.json'
+      ).then(jsonify);
+
+      Promise.all([dataFetch, schemaFetch]).then(res => {
+        const data = res[0];
+        const schema = res[1];
+        // First we are creating a DataStore
+        const fusionDataStore = new FusionCharts.DataStore();
+        // After that we are creating a DataTable by passing our data and schema as arguments
+        const fusionTable = fusionDataStore.createDataTable(data, schema);
+
+        jQuery('document').ready(function() {
+          $('#chart-container').insertFusionCharts({
+            type: 'timeseries',
+            width: '100%',
+            height: '100%',
+            dataFormat: 'json',
+            dataSource: {
+              data: fusionTable,
+              caption: {
+                text: 'Sales Analysis'
               },
-              {
-                label: 'Saudi',
-                value: '260'
+              subcaption: {
+                text: 'Grocery'
               },
-              {
-                label: 'Canada',
-                value: '180'
-              },
-              {
-                label: 'Iran',
-                value: '140'
-              },
-              {
-                label: 'Russia',
-                value: '115'
-              },
-              {
-                label: 'UAE',
-                value: '100'
-              },
-              {
-                label: 'US',
-                value: '30'
-              },
-              {
-                label: 'China',
-                value: '30'
-              }
-            ]
-          }
+              yAxis: [
+                {
+                  plot: {
+                    value: 'Grocery Sales Value',
+                    type: 'line'
+                  },
+                  format: {
+                    prefix: '$'
+                  },
+                  title: 'Sale Value'
+                }
+              ]
+            }
+          });
         });
       });
     </script>

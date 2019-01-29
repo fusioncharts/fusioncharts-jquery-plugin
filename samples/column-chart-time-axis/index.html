@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+  <!--<![endif]-->
+
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="//s3-eu-west-1.amazonaws.com/fcdesignsystem/1.0.0/css/fusionDesign.css"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <link
+      rel="stylesheet"
+      href="../../assets/css/fusioncharts.theme.fusion.css"
+    />
+  </head>
+
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+
+    <div id="chart-container"></div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- FusionCharts -->
+    <script src="http://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+    <script src="http://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.timeseries.js"></script>
+    <script src="../../assets/scripts/fusioncharts/themes/fusioncharts.theme.fusion.js"></script>
+    <!-- jQuery-FC -->
+    <script src="../../assets/scripts/fusioncharts.jqueryplugin.min.js"></script>
+
+    <script type="text/javascript">
+      var jsonify = res => res.json();
+      var dataFetch = fetch(
+        'https://s3.eu-central-1.amazonaws.com/fusion.store/ft/data/column-line-combination-data.json'
+      ).then(jsonify);
+      var schemaFetch = fetch(
+        'https://s3.eu-central-1.amazonaws.com/fusion.store/ft/schema/column-line-combination-schema.json'
+      ).then(jsonify);
+
+      Promise.all([dataFetch, schemaFetch]).then(res => {
+        const data = res[0];
+        const schema = res[1];
+        // First we are creating a DataStore
+        const fusionDataStore = new FusionCharts.DataStore();
+        // After that we are creating a DataTable by passing our data and schema as arguments
+        const fusionTable = fusionDataStore.createDataTable(data, schema);
+
+        jQuery('document').ready(function() {
+          $('#chart-container').insertFusionCharts({
+            type: 'timeseries',
+            width: '100%',
+            height: '100%',
+            dataFormat: 'json',
+            dataSource: {
+              data: fusionTable,
+              caption: {
+                text: 'Web visits & downloads'
+              },
+              subcaption: {
+                text: 'since 2015'
+              },
+              yAxis: [
+                {
+                  plot: [
+                    {
+                      value: 'Downloads',
+                      type: 'column'
+                    },
+                    {
+                      value: 'Web Visits',
+                      type: 'line'
+                    }
+                  ]
+                }
+              ]
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

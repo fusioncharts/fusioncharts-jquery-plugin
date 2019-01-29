@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+  <!--<![endif]-->
+
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="//s3-eu-west-1.amazonaws.com/fcdesignsystem/1.0.0/css/fusionDesign.css"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <link
+      rel="stylesheet"
+      href="../../assets/css/fusioncharts.theme.fusion.css"
+    />
+  </head>
+
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+
+    <div id="chart-container"></div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- FusionCharts -->
+    <script src="http://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+    <script src="http://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.timeseries.js"></script>
+    <script src="../../assets/scripts/fusioncharts/themes/fusioncharts.theme.fusion.js"></script>
+    <!-- jQuery-FC -->
+    <script src="../../assets/scripts/fusioncharts.jqueryplugin.min.js"></script>
+
+    <script type="text/javascript">
+      var jsonify = res => res.json();
+      // This is the remote url to fetch the data.
+      const dataFetch = fetch(
+        'https://s3.eu-central-1.amazonaws.com/fusion.store/ft/data/date-range-event-overlay-data.json'
+      ).then(jsonify);
+      // This is the remote url to fetch the schema.
+      const schemaFetch = fetch(
+        'https://s3.eu-central-1.amazonaws.com/fusion.store/ft/schema/date-range-event-overlay-schema.json'
+      ).then(jsonify);
+
+      Promise.all([dataFetch, schemaFetch]).then(res => {
+        const data = res[0];
+        const schema = res[1];
+        // First we are creating a DataStore
+        const fusionDataStore = new FusionCharts.DataStore();
+        // After that we are creating a DataTable by passing our data and schema as arguments
+        const fusionTable = fusionDataStore.createDataTable(data, schema);
+
+        jQuery('document').ready(function() {
+          $('#chart-container').insertFusionCharts({
+            type: 'timeseries',
+            width: '100%',
+            height: '100%',
+            dataFormat: 'json',
+            dataSource: {
+              data: fusionTable,
+              caption: {
+                text: 'Interest Rate Analysis'
+              },
+              subCaption: {
+                text: 'Federal Reserve (USA)'
+              },
+              yAxis: [
+                {
+                  plot: 'Interest Rate',
+                  format: {
+                    suffix: '%'
+                  },
+                  title: 'Interest Rate'
+                }
+              ],
+              xAxis: {
+                plot: 'Time',
+                timemarker: [
+                  {
+                    start: 'Jul-1981',
+                    end: 'Nov-1982',
+                    label:
+                      'Economic downturn was triggered by {br} tight monetary policy in an effort to {br} fight mounting inflation.',
+                    timeFormat: '%b-%Y'
+                  },
+                  {
+                    start: 'Jul-1990',
+                    end: 'Mar-1991',
+                    label:
+                      'This eight month recession period {br} was characterized by a sluggish employment recovery, {br} most commonly referred to as a jobless recovery.',
+                    timeFormat: '%b-%Y'
+                  },
+                  {
+                    start: 'Jun-2004',
+                    end: 'Jul-2006',
+                    label:
+                      'The Fed after raising interest rates {br} at 17 consecutive meetings, ends its campaign {br} to slow the economy and forestall inflation.',
+                    timeFormat: '%b-%Y'
+                  },
+                  {
+                    start: 'Dec-2007',
+                    end: 'Jun-2009',
+                    label:
+                      'Recession caused by the worst {br} collapse of financial system in recent {br} times.',
+                    timeFormat: '%b-%Y'
+                  }
+                ]
+              }
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
