@@ -152,11 +152,32 @@
 									<div data-id="simple-chart" class="nav-item selected">
 										<div class="p">A Simple Chart</div>
 									</div>
+									<div data-id="simple-timeseries" class="nav-item">
+										<div class="p">A Simple TimeSeries</div>
+									</div>
+									<div data-id="column-time-axis" class="nav-item">
+										<div class="p">Column chart with time axis</div>
+									</div>
+									<div data-id="area-time-axis" class="nav-item">
+										<div class="p">Area chart with time axis</div>
+									</div>
 									<div data-id="3d-pie-chart" class="nav-item">
 										<div class="p">A 3D Pie Chart</div>
 									</div>
+									<div data-id="simple-gauge" class="nav-item">
+										<div class="p">A simple gauge</div>
+									</div>
 									<div data-id="column-line-area-combi-chart" class="nav-item">
 										<div class="p">A Column, Line and Area Combi Chart</div>
+									</div>
+									<div data-id="column-chart-time-axis" class="nav-item">
+										<div class="p">Column and line combination on time axis</div>
+									</div>
+									<div data-id="multi-series-time-axis" class="nav-item">
+										<div class="p">Plotting multiple series on time axis</div>
+									</div>
+									<div data-id="multivariate-timeseries" class="nav-item">
+										<div class="p">Plotting two variables (measures)</div>
 									</div>
 									<div data-id="fetch-data-from-json-url" class="nav-item">
 										<div class="p">Fetch data from JSON URL</div>
@@ -176,14 +197,23 @@
 									<div data-id="percentage-calculation" class="nav-item">
 										<div class="p">Percentage Calculation</div>
 									</div>
-									<div data-id="export-charts" class="nav-item">
-										<div class="p">Export multiple charts</div>
-									</div>
 									<div data-id="drill-down" class="nav-item">
 										<div class="p">Add drill-down to chart</div>
 									</div>
-									<div data-id="simple-gauge" class="nav-item">
-										<div class="p">A simple gauge</div>
+									<div data-id="adding-reference-line" class="nav-item">
+										<div class="p">Adding a reference line</div>
+									</div>
+									<div data-id="annotating-data" class="nav-item">
+										<div class="p">Annotating single data point</div>
+									</div>
+									<div data-id="single-event-overlay" class="nav-item">
+										<div class="p">Single event overlay</div>
+									</div>
+									<div data-id="date-event-overlay" class="nav-item">
+										<div class="p">Date range event overlay</div>
+									</div>
+									<div data-id="export-charts" class="nav-item">
+										<div class="p">Export multiple charts</div>
 									</div>
 									<div data-id="world-map" class="nav-item">
 										<div class="p">World Map</div>
@@ -218,6 +248,9 @@
 									<div data-id="apply-theme" class="nav-item">
 										<div class="p">Applying a different theme</div>
 									</div>
+									<div data-id="interactive-candlestick-chart" class="nav-item">
+										<div class="p">Interactive candlestick chart</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -231,13 +264,59 @@
 										<div class="h5">A Simple Chart</div>
 										<div class="p item-desc">A simple chart with all data embedded into the directive</div>
 									</div>
+									<div data-id="simple-timeseries" class="nav-item">
+										<div class="nav-group">
+											<div class="h5">A Simple TimeSeries</div>
+											<div class="h5 badge badge-normal">FusionTime</div>
+										</div>
+										<div class="p item-desc">A simple time-series chart with a single series plotted as line</div>
+									</div>
+									<div data-id="column-time-axis" class="nav-item">
+										<div class="nav-group">
+											<div class="h5">Column chart with time axis</div>
+											<div class="h5 badge badge-normal">FusionTime</div>
+										</div>
+										<div class="p item-desc">Time-series chart with series plotted as column</div>
+									</div>
+									<div data-id="area-time-axis" class="nav-item">
+										<div class="nav-group">
+                      <div class="h5">Area chart with time axis</div>
+                      <div class="h5 badge badge-normal">FusionTime</div>
+                    </div>
+										<div class="p item-desc">Time-series chart with series plotted as are</div>
+									</div>
 									<div data-id="3d-pie-chart" class="nav-item">
 										<div class="h5">A 3D Pie Chart</div>
 										<div class="p item-desc">A 3D pie chart using the datasource attribute from component's scope</div>
 									</div>
+									<div data-id="simple-gauge" class="nav-item">
+										<div class="h5">A simple gauge</div>
+										<div class="p item-desc">A simple gauge to show customer satisfaction score</div>
+									</div>
 									<div data-id="column-line-area-combi-chart" class="nav-item">
 										<div class="h5">A Column, Line and Area Combi Chart</div>
 										<div class="p item-desc">A combination chart of column , line and area</div>
+									</div>
+									<div data-id="column-chart-time-axis" class="nav-item">
+                    <div class="nav-group">
+                      <div class="h5">Column and line combination on time axis</div>
+                      <div class="h5 badge badge-normal">FusionTime</div>
+                    </div>
+										<div class="p item-desc">Two series of data plotted as a combination of column & line on the same y-axis</div>
+									</div>
+									<div data-id="multi-series-time-axis" class="nav-item">
+                    <div class="nav-group">
+                      <div class="h5">Plotting multiple series on time axis</div>
+                      <div class="h5 badge badge-normal">FusionTime</div>
+                    </div>
+										<div class="p item-desc">A multi-series chart with 2 variables plotted as line on the same y-axis</div>
+									</div>
+									<div data-id="multivariate-timeseries" class="nav-item">
+                    <div class="nav-group">
+										  <div class="h5">Plotting two variables (measures)</div>
+                      <div class="h5 badge badge-normal">FusionTime</div>
+                    </div>
+										<div class="p item-desc">Plotting 2 different variables in 2 different vertically stacked canvases</div>
 									</div>
 									<div data-id="fetch-data-from-json-url" class="nav-item">
 										<div class="h5">Fetch data from JSON URL</div>
@@ -263,17 +342,41 @@
 										<div class="h5">Percentage Calculation</div>
 										<div class="p item-desc">Hover on a plot to see the percentage value with respect to total</div>
 									</div>
-									<div data-id="export-charts" class="nav-item">
-										<div class="h5">Export multiple charts</div>
-										<div class="p item-desc">Use Batch Export Feature to export multiple charts as a single image/PDF</div>
-									</div>
 									<div data-id="drill-down" class="nav-item">
 										<div class="h5">Add drill-down to chart</div>
 										<div class="p item-desc">Use LinkedCharts to quickly add drill-down to charts</div>
 									</div>
-									<div data-id="simple-gauge" class="nav-item">
-										<div class="h5">A simple gauge</div>
-										<div class="p item-desc">A simple gauge to show customer satisfaction score</div>
+									<div data-id="adding-reference-line" class="nav-item">
+                    <div class="nav-group">
+                      <div class="h5">Adding a reference line</div>
+                      <div class="h5 badge badge-normal">FusionTime</div>
+                    </div>
+										<div class="p item-desc">Adding a static reference line (by value) to indicate targets or threshold</div>
+									</div>
+									<div data-id="annotating-data" class="nav-item">
+                    <div class="nav-group">
+                      <div class="h5">Annotating single data point</div>
+                      <div class="h5 badge badge-normal">FusionTime</div>
+                    </div>
+										<div class="p item-desc">Annotating specific data point using data markers on line series</div>
+									</div>
+									<div data-id="single-event-overlay" class="nav-item">
+                    <div class="nav-group">
+                      <div class="h5">Single event overlay</div>
+                      <div class="h5 badge badge-normal">FusionTime</div>
+                    </div>
+										<div class="p item-desc">Plotting an event marker to indicate an event for a specific date</div>
+									</div>
+									<div data-id="date-event-overlay" class="nav-item">
+                    <div class="nav-group">
+                      <div class="h5">Date range event overlay</div>
+                      <div class="h5 badge badge-normal">FusionTime</div>  
+                    </div>
+										<div class="p item-desc">Plotting an event marker as a band, to indicate an event that spans a data range</div>
+									</div>
+									<div data-id="export-charts" class="nav-item">
+										<div class="h5">Export multiple charts</div>
+										<div class="p item-desc">Use Batch Export Feature to export multiple charts as a single image/PDF</div>
 									</div>
 									<div data-id="world-map" class="nav-item">
 										<div class="h5">World Map</div>
@@ -316,6 +419,13 @@
 										<div class="h5">Applying a different theme</div>
 										<div class="p item-desc">Choosing from different themes available in FusionCharts Suite</div>
 									</div>
+									<div data-id="interactive-candlestick-chart" class="nav-item">
+                    <div class="nav-group">
+                      <div class="h5">Interactive candlestick chart</div>
+                      <div class="h5 badge badge-normal">FusionTime</div>                      
+                    </div>
+										<div class="p item-desc">Time-series chart plotted as candlestick, with 4 different values for each plot (open, high, low, close)</div>
+									</div>
 								</div>
 							</div>
 							<div class="col-md-9 col-12">
@@ -336,6 +446,7 @@
 											<button data-id="code" type="button" class="btn btn-code selected">JavaScript</button>
 											<button data-id="html" type="button" class="btn btn-code">HTML</button>
 											<button data-id="data" type="button" class="btn btn-code">Data</button>
+											<button data-id="schema" type="button" class="btn btn-code schema-btn hide">schema</button>
 										</div>
 										<div class="card-body p-0">
 											<div class="code-panel">
@@ -579,6 +690,32 @@
 							</p>
 						</div>
 					</div>
+
+					<!-- FusionTime Integration -->
+					<div class="row">
+						<div class="col">
+							<div class="h2 mt-2">Usage and integration of FusionTime</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12">
+							<p class="code-desc">From <code>fusioncharts@3.13.3-sr.1</code> You can visualize timeseries data easily with jquery.
+							</p>
+							<div class="h6 mt-2">
+								Consider the example below for integration of FusionTime
+							</div>
+							<div class="code-view mt-2">
+								<div class="card-shadow">
+									<div class="card-body p-0">
+										<div class="code-panel">
+											<div class="codeMirrorDiv" id="c8"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
 					<!-- licensing footer starts -->
 					<div class="row">
 						<div class="col-12 pt-3">
