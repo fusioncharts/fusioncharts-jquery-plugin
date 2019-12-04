@@ -47,7 +47,7 @@
     "browserify": "^14.1.0",
     "browserify-shim": "^3.8.13",
     "del": "^2.2.2",
-    "eslint": "^3.17.1",
+    "eslint": "^4.18.2",
     "google-closure-compiler": "20160208.4.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
