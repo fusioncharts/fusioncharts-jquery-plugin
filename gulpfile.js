@@ -22,10 +22,10 @@ var pkgJSON = JSON.parse(require('fs').readFileSync('./package.json'));
 var BANNER = `
 /**!
  * @license FusionCharts JavaScript Library jQuery Plugin v<%= version %>
- * Copyright InfoSoft Global Pvt. Ltd.
+ * Copyright FusionCharts, Inc.
  * License Information at <http://www.fusioncharts.com/license>
  *
- * @author InfoSoft Global Pvt. Ltd.
+ * @author FusionCharts, Inc.
  */
 
 `;
