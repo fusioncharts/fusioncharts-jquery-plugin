@@ -7,7 +7,7 @@ It helps you add interactive JavaScript charts to your web and mobile applicatio
 ## [Demo](https://fusioncharts.github.io/fusioncharts-jquery-plugin/)
 
 - Github Repo: [https://github.com/fusioncharts/fusioncharts-jquery-plugin](https://github.com/fusioncharts/fusioncharts-jquery-plugin)
-- Documentation: [https://www.fusioncharts.com/dev/getting-started/angular/angular/your-first-chart-using-angular](https://www.fusioncharts.com/dev/getting-started/angular/angular/your-first-chart-using-angular)
+- Documentation: [https://www.fusioncharts.com/dev/getting-started/jquery/your-first-chart-using-jquery](https://www.fusioncharts.com/dev/getting-started/jquery/your-first-chart-using-jquery)
 - Support: [https://www.fusioncharts.com/contact-support](https://www.fusioncharts.com/contact-support)
 - FusionCharts
   - Official Website: [https://www.fusioncharts.com/](https://www.fusioncharts.com/)
