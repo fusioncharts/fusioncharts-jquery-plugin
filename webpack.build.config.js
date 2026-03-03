@@ -21,7 +21,7 @@ const path = require('path'),
 function getPlugins() {
     return [
         new WrapperPlugin({
-            test: /^fusioncharts\.jqueryplugin\.js/,
+            test: /^jquery\.fusioncharts\.js/,
             header: header,
             footer: footer
         })
@@ -47,7 +47,8 @@ function getWebpackOptimizations(isIE8, isMinified) {
         optimization.minimize = true;
         optimization.minimizer = [
             new UglifyJsPlugin({
-                cache: true,
+                // Disable cache to avoid md4 hashing errors on newer Node/OpenSSL
+                cache: false,
                 parallel: true,
                 sourceMap: true,
                 uglifyOptions: {
@@ -77,7 +78,7 @@ module.exports = env => {
         entry: './src/jquery-fusioncharts.js',
         mode: 'production',
         output: {
-            filename: 'fusioncharts.jqueryplugin.min.js',
+            filename: 'jquery.fusioncharts.min.js',
             path: path.resolve(__dirname, 'dist'),
             libraryTarget: 'umd',
             umdNamedDefine: true
@@ -92,7 +93,8 @@ module.exports = env => {
                         loader: 'babel-loader',
                         options: {
                             babelrc: false,
-                            cacheDirectory: true,
+                            // Avoid md4 hashing (OpenSSL 3) issues on newer Node versions
+                            cacheDirectory: false,
                             plugins: getBabelPlugins(IS_IE8),
                             presets: [['env', {
                                 targets: { browsers: ['> 0.1%'] },
@@ -104,7 +106,7 @@ module.exports = env => {
                 }
             ]
         },
-        // devtool: 'source-map',
+        devtool: 'source-map',
         optimization: getWebpackOptimizations(IS_IE8, IS_MINIFIED),
         plugins: getPlugins()
     })];
