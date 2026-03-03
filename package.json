@@ -82,5 +82,8 @@
   "browserify-shim": {
     "jquery": "global:$",
     "fusioncharts": "global:FusionCharts"
+  },
+  "engines": {
+    "node": ">=16"
   }
 }

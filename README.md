@@ -35,7 +35,7 @@ It helps you add interactive JavaScript charts to your web and mobile applicatio
 
 - **Node.js**, **NPM/Yarn** installed globally in your OS.
 ```
-nvm use 8.17.0
+nvm use 16.20.0
 npm cache clean --force
 rm -rf ~/.npm/_cacache ~/.npm/_locks
 npm install --prefer-online
