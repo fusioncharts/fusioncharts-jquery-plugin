@@ -1,4 +1,5 @@
 // Gulp Dependencies
+// TODO: requires Node 8.17.0, to be upgraded
 var gulp = require('gulp');
 var babel = require('gulp-babel');
 var babelify = require('babelify');

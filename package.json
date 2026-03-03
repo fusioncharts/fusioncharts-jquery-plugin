@@ -32,7 +32,7 @@
     "build:sample": "gulp build:sample",
     "build:development": "webpack",
     "build:production": "webpack --config webpack.build.config.js --env.minify=\"true\" --env.ie8=\"true\"",
-    "build": "npm run build:development && npm run build:production && npm run build:sample",
+    "build": "npm run build:development && npm run build:production",
     "lint": "eslint ./src/ gulpfile.js",
     "test": "develop/ci/test/test"
   },

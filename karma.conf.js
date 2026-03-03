@@ -1,5 +1,6 @@
 // Karma configuration
 // Generated on Wed Mar 08 2017 15:56:23 GMT+0530 (IST)
+// TODO: requires Node 8.17.0, to be upgraded
 module.exports = function (config) {
     config.set({
     // base path that will be used to resolve all patterns (eg. files, exclude)
