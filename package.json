@@ -40,9 +40,9 @@
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
-    "babel-preset-env": "^1.6.0",
     "babel-plugin-transform-es3-member-expression-literals": "^6.22.0",
     "babel-plugin-transform-es3-property-literals": "^6.22.0",
+    "babel-preset-env": "^1.6.0",
     "babelify": "^7.3.0",
     "browserify": "^14.1.0",
     "browserify-shim": "^3.8.13",
@@ -72,6 +72,7 @@
     "map": "^1.0.1",
     "metascript": "0.18.0",
     "path": "^0.12.7",
+    "uglifyjs-webpack-plugin": "^2.2.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.9.0",
     "webpack": "^4.16.5",

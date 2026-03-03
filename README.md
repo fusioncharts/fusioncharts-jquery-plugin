@@ -34,6 +34,12 @@ It helps you add interactive JavaScript charts to your web and mobile applicatio
 ### Requirements
 
 - **Node.js**, **NPM/Yarn** installed globally in your OS.
+```
+nvm use 8.17.0
+npm cache clean --force
+rm -rf ~/.npm/_cacache ~/.npm/_locks
+npm install --prefer-online
+```
 - **FusionCharts** installed in your project, as detailed below:
 
 ### Installation
