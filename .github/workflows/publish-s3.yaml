@@ -1,0 +1,65 @@
+name: Publish FusionCharts jQuery plugin dist to S3
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+concurrency:
+  group: publish-s3
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '16'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build (must generate dist/)
+        run: npm run build
+
+      - name: Verify dist exists
+        run: |
+          test -d dist
+          test -n "$(ls -A dist)"
+
+      - name: Extract version tag
+        id: ver
+        run: |
+          echo "tag=${GITHUB_REF_NAME}" >> $GITHUB_OUTPUT
+
+      - name: Configure AWS credentials via OIDC
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
+          aws-region: ap-south-1
+
+      # Upload to immutable versioned path (best for caching)
+      - name: Sync dist to S3 (versioned)
+        run: |
+          aws s3 sync dist/ "s3://cdn.fusioncharts.com/jquery-fusioncharts/${{ steps.ver.outputs.tag }}/" \
+            --delete \
+            --cache-control "public,max-age=31536000,immutable"
+
+      # Optional: also publish a mutable "latest" alias
+      - name: Sync dist to S3 (latest)
+        run: |
+          aws s3 sync dist/ "s3://cdn.fusioncharts.com/jquery-fusioncharts/latest/" \
+            --delete \
+            --cache-control "public,max-age=60"
