@@ -8,14 +8,14 @@
     }(function (FusionCharts) {
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("jquery"));
+		module.exports = factory(require("jquery"), require("fusioncharts"));
 	else if(typeof define === 'function' && define.amd)
-		define(["jquery"], factory);
+		define(["jquery", "fusioncharts"], factory);
 	else {
-		var a = typeof exports === 'object' ? factory(require("jquery")) : factory(root["jquery"]);
+		var a = typeof exports === 'object' ? factory(require("jquery"), require("fusioncharts")) : factory(root["jquery"], root["fusioncharts"]);
 		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
 	}
-})(window, function(__WEBPACK_EXTERNAL_MODULE__1__) {
+})(window, function(__WEBPACK_EXTERNAL_MODULE__1__, __WEBPACK_EXTERNAL_MODULE__2__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -107,7 +107,8 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ (function(module, exports, __webpack_require__) {
 
 var jQuery = __webpack_require__(1);
-var HTMLTableTranscoder = __webpack_require__(2);
+var FusionCharts = __webpack_require__(2);
+var HTMLTableTranscoder = __webpack_require__(3);
 
 var win = typeof window !== 'undefined' ? window : {};
 
@@ -759,6 +760,12 @@ module.exports = __WEBPACK_EXTERNAL_MODULE__1__;
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE__2__;
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports) {
 
 var win = window,
@@ -1639,3 +1646,5 @@ module.exports = {
 /***/ })
 /******/ ]);
 });}));
+
+//# sourceMappingURL=jquery.fusioncharts.js.map
