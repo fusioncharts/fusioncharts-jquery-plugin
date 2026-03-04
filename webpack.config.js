@@ -15,7 +15,7 @@ const path = require('path'),
 function getPlugins () {
     return [
         new WrapperPlugin({
-            test: /^fusioncharts\.jqueryplugin\.js/,
+            test: /^jquery\.fusioncharts\.js/,
             header: header,
             footer: footer
         })
@@ -25,8 +25,9 @@ function getPlugins () {
 module.exports = [{
     entry: './src/jquery-fusioncharts.js',
     mode: 'none',
+    devtool: 'source-map',
     output: {
-        filename: 'fusioncharts.jqueryplugin.js',
+        filename: 'jquery.fusioncharts.js',
         path: path.resolve(__dirname, 'dist'),
         libraryTarget: 'umd',
         umdNamedDefine: true

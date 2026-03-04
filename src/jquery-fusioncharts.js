@@ -1,4 +1,5 @@
 var jQuery = require('jquery');
+var FusionCharts = require('fusioncharts');
 var HTMLTableTranscoder = require('./transcoder-htmltable/transcoder-htmltable');
 
 var win = typeof window !== 'undefined' ? window : {};
