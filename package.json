@@ -1,11 +1,11 @@
 {
   "name": "jquery-fusioncharts",
-  "description": "FusionCharts jQuery Plugin",
+  "description": "jquery-fusioncharts wrapper allows you to render and manipulate FusionCharts using familiar jQuery syntax. It provides a thin integration layer between FusionCharts and jQuery for easy chart creation, updates, and event handling across browsers and devices.",
   "src": "./src",
   "main": "./dist/jquery.fusioncharts.js",
   "build": {
     "dist": "./package",
-    "name": "fusioncharts-jquery-plugin"
+    "name": "jquery-fusioncharts"
   },
   "lib": "./lib",
   "samples": {
@@ -15,7 +15,7 @@
     "port": "8080"
   },
   "homepage": "http://www.fusioncharts.com/",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "license": "MIT",
   "author": "FusionCharts, Inc. <support@fusioncharts.com>",
   "keywords": [
@@ -26,7 +26,7 @@
   "preferGlobal": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/fusioncharts/fusioncharts-jquery-plugin.git"
+    "url": "https://github.com/fusioncharts/jquery-fusioncharts.git"
   },
   "scripts": {
     "build:sample": "gulp build:sample",
