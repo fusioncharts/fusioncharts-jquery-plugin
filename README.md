@@ -2,7 +2,7 @@
 
 **jquery-fusioncharts** wrapper allows you to render and manipulate FusionCharts using familiar jQuery syntax. It provides a thin integration layer between FusionCharts and jQuery for easy chart creation, updates, and event handling across browsers and devices.
 
-Demo: <https://fusioncharts.github.io/fusioncharts-jquery-plugin/>
+Demo: <https://fusioncharts.github.io/jquery-fusioncharts/>
 
 ## Documentation
 For complete documentation on events, API methods, configuration options, and advanced examples, please refer to the official FusionCharts documentation: <https://www.fusioncharts.com/dev/getting-started/jquery/your-first-chart-using-jquery>
@@ -12,9 +12,9 @@ For complete documentation on events, API methods, configuration options, and ad
 - FusionCharts NPM Package <https://www.npmjs.com/package/fusioncharts>
 - Documentation <https://www.fusioncharts.com/dev/getting-started/jquery/your-first-chart-using-jquery>
 - Data Stories <https://www.fusioncharts.com/datastories>
-- GitHub Repository <https://github.com/fusioncharts/fusioncharts-jquery-plugin>
+- GitHub Repository <https://github.com/fusioncharts/jquery-fusioncharts>
 - Support <https://www.fusioncharts.com/contact-support>
-- Issues <https://github.com/fusioncharts/fusioncharts-jquery-plugin/issues>
+- Issues <https://github.com/fusioncharts/jquery-fusioncharts/issues>
 
 ## Table of Contents
 
@@ -164,7 +164,7 @@ Then:
 
 ## Rendering Charts
 
-The plugin provides jQuery methods:
+jQuery Fusioncharts methods:
 - insertFusionCharts
 - appendFusionCharts
 - prependFusionCharts
@@ -264,7 +264,7 @@ $("#chart-container").on('fusioncharts[event name in lowercase]', function(event
 <!DOCTYPE html>
 <html>
     <head>
-        <title>jQuery FusionCharts Plugin Sample</title>
+        <title>jQuery FusionCharts Sample</title>
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
         <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
